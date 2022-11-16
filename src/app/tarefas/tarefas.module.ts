@@ -23,6 +23,7 @@ import { VisualizarTarefaResolver } from './services/visualizar-tarefa.resolver'
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
+import { MatRadioModule } from '@angular/material/radio';
 import { SharedModule } from '../shared/shared.module';
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import { SharedModule } from '../shared/shared.module';
     MatSortModule,
     MatExpansionModule,
     MatListModule,
-
+    MatRadioModule,
     ReactiveFormsModule,
     SharedModule
   ],

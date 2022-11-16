@@ -11,26 +11,28 @@
     </mat-toolbar>
 
     <mat-nav-list class="mt-lg-3">
-      <a mat-list-item routerLink="/dashboard">
-        <mat-icon aria-label="Link para o painel">home</mat-icon>
+      <a *ngFor="let link of links"
+        mat-list-item
+        routerLinkActive="link-ativo"
+        [routerLink]="[link.url]">
+        <mat-icon>{{link.icone}}</mat-icon>
         <span class="ms-2"></span>
-        Dashboard
-      </a>
-      <a mat-list-item routerLink="/tarefas">
-        <mat-icon aria-label="Link para gerenciamento de tarefas">task</mat-icon>
-        <span class="ms-2"></span>
-        Tarefas
+        {{ link.texto }}
       </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="d-flex flex-column">
-    <mat-toolbar color="primary" class="d-flex px-md-5 py-3 border-bottom">
+    <mat-toolbar color="primary" class="d-flex px-md-3 py-3 border-bottom">
       <button *ngIf="(usuarioLogado$ | async) != null"
         type="button"
         aria-label="Ativar barra lateral"
         mat-icon-button
         (click)="drawer.toggle()">
-        <mat-icon aria-label="Ícone ativador da barra lateral">menu</mat-icon>
+        <mat-icon
+          aria-label="Ícone ativador da barra lateral"
+          class="botao-sidebar"
+          [ngClass]="{ 'rotacionar-botao-sidebar': drawer.opened }">menu_open
+        </mat-icon>
       </button>
       <!-- <span class="fw-semibold">e-Agenda</span> -->
       <span class="ms-auto"></span>
@@ -41,7 +43,7 @@
     </mat-toolbar>
 
     <!-- Conteúdo principal -->
-    <div class="container-fluid py-2 px-md-5 my-4 mb-5">
+    <div class="container-fluid py-2 px-md-3   my-4 mb-5">
       <ng-content></ng-content>
     </div>
 

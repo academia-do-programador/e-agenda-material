@@ -15,23 +15,17 @@
               <span *ngIf="titulo?.errors?.['required']">O título é obrigatório.</span>
             </mat-error>
           </mat-form-field>
-
-          <mat-form-field appearance="outline">
-            <mat-label for="prioridade">Prioridade</mat-label>
-            <mat-select formControlName="prioridade">
-              <mat-option *ngFor="let prioridade of prioridades; index as i" [value]="i">
-                {{prioridade}}
-              </mat-option>
-            </mat-select>
+          <mat-label class="fs-5 my-2" for="prioridade">Prioridade</mat-label>
+          <mat-radio-group class="row gap-2 fs-6" formControlName="prioridade">
+            <mat-radio-button *ngFor="let prioridade of prioridades; index as i" [value]="i">{{prioridade}}</mat-radio-button>
             <mat-error class="text-white" *ngIf="prioridade?.touched && prioridade?.invalid">
               <span *ngIf="prioridade?.errors?.['required']">A prioridade é obrigatória.</span>
             </mat-error>
-          </mat-form-field>
-
+          </mat-radio-group>
 
           <section aria-label="Itens da Tarefa">
-            <h2 class="fs-5">Itens da Tarefa</h2>
-            <form class="d-grid gap-2 mt-2" [formGroup]="formItens">
+            <h2 class="fs-5 my-3">Itens da Tarefa</h2>
+            <form class="d-grid gap-2" [formGroup]="formItens">
               <div class="row align-items-center">
                 <mat-form-field class="col" appearance="outline">
                   <mat-label>Título do Item</mat-label>

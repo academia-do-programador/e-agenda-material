@@ -7,15 +7,19 @@
 </a>
 
 <div class="row align-content-start justify-content-center h-100">
-  <app-titulo-pagina icone="task">Visualização de Tarefas</app-titulo-pagina>
-  <ng-container *ngIf="true && (tarefas$ | async) as tarefasCadastradas">
-    <app-descricao-pagina>
-      Atualmente você tem {{ tarefasCadastradas.length }} {{tarefasCadastradas.length > 1 ? 'tarefas cadastradas' : 'tarefa cadastrada' }} no sistema.
+  <app-titulo-pagina icone="list">Visualização de Tarefas</app-titulo-pagina>
+  <ng-container [ngSwitch]="(tarefas$  | async)?.length">
+    <app-descricao-pagina *ngSwitchCase="0">
+      Nenhuma tarefa cadastrada.
     </app-descricao-pagina>
-
+    <app-descricao-pagina *ngSwitchCase="1">
+      Você tem apenas uma tarefa cadastrada.
+    </app-descricao-pagina>
+    <app-descricao-pagina *ngSwitchDefault>
+      Você tem {{ (tarefas$  | async)?.length }} tarefas cadastradas.
+    </app-descricao-pagina>
   </ng-container>
-
-  <section #tabelaTarefas *ngIf="(tarefas$ | async)?.length; else tarefasNaoEncontradas">
+  <section #tabelaTarefas *ngIf="(tarefas$ | async)?.length">
     <table class="w-100" mat-table [dataSource]="tarefas$" >
       <ng-container matColumnDef="Título">
         <th class="text-center fs-6 fw-bold" mat-header-cell *matHeaderCellDef>Título</th>
@@ -30,17 +34,23 @@
         <th class="text-center fs-6 fw-bold" mat-header-cell *matHeaderCellDef>Ações</th>
         <td mat-cell *matCellDef="let tarefa">
           <div class="row justify-content-center gap-2">
-            <ng-container
-              [ngSwitch]="(isHandset$ | async)">
-              <ng-container
-                *ngSwitchCase="true"
-                [ngTemplateOutlet]="botoesMobile"
-                [ngTemplateOutletContext]="{ id: tarefa.id }"></ng-container>
-              <ng-container
-                *ngSwitchCase="false"
-                [ngTemplateOutlet]="botoesPadrao"
-                [ngTemplateOutletContext]="{ id: tarefa.id }"></ng-container>
-            </ng-container>
+            <a mat-icon-button
+              color="accent"
+              role="button"
+              [routerLink]="['/tarefas/editar', tarefa.id]"
+              matTooltip="Editar Tarefa"
+              aria-label="Editar tarefa">
+              <mat-icon>edit</mat-icon>
+            </a>
+            <a mat-icon-button
+              color="warn"
+              role="button"
+              [routerLink]="['/tarefas/excluir', tarefa.id]"
+              matTooltip="Excluir Tarefa"
+              aria-label="Excluir tarefa">
+              <mat-icon>delete</mat-icon>
+              <!-- Excluir -->
+            </a>
           </div>
         </td>
       </ng-container>
@@ -51,50 +61,3 @@
 
   </section>
 </div>
-
-<ng-template #tarefasNaoEncontradas>
-  <div class="row h-50 text-center">
-    <mat-card class="d-flex justify-content-center align-items-center">
-      <p class="fs-3">Nenhum registro disponível.</p>
-    </mat-card>
-  </div>
-</ng-template>
-
-<ng-template #botoesPadrao let-id="id">
-  <a mat-mini-fab
-    color="accent"
-    role="button"
-    [routerLink]="['/tarefas/editar', id]"
-    matTooltip="Editar Tarefa"
-    aria-label="Editar tarefa">
-    <mat-icon>edit</mat-icon>
-  </a>
-  <a mat-mini-fab
-    color="warn"
-    role="button"
-    [routerLink]="['/tarefas/excluir', id]"
-    matTooltip="Excluir Tarefa"
-    aria-label="Excluir tarefa">
-    <mat-icon>delete</mat-icon>
-    <!-- Excluir -->
-  </a>
-</ng-template>
-
-<ng-template #botoesMobile let-id="id">
-  <a mat-mini-fab
-    color="accent"
-    class="col-1"
-    role="button"
-    [routerLink]="['/tarefas/editar', id]"
-    aria-label="Editar tarefa">
-    <mat-icon>edit</mat-icon>
-  </a>
-  <a mat-mini-fab
-    color="warn"
-    class="col-1"
-    role="button"
-    [routerLink]="['/tarefas/excluir', id]"
-    aria-label="Excluir tarefa">
-    <mat-icon>delete</mat-icon>
-  </a>
-</ng-template>

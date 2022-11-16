@@ -39,7 +39,18 @@ import { MatSidenav } from '@angular/material/sidenav';
 export class ShellComponent {
   usuarioLogado$: Observable<UsuarioTokenViewModel | null> = this.usuarioService.usuarioLogado;
   navbarExpandida: boolean = false;
-  @ViewChild('sidenav') sidenav: any;
+  links: any[] = [
+    {
+      url: '/dashboard',
+      texto: 'Dashboard',
+      icone: 'view_timeline'
+    },
+    {
+      url: '/tarefas/listar',
+      texto: 'Tarefas',
+      icone: 'check_circle'
+    }
+  ];
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -58,15 +69,6 @@ export class ShellComponent {
     this.authService.logout().subscribe({
       next: () => this.processarLogout()
     });
-  }
-
-  public fecharNavbar() {
-    this.navbarExpandida = !this.navbarExpandida;
-
-    if (this.sidenav.opened)
-      this.sidenav.close();
-    else
-      this.sidenav.open();
   }
 
   private processarLogout() {

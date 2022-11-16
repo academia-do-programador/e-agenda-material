@@ -17,17 +17,13 @@
             </mat-error>
           </mat-form-field>
 
-          <mat-form-field appearance="outline">
-            <mat-label for="prioridade">Prioridade</mat-label>
-            <mat-select formControlName="prioridade">
-              <mat-option *ngFor="let prioridade of prioridades; index as i" [value]="i">
-                {{prioridade}}
-              </mat-option>
-            </mat-select>
+          <mat-label class="fs-5 my-2" for="prioridade">Prioridade</mat-label>
+          <mat-radio-group class="row gap-2 fs-6" formControlName="prioridade">
+            <mat-radio-button *ngFor="let prioridade of prioridades; index as i" [value]="i">{{prioridade}}</mat-radio-button>
             <mat-error class="text-white" *ngIf="prioridade?.touched && prioridade?.invalid">
               <span *ngIf="prioridade?.errors?.['required']">A prioridade é obrigatória.</span>
             </mat-error>
-          </mat-form-field>
+          </mat-radio-group>
 
 
           <section aria-label="Itens da Tarefa">
@@ -73,12 +69,12 @@
                 <th class="text-end fs-6 fw-bold" mat-header-cell *matHeaderCellDef>Ações</th>
                 <td class="text-end" mat-cell *matCellDef="let item">
                 <button
+                  mat-icon-button
+                  color="warn"
                   matTooltip="Excluir Item"
                   type="button"
                   (click)="removerItem(item)"
-                  class="col-sm fs-6"
-                  mat-mini-fab
-                  color="warn">
+                  class="col-sm fs-6">
                   <mat-icon class="">delete_forever</mat-icon>
                 </button>
                 </td>
