@@ -12,8 +12,13 @@ body { margin: 0; }
   font-size: 14px;
 }
 
+mat-header-row,
+th.mat-header-cell {
+  border-bottom-color: #ADACD9 !important;
+}
+
 .text-primary {
-  color: #DA3DBA !important;
+  color: #bd62abc7 !important;
 }
 
 .text-bg-dark {

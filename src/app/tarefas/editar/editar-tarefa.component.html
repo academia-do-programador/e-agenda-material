@@ -17,7 +17,7 @@
             </mat-error>
           </mat-form-field>
 
-          <mat-label class="fs-5 my-2" for="prioridade">Prioridade</mat-label>
+          <mat-label class="fs-5 fw-semibold" for="prioridade">Prioridade</mat-label>
           <mat-radio-group class="row gap-2 fs-6" formControlName="prioridade">
             <mat-radio-button *ngFor="let prioridade of prioridades; index as i" [value]="i">{{prioridade}}</mat-radio-button>
             <mat-error class="text-white" *ngIf="prioridade?.touched && prioridade?.invalid">
@@ -27,7 +27,7 @@
 
 
           <section aria-label="Itens da Tarefa">
-            <h2 class="fs-5 fw-semibold">Itens da Tarefa</h2>
+            <h2 class="fs-5 my-3 fw-semibold">Itens da Tarefa</h2>
             <form class="d-grid gap-2" [formGroup]="formItens">
               <div class="row align-items-center">
                 <mat-form-field class="col" appearance="outline">

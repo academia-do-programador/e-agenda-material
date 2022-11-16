@@ -22,16 +22,16 @@
   <section #tabelaTarefas>
     <table class="w-100" mat-table *ngIf="(tarefas$ | async)?.length" [dataSource]="tarefas$">
       <ng-container matColumnDef="Título">
-        <th class="fs-6 fw-bold" mat-header-cell *matHeaderCellDef>Título</th>
-        <td class="fs-6" mat-cell *matCellDef="let tarefa"> {{tarefa.titulo}} </td>
+        <th class="fs-6 fw-semibold" mat-header-cell *matHeaderCellDef>Título</th>
+        <td class="fs-6 fw-light" mat-cell *matCellDef="let tarefa"> {{tarefa.titulo}} </td>
       </ng-container>
       <ng-container matColumnDef="Prioridade">
-        <th class="fs-6 fw-bold" mat-header-cell *matHeaderCellDef>Prioridade</th>
-        <td class="fs-6" mat-cell *matCellDef="let tarefa"> {{tarefa.prioridade}} </td>
+        <th class="fs-6 fw-semibold" mat-header-cell *matHeaderCellDef>Prioridade</th>
+        <td class="fs-6 fw-light" mat-cell *matCellDef="let tarefa"> {{tarefa.prioridade}} </td>
       </ng-container>
 
       <ng-container matColumnDef="Ações">
-        <th class="text-center fs-6 fw-bold" mat-header-cell *matHeaderCellDef>Ações</th>
+        <th class="text-center fs-6 fw-semibold" mat-header-cell *matHeaderCellDef>Ações</th>
         <td mat-cell *matCellDef="let tarefa">
           <div class="row justify-content-center gap-2">
             <a mat-icon-button

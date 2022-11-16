@@ -6,7 +6,7 @@
     </app-descricao-pagina>
     <mat-card class="p-md-4">
       <mat-card-content>
-        <form class="d-grid gap-2 fs-6 p-3" [formGroup]="formTarefa" (ngSubmit)="gravar()">
+        <form class="d-grid gap-3 fs-6 p-3" [formGroup]="formTarefa" (ngSubmit)="gravar()">
           <mat-form-field appearance="outline">
             <mat-label for="titulo">Título</mat-label>
             <input type="text" formControlName="titulo" matInput placeholder="Ex. Lavar o carro">
@@ -15,7 +15,7 @@
               <span *ngIf="titulo?.errors?.['required']">O título é obrigatório.</span>
             </mat-error>
           </mat-form-field>
-          <mat-label class="fs-5 my-2" for="prioridade">Prioridade</mat-label>
+          <mat-label class="fs-5 fw-semibold" for="prioridade">Prioridade</mat-label>
           <mat-radio-group class="row gap-2 fs-6" formControlName="prioridade">
             <mat-radio-button *ngFor="let prioridade of prioridades; index as i" [value]="i">{{prioridade}}</mat-radio-button>
             <mat-error class="text-white" *ngIf="prioridade?.touched && prioridade?.invalid">
@@ -24,7 +24,7 @@
           </mat-radio-group>
 
           <section aria-label="Itens da Tarefa">
-            <h2 class="fs-5 my-3">Itens da Tarefa</h2>
+            <h2 class="fs-5 fw-semibold">Itens da Tarefa</h2>
             <form class="d-grid gap-2" [formGroup]="formItens">
               <div class="row align-items-center">
                 <mat-form-field class="col" appearance="outline">
@@ -57,7 +57,7 @@
               <ng-container matColumnDef="Excluir">
                 <th class="text-end text-md-end fs-6 fw-bold" mat-header-cell *matHeaderCellDef>Excluir</th>
                 <td class="text-end text-md-end" mat-cell *matCellDef="let item">
-                  <button type="button" (click)="removerItem(item)" class="col fs-6" mat-stroked-button color="accent">
+                  <button type="button" (click)="removerItem(item)" class="col fs-6" mat-icon-button color="warn">
                     <mat-icon class="">delete_forever</mat-icon>
                   </button>
                 </td>

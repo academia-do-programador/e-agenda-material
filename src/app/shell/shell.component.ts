@@ -39,6 +39,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 export class ShellComponent {
   usuarioLogado$: Observable<UsuarioTokenViewModel | null> = this.usuarioService.usuarioLogado;
   navbarExpandida: boolean = false;
+
   links: any[] = [
     {
       url: '/dashboard',
