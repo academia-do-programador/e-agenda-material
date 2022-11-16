@@ -1,0 +1,30 @@
+<div class="shell-user-info" *ngIf="usuario; else auth;">
+  <button mat-stroked-button [matMenuTriggerFor]="menu" aria-label="Abrir menu do usuário">
+    <mat-icon>person</mat-icon>
+    {{ (handset | async) ? '' : usuario.nome }}
+
+  </button>
+    <mat-menu #menu>
+      <a routerLink="/dashboard" mat-menu-item aria-label="Gerenciar conta do usuário">
+        <mat-icon>manage_accounts</mat-icon>
+        Gerenciar Conta
+      </a>
+      <a mat-menu-item aria-label="Encerrar sessão e sair" (click)="ativarLogout()">
+        <mat-icon class="material-symbols-outline">logout</mat-icon>
+        Sair
+      </a>
+    </mat-menu>
+</div>
+
+<ng-template #auth>
+  <div class="shell-auth-buttons" *ngIf="!(handset | async)">
+    <a routerLink="/conta/autenticar" mat-stroked-button style="margin-right: 2%;">
+      <mat-icon>login</mat-icon>
+      Login
+    </a>
+    <a routerLink="/conta/registrar" mat-flat-button>
+      <mat-icon>person_add</mat-icon>
+      Registro
+    </a>
+  </div>
+</ng-template>

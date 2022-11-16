@@ -1,0 +1,119 @@
+<div class="row h-100 align-self-start justify-content-start">
+
+  <section class="d-grid gap-2 col-sm col-lg-6 col-xxl-7">
+    <app-titulo-pagina icone="edit">Edição de Tarefas</app-titulo-pagina>
+    <app-descricao-pagina>
+      Mantenha todas as suas prioridades em dia.
+    </app-descricao-pagina>
+    <mat-card>
+      <mat-card-content>
+        <form class="d-grid gap-3 fs-6 p-sm-3" [formGroup]="formTarefa" (ngSubmit)="gravar()">
+          <mat-form-field appearance="outline">
+            <mat-label for="titulo">Título</mat-label>
+            <input type="text" formControlName="titulo" matInput placeholder="Ex. Lavar o carro">
+            <mat-error class="text-white" *ngIf="titulo?.touched && titulo?.invalid">
+              <span *ngIf="titulo?.errors?.['minlength']">O título deve conter no mínimo 6 caracteres.</span>
+              <span *ngIf="titulo?.errors?.['required']">O título é obrigatório.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label for="prioridade">Prioridade</mat-label>
+            <mat-select formControlName="prioridade">
+              <mat-option *ngFor="let prioridade of prioridades; index as i" [value]="i">
+                {{prioridade}}
+              </mat-option>
+            </mat-select>
+            <mat-error class="text-white" *ngIf="prioridade?.touched && prioridade?.invalid">
+              <span *ngIf="prioridade?.errors?.['required']">A prioridade é obrigatória.</span>
+            </mat-error>
+          </mat-form-field>
+
+
+          <section aria-label="Itens da Tarefa">
+            <h2 class="fs-5 fw-semibold">Itens da Tarefa</h2>
+            <form class="d-grid gap-2" [formGroup]="formItens">
+              <div class="row align-items-center">
+                <mat-form-field class="col" appearance="outline">
+                  <mat-label>Título do Item</mat-label>
+                  <input type="text" formControlName="tituloItem" matInput placeholder="Ex. Pegar o balde d'água">
+                  <mat-error class="text-white" *ngIf="titulo?.touched && titulo?.invalid">
+                    <span *ngIf="titulo?.errors?.['minlength']">O título deve conter no mínimo 6 caracteres.</span>
+                    <span *ngIf="titulo?.errors?.['required']">O título é obrigatório.</span>
+                  </mat-error>
+                </mat-form-field>
+                <button
+                  type="button"
+                  aria-label="Botão Adicionar Novo Item"
+                  matTooltip="Adicionar Novo Item"
+                  class="m-1"
+                  (click)="adicionarItem()" matSuffix mat-mini-fab>
+                  <mat-icon>add</mat-icon>
+                </button>
+              </div>
+            </form>
+
+            <table *ngIf="itens.length > 0" class="w-100" mat-table [dataSource]="itens">
+              <ng-container matColumnDef="Título">
+                <th class="text-center fs-6 fw-bold" mat-header-cell *matHeaderCellDef>Título do Item</th>
+                <td class="text-center fs-6" mat-cell *matCellDef="let item">{{item.titulo}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="Situação">
+                <th class="text-center fs-6 fw-bold" mat-header-cell *matHeaderCellDef>Concluído</th>
+                <td class="text-center fs-6" mat-cell *matCellDef="let item">
+                  <mat-checkbox
+                  matTooltip="Concluir Item"
+                  (change)="atualizarItem(item)" [checked]="item.concluido">
+                  </mat-checkbox>
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="Ações">
+                <th class="text-end fs-6 fw-bold" mat-header-cell *matHeaderCellDef>Ações</th>
+                <td class="text-end" mat-cell *matCellDef="let item">
+                <button
+                  matTooltip="Excluir Item"
+                  type="button"
+                  (click)="removerItem(item)"
+                  class="col-sm fs-6"
+                  mat-mini-fab
+                  color="warn">
+                  <mat-icon class="">delete_forever</mat-icon>
+                </button>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="colunasExibidas"></tr>
+              <tr mat-row *matRowDef="let row; columns: colunasExibidas;"></tr>
+            </table>
+          </section>
+        </form>
+      </mat-card-content>
+
+      <mat-card-footer class="my-2">
+        <div class="row px-4 gap-2">
+          <button mat-stroked-button
+            color="accent"
+            class="col"
+            type="button"
+            routerLink="/tarefas/listar">
+            <mat-icon>home</mat-icon>
+            Voltar
+          </button>
+          <button mat-flat-button
+            color="accent"
+            class="col"
+            data-cy="btnConfirmar"
+            (click)="gravar()"
+            type="button">
+            <mat-icon>check</mat-icon>
+            Confirmar
+          </button>
+        </div>
+      </mat-card-footer>
+    </mat-card>
+
+
+  </section>
+</div>

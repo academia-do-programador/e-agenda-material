@@ -1,0 +1,62 @@
+<div class="container-fluid h-100 align-items-center justify-content-center">
+
+  <div class="row gap-3 h-100 justify-content-center align-items-center">
+    <section class="d-grid gap-2 col-sm col-lg-4">
+      <app-titulo-pagina icone="login">e-Agenda</app-titulo-pagina>
+      <mat-card class="p-md-4">
+        <div class="row gap-4 justify-content-center my-3 text-center">
+          <img src="/assets/logo-titulo.svg" class="col-9">
+
+          <h5 class="fs-5">Login de Usuário</h5>
+        </div>
+
+        <mat-card-content>
+          <form class="d-grid gap-2 fs-6 p-3" [formGroup]="form" (ngSubmit)="login()">
+            <mat-form-field appearance="outline">
+              <mat-label>Endereço de email</mat-label>
+              <input type="email" formControlName="email" matInput placeholder="Ex. seunome@gmail.com">
+              <mat-error class="text-white" *ngIf="email?.touched && email?.invalid">
+                <span *ngIf="email?.errors?.['email']">O email precisa seguir o formato "seunome@gmail.com".</span>
+                <span *ngIf="email?.errors?.['required']">O email é obrigatório.</span>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field  appearance="outline">
+              <mat-label>Senha</mat-label>
+              <input type="password" formControlName="senha" matInput>
+              <mat-error class="text-white" *ngIf="senha?.touched && senha?.invalid">
+                <span *ngIf="senha?.errors?.['required']">A senha precisa ser preenchida.</span>
+                <span *ngIf="senha?.errors?.['minlength']">A senha deve conter no mínimo 6 caracteres.</span>
+              </mat-error>
+            </mat-form-field>
+
+            <div class="row px-2 gap-2 mt-2">
+              <button mat-stroked-button
+                color="accent"
+                class="col"
+                type="button"
+                routerLink="/conta/registrar">
+                <mat-icon>person_add</mat-icon>
+                Registro
+              </button>
+              <a mat-flat-button
+                color="accent"
+                class="col"
+                (click)="login()"
+                role="button"
+                [disabled]="this.form.touched && this.form.invalid">
+                <mat-icon>login</mat-icon>
+                Entrar
+              </a>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+
+    </section>
+
+    <figure class="col-auto align-items-center p-2">
+        <img src="/assets/undraw-login.svg" class="img-fluid mw-100" alt="Imagem ilustrando uma garota interagindo com um formulário online">
+    </figure>
+  </div>
+</div>
