@@ -34,11 +34,16 @@
           [ngClass]="{ 'rotacionar-botao-sidebar': drawer.opened }">menu_open
         </mat-icon>
       </button>
-      <!-- <span class="fw-semibold">e-Agenda</span> -->
-      <span class="ms-auto"></span>
+
+      <img *ngIf="!drawer.opened"
+        class="logo-academia-toolbar"
+        class="ms-2"
+        src="/assets/logo-titulo.svg"
+        width="180"
+        alt="Logo da Academia do Programador">
 
       <!-- Menu de autenticação / gerenciamento de conta -->
-      <app-shell-user-info [handset]="isHandset$" [usuario]="usuarioLogado$ | async" (logout)="logout()"></app-shell-user-info>
+      <app-shell-user-info class="ms-auto" [handset]="isHandset$" [usuario]="usuarioLogado$ | async" (logout)="logout()"></app-shell-user-info>
 
     </mat-toolbar>
 
