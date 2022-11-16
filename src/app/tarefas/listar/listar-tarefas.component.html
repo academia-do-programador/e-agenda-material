@@ -19,15 +19,15 @@
       Você tem {{ (tarefas$  | async)?.length }} tarefas cadastradas.
     </app-descricao-pagina>
   </ng-container>
-  <section #tabelaTarefas *ngIf="(tarefas$ | async)?.length">
-    <table class="w-100" mat-table [dataSource]="tarefas$" >
+  <section #tabelaTarefas>
+    <table class="w-100" mat-table *ngIf="(tarefas$ | async)?.length" [dataSource]="tarefas$">
       <ng-container matColumnDef="Título">
-        <th class="text-center fs-6 fw-bold" mat-header-cell *matHeaderCellDef>Título</th>
-        <td class="text-center fs-6" mat-cell *matCellDef="let tarefa"> {{tarefa.titulo}} </td>
+        <th class="fs-6 fw-bold" mat-header-cell *matHeaderCellDef>Título</th>
+        <td class="fs-6" mat-cell *matCellDef="let tarefa"> {{tarefa.titulo}} </td>
       </ng-container>
       <ng-container matColumnDef="Prioridade">
-        <th class="text-center fs-6 fw-bold" mat-header-cell *matHeaderCellDef>Prioridade</th>
-        <td class="text-center fs-6" mat-cell *matCellDef="let tarefa"> {{tarefa.prioridade}} </td>
+        <th class="fs-6 fw-bold" mat-header-cell *matHeaderCellDef>Prioridade</th>
+        <td class="fs-6" mat-cell *matCellDef="let tarefa"> {{tarefa.prioridade}} </td>
       </ng-container>
 
       <ng-container matColumnDef="Ações">
