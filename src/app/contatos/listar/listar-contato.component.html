@@ -42,13 +42,14 @@
         <th class="text-center fs-6 fw-semibold" mat-header-cell *matHeaderCellDef>Ações</th>
         <td mat-cell *matCellDef="let contato">
           <div class="row justify-content-center gap-2">
+            <!-- Editar -->
             <a mat-icon-button
               data-cy="btnEditar"
               color="accent"
               role="button"
-              [routerLink]="['/tarefas/editar', contato.id]"
-              matTooltip="Editar Tarefa"
-              aria-label="Editar tarefa">
+              [routerLink]="['/contatos/editar', contato.id]"
+              matTooltip="Editar Contato"
+              aria-label="Editar Contato">
               <mat-icon>edit</mat-icon>
             </a>
             <!-- Excluir -->
@@ -56,7 +57,7 @@
               data-cy="btnExcluir"
               color="warn"
               role="button"
-              [routerLink]="['/contatos/excluir',contato.id]"
+              [routerLink]="['/contatos/excluir', contato.id]"
               matTooltip="Excluir Contato"
               aria-label="Excluir Contato">
               <mat-icon>delete</mat-icon>

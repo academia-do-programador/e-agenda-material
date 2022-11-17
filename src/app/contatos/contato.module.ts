@@ -14,11 +14,15 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
 import { SharedModule } from '../shared/shared.module';
 import { ListarContatoComponent } from './listar/listar-contato.component';
+import { InserirContatoComponent } from './inserir/inserir-contato.component';
 
 
 
 @NgModule({
-  declarations: [ListarContatoComponent],
+  declarations: [
+    ListarContatoComponent,
+    InserirContatoComponent
+  ],
   imports: [
     CommonModule,
     ContatoRoutingModule,

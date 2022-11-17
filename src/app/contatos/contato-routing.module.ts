@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { InserirContatoComponent } from './inserir/inserir-contato.component';
 import { ListarContatoComponent } from './listar/listar-contato.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'listar', pathMatch: 'full' },
   { path: 'listar', component: ListarContatoComponent },
-  // { path: 'inserir', component: InserirContatoComponent },
+  { path: 'inserir', component: InserirContatoComponent },
   // {
   //   path: 'editar/:id',
   //   component: EditarContatoComponent,
