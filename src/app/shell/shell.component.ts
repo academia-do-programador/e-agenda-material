@@ -52,6 +52,11 @@ export class ShellComponent implements AfterViewInit {
       url: '/tarefas/listar',
       texto: 'Tarefas',
       icone: 'check_circle'
+    },
+    {
+      url: '/contatos/listar',
+      texto: 'Contatos',
+      icone: 'group'
     }
   ];
 
@@ -70,10 +75,7 @@ export class ShellComponent implements AfterViewInit {
 
 
   ngAfterViewInit(): void {
-    this.router.events.pipe(
-      withLatestFrom(this.isHandset$),
-      filter(([a, b]) => b && a instanceof NavigationEnd)
-    ).subscribe(() => this.sidebar.close());
+    this.observarFechamentoNavbar();
   }
 
   public logout() {
@@ -86,5 +88,12 @@ export class ShellComponent implements AfterViewInit {
     this.usuarioService.logout();
     this.localStorageService.limparDadosLocais();
     this.router.navigate(['/conta/autenticar']);
+  }
+
+  private observarFechamentoNavbar() {
+    this.router.events.pipe(
+      withLatestFrom(this.isHandset$),
+      filter(([a, b]) => b && a instanceof NavigationEnd)
+    ).subscribe(() => this.sidebar.close());
   }
 }
