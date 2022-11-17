@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, Resolve } from "@angular/router";
 import { Observable } from "rxjs";
-import { VisualizarContatoViewModel } from "../view-models/visualizar-tarefa.view-model";
+import { VisualizarContatoViewModel } from "../view-models/visualizar-contato.view-model";
 import { ContatoService } from "./contato.service";
 
 @Injectable()

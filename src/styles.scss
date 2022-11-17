@@ -8,17 +8,10 @@ html, body { height: 100%; }
 body { margin: 0; }
 * { font-family: Poppins, sans-serif; }
 
-.mat-error {
-  font-size: 14px;
-}
 
-mat-header-row,
-th.mat-header-cell {
-  border-bottom-color: #ADACD9 !important;
-}
 
 .text-primary {
-  color: #bd62abc7 !important;
+  color: #DA3DBA !important;
 }
 
 .text-bg-dark {
@@ -31,9 +24,6 @@ $border-color: rgba(255, 255, 255, 0.12);
   border-color: $border-color !important;
 }
 
-.toolbar-background {
-  background-color: #D2BAFF;
-}
 
 .link-ativo {
   background-color: #bd62abc7;
@@ -52,26 +42,11 @@ $border-color: rgba(255, 255, 255, 0.12);
 
 .botao-sidebar {
   transform: rotateY(180deg);
-
   transition: ease-in-out 400ms all;
 }
 
 .rotacionar-botao-sidebar {
   transform: rotateY(0deg) !important;
-}
-
-mat-form-field .mat-form-field {
-  &-underline {
-    position: static;
-  }
-  &-subscript-wrapper {
-    padding-left: 2px !important;
-    position: static;
-  }
-}
-
-.spacer {
-  flex: 1 1 auto;
 }
 
 .snackbar-sucesso {
@@ -89,6 +64,33 @@ mat-form-field .mat-form-field {
   padding: 3% !important;
 }
 
+.mat-toolbar {
+  background-color: #3B3B69 !important;
+}
+
+.mat-tooltip {
+  font-size: 15px !important;
+  font-weight: 300;
+}
+
+mat-form-field .mat-form-field {
+  &-underline {
+    position: static;
+  }
+  &-subscript-wrapper {
+    padding-left: 2px !important;
+    position: static;
+  }
+}
+
+.mat-error {
+  font-size: 14px;
+}
+
+mat-header-row,
+th.mat-header-cell {
+  border-bottom-color: #ADACD9 !important;
+}
 /**
 * Generated theme by Material Theme Generator
 * https://materialtheme.arcsine.dev

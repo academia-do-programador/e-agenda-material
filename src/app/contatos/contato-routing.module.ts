@@ -9,12 +9,12 @@ const routes: Routes = [
   // {
   //   path: 'editar/:id',
   //   component: EditarContatoComponent,
-  //   resolve: { tarefa: FormsContatoResolver }
+  //   resolve: { contato: FormsContatoResolver }
   // },
   // {
   //   path: 'excluir/:id',
   //   component: ExcluirContatoComponent,
-  //   resolve: { tarefa: VisualizarContatoResolver }
+  //   resolve: { contato: VisualizarContatoResolver }
   // },
 ];
 

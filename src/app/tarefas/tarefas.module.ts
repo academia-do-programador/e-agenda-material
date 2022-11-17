@@ -25,6 +25,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
 import { MatRadioModule } from '@angular/material/radio';
 import { SharedModule } from '../shared/shared.module';
+import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
   declarations: [
     ListarTarefasComponent,
@@ -48,6 +49,7 @@ import { SharedModule } from '../shared/shared.module';
     MatExpansionModule,
     MatListModule,
     MatRadioModule,
+    MatTooltipModule,
     ReactiveFormsModule,
     SharedModule
   ],

@@ -1,15 +1,15 @@
 <div class="row align-items-start gap-2 justify-content-center h-100">
 
-  <section class="col-sm col-lg-5">
+  <section aria-label="Painel do Usuário" class="col-sm col-lg-5">
     <app-titulo-pagina icone="view_timeline">Dashboard</app-titulo-pagina>
     <mat-card>
       <mat-card-content class="p-2 p-md-4 d-grid gap-4">
         <h2 class="fs-4">
-          Olá,
+          Seja Bem-Vindo(a),
           <span class="text-primary">{{ (usuarioLogado$ | async)?.nome }}</span>.
         </h2>
 
-        <section class="fs-6" aria-label="Introdução do usuário">
+        <section class="fs-6 fw-light" aria-label="Introdução do usuário">
           <p>Este é o seu Dashboard, através daqui, você pode acessar as funcionalidades avançadas da aplicação.</p>
           <p>Você pode explorar as funcionalidades através da barra lateral esquerda.</p>
         </section>
@@ -21,7 +21,7 @@
             routerLink="/tarefas/listar"
             color="accent"
             role="button">
-            Cadastro de Tarefas
+            Cadastre uma tarefa!
           </a>
         </section>
 
@@ -30,8 +30,7 @@
 
   </section>
 
-
-    <figure class="d-none d-lg-block col-auto align-items-center p-2">
-      <img src="/assets/undraw-join.svg" class="img-fluid mw-100" height="450" alt="Imagem ilustrando pessoas interagindo com uma aplicação">
+  <figure class="d-none d-lg-block col-auto align-items-center p-2">
+    <img src="/assets/undraw-join.svg" class="img-fluid mw-100" height="450" alt="Imagem ilustrando pessoas interagindo com uma aplicação">
   </figure>
 </div>

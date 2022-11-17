@@ -8,7 +8,7 @@ import { VisualizarTarefaViewModel } from "src/app/tarefas/view-models/visualiza
 import { environment } from "src/environments/environment";
 import { FormsContatoViewModel } from "../view-models/forms-contato.view-model";
 import { ListarContatoViewModel } from "../view-models/listar-contato.view-model";
-import { VisualizarContatoViewModel } from "../view-models/visualizar-tarefa.view-model";
+import { VisualizarContatoViewModel } from "../view-models/visualizar-contato.view-model";
 
 @Injectable()
 export class ContatoService {
@@ -77,7 +77,6 @@ export class ContatoService {
       })
     }
   }
-
 
   private processarDados(resposta: any) {
     if (resposta?.sucesso)
