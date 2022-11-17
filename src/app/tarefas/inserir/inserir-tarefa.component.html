@@ -51,7 +51,7 @@
               </div>
             </form>
 
-            <table *ngIf="tarefaFormVM.itens.length > 0"  #tabelaItens class="w-100" mat-table [dataSource]="tarefaFormVM.itens">
+            <table data-cy="itensTarefa" *ngIf="tarefaFormVM.itens.length > 0"  #tabelaItens class="w-100" mat-table [dataSource]="tarefaFormVM.itens">
               <ng-container matColumnDef="Título do Item">
                 <th class="text-start fs-6 fw-bold" mat-header-cell *matHeaderCellDef>Título do Item</th>
                 <td class="text-start fs-6" mat-cell *matCellDef="let item">{{item.titulo}}</td>
