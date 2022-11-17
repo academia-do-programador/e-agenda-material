@@ -35,10 +35,10 @@ export class InserirContatoComponent
   ngOnInit(): void {
     this.formContato = this.formBuilder.group({
       nome: ['', [Validators.required, Validators.minLength(3)]],
-      telefone: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-      empresa: ['', [Validators.required]],
-      cargo: ['', [Validators.required]],
+      telefone: ['', [Validators.required, Validators.pattern(/^[1-9]{2} [0-9]{4,5}-[0-9]{4}$/)]],
+      email: ['', [Validators.required, Validators.email]],
+      empresa: ['', [Validators.required, Validators.minLength(3)]],
+      cargo: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 

@@ -17,6 +17,7 @@ import { ListarContatoComponent } from './listar/listar-contato.component';
 import { InserirContatoComponent } from './inserir/inserir-contato.component';
 import { EditarContatoComponent } from './editar/editar-contato.component';
 import { ExcluirContatoComponent } from './excluir/excluir-contato.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 
 
@@ -30,6 +31,7 @@ import { ExcluirContatoComponent } from './excluir/excluir-contato.component';
   imports: [
     CommonModule,
     ContatoRoutingModule,
+    NgxMaskModule.forRoot(),
 
     MatCardModule,
     MatTableModule,

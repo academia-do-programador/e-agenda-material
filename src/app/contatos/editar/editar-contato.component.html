@@ -23,10 +23,16 @@
           <mat-form-field appearance="outline">
             <mat-label for="telefone">Telefone</mat-label>
             <input matInput
+              [dropSpecialCharacters]="false"
+              mask="00 0000-0000||00 00000-0000"
               type="text"
               data-cy="txtTelefone"
               formControlName="telefone"
-              placeholder="Ex.">
+              placeholder="00 00000-0000">
+              <mat-error class="text-white" *ngIf="telefone?.touched && telefone?.invalid">
+                <span *ngIf="telefone?.errors?.['pattern']">O telefone precisa seguir o formato "00 00000-0000".</span>
+                <span *ngIf="telefone?.errors?.['required']">O telefone precisa ser preenchido.</span>
+              </mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
@@ -36,6 +42,10 @@
               data-cy="txtEmail"
               formControlName="email"
               placeholder="Ex. joao@gmail.com">
+              <mat-error class="text-white" *ngIf="email?.touched && email?.invalid">
+                <span *ngIf="email?.errors?.['email']">O email precisa seguir o formato "usuario@dominio.com".</span>
+                <span *ngIf="email?.errors?.['required']">O email precisa ser preenchido.</span>
+              </mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
@@ -44,7 +54,11 @@
               type="text"
               data-cy="txtEmpresa"
               formControlName="empresa"
-              placeholder="Ex.">
+              placeholder="Ex. Academia do Programador">
+              <mat-error class="text-white" *ngIf="empresa?.touched && empresa?.invalid">
+                <span *ngIf="empresa?.errors?.['minlength']">O nome da empresa deve conter no mínimo 3 caracteres.</span>
+                <span *ngIf="empresa?.errors?.['required']">O nome da empresa é obrigatório.</span>
+              </mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
@@ -53,7 +67,11 @@
               type="text"
               data-cy="txtCargo"
               formControlName="cargo"
-              placeholder="Ex.">
+              placeholder="Ex. Desenvolvedor de Software">
+              <mat-error class="text-white" *ngIf="cargo?.touched && cargo?.invalid">
+                <span *ngIf="cargo?.errors?.['minlength']">O cargo deve conter no mínimo 3 caracteres.</span>
+                <span *ngIf="cargo?.errors?.['required']">O cargo é obrigatório.</span>
+              </mat-error>
           </mat-form-field>
         </form>
       </mat-card-content>
