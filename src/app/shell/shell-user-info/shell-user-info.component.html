@@ -1,5 +1,5 @@
 <div class="shell-user-info" *ngIf="usuario; else auth;">
-  <button mat-stroked-button [matMenuTriggerFor]="menu" aria-label="Abrir menu do usuário">
+  <button data-cy="btnMenuUsuario" mat-stroked-button [matMenuTriggerFor]="menu" aria-label="Abrir menu do usuário">
     <mat-icon>person</mat-icon>
     {{ (handset | async) ? '' : usuario.nome }}
 

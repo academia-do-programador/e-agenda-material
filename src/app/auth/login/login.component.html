@@ -20,8 +20,8 @@
                 type="email"
                 placeholder="Ex. seunome@gmail.com">
               <mat-error class="text-white" *ngIf="email?.touched && email?.invalid">
-                <span *ngIf="email?.errors?.['email']">O email precisa seguir o formato "seunome@gmail.com".</span>
-                <span *ngIf="email?.errors?.['required']">O email é obrigatório.</span>
+                <span *ngIf="email?.errors?.['email']">O email precisa seguir o formato "usuario@dominio.com".</span>
+                <span *ngIf="email?.errors?.['required']">O email precisa ser preenchido.</span>
               </mat-error>
             </mat-form-field>
 
@@ -47,7 +47,7 @@
                 Registro
               </button>
               <a mat-flat-button
-                data-cy="btnLogin"
+                data-cy="btnEntrar"
                 color="accent"
                 class="col"
                 (click)="login()"

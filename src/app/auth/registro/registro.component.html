@@ -13,7 +13,11 @@
           <form class="d-grid gap-2 fs-6 p-3" [formGroup]="form" (ngSubmit)="registrar()">
             <mat-form-field appearance="outline">
               <mat-label>Nome de Usuário</mat-label>
-              <input type="text" formControlName="nome" matInput placeholder="Ex. João">
+              <input matInput
+                data-cy="txtNome"
+                type="text"
+                formControlName="nome"
+                placeholder="Ex. João">
               <mat-error class="text-white" *ngIf="nome?.touched && nome?.invalid">
                 <span *ngIf="nome?.errors?.['required']">O nome precisa ser preenchido.</span>
                 <span *ngIf="nome?.errors?.['minlength']">O nome deve ter no mínimo 3 caracteres.</span>
@@ -28,8 +32,8 @@
                 type="email"
                 placeholder="Ex. seunome@gmail.com">
               <mat-error class="text-white" *ngIf="email?.touched && email?.invalid">
-                <span *ngIf="email?.errors?.['email']">O email precisa seguir o formato "seunome@gmail.com".</span>
-                <span *ngIf="email?.errors?.['required']">O email é obrigatório.</span>
+                <span *ngIf="email?.errors?.['email']">O email precisa seguir o formato "usuario@dominio.com".</span>
+                <span *ngIf="email?.errors?.['required']">O email precisa ser preenchido.</span>
               </mat-error>
             </mat-form-field>
 
