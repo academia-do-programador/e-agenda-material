@@ -4,6 +4,7 @@ import { MatTable } from '@angular/material/table';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/notification/services/notification.service';
+import { BaseFormComponent } from 'src/app/shared/base-form/base-form.component';
 import { TarefasService } from '../services/tarefas.service';
 import { FormsTarefaViewModel, ItemTarefaViewModel } from '../view-models/forms-tarefa.view-model';
 import { PrioridadeTarefaEnum } from '../view-models/prioridade-tarefa.enum';
@@ -15,7 +16,10 @@ import { StatusItemTarefa } from '../view-models/status-item-tarefa.enum';
   styles: [
   ]
 })
-export class InserirTarefaComponent implements OnInit {
+export class InserirTarefaComponent
+  extends BaseFormComponent
+  implements OnInit {
+
   public formTarefa: FormGroup;
   public formItens: FormGroup;
   public prioridades = Object.values(PrioridadeTarefaEnum)
@@ -33,6 +37,7 @@ export class InserirTarefaComponent implements OnInit {
     private router: Router,
     private notification: NotificationService
   ) {
+    super();
     titulo.setTitle('Cadastrar Tarefa - e-Agenda');
   }
 
@@ -91,6 +96,7 @@ export class InserirTarefaComponent implements OnInit {
   public gravar() {
     if (this.formTarefa.invalid) {
       this.notification.aviso('Por favor, preencha o formulário corretamente.');
+      this.exibirMensagensValidacao(this.formTarefa);
       return;
     }
 

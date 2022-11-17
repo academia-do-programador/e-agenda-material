@@ -1,11 +1,12 @@
 <div class="container-fluid h-100 align-items-center justify-content-center">
 
   <div class="row h-100 gap-3 justify-content-center align-items-center">
-    <section class="d-grid gap-2 col-sm col-lg-4">
+
+    <section aria-label="Formulário de Registro" class="d-grid gap-2 col-sm col-lg-4">
       <app-titulo-pagina icone="person_add">e-Agenda</app-titulo-pagina>
       <mat-card class="p-md-4 col mb-3">
         <div class="row gap-4 justify-content-center my-2 text-center">
-
+          <img src="/assets/logo-titulo.svg" class="col-6">
           <h5 class="fs-5">Registro de Usuário</h5>
         </div>
         <mat-card-content>
@@ -21,7 +22,11 @@
 
             <mat-form-field appearance="outline">
               <mat-label>Endereço de email</mat-label>
-              <input type="email" formControlName="email" matInput placeholder="Ex. seunome@gmail.com">
+              <input matInput
+                data-cy="txtEmail"
+                formControlName="email"
+                type="email"
+                placeholder="Ex. seunome@gmail.com">
               <mat-error class="text-white" *ngIf="email?.touched && email?.invalid">
                 <span *ngIf="email?.errors?.['email']">O email precisa seguir o formato "seunome@gmail.com".</span>
                 <span *ngIf="email?.errors?.['required']">O email é obrigatório.</span>
@@ -30,7 +35,10 @@
 
             <mat-form-field appearance="outline">
               <mat-label>Senha</mat-label>
-              <input type="password" formControlName="senha" matInput>
+              <input matInput
+                data-cy="txtSenha"
+                formControlName="senha"
+                type="password">
               <mat-error class="text-white" *ngIf="senha?.touched && senha?.invalid">
                 <span *ngIf="senha?.errors?.['required']">A senha precisa ser preenchida.</span>
                 <span *ngIf="senha?.errors?.['minlength']">A senha deve conter no mínimo 6 caracteres.</span>
@@ -39,7 +47,10 @@
 
             <mat-form-field appearance="outline">
               <mat-label>Confirmar Senha</mat-label>
-              <input type="password" formControlName="confirmarSenha" matInput>
+              <input matInput
+                data-cy="txtConfirmarSenha"
+                formControlName="confirmarSenha"
+                type="password">
               <mat-error class="text-white" *ngIf="confirmarSenha?.touched && confirmarSenha?.invalid">
                 <span *ngIf="confirmarSenha?.errors?.['required']">A senha precisa ser preenchida.</span>
                 <span *ngIf="confirmarSenha?.errors?.['minlength']">A senha deve conter no mínimo 6 caracteres.</span>
@@ -59,24 +70,24 @@
                 Login
               </button>
               <a mat-flat-button
+                data-cy="btnRegistrar"
                 color="accent"
                 class="col"
                 (click)="registrar()"
                 role="button"
-                [disabled]="this.form.touched && this.form.invalid"
-                >
+                [disabled]="this.form.touched && this.form.invalid">
                 <mat-icon>person_add</mat-icon>
                 Registrar
               </a>
             </div>
-
           </form>
         </mat-card-content>
       </mat-card>
     </section>
 
-    <figure class="col col-md-4 align-items-center">
+    <figure class="d-none d-lg-block col col-md-4 align-items-center">
       <img src="/assets/undraw-registro.svg" class="img-fluid mw-100" alt="Imagem ilustrando uma garota interagindo com um formulário online">
     </figure>
+
   </div>
 </div>

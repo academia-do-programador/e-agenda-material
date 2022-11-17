@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationService } from 'src/app/notification/services/notification.service';
+import { BaseFormComponent } from 'src/app/shared/base-form/base-form.component';
 import { TarefasService } from '../services/tarefas.service';
 import { FormsTarefaViewModel, ItemTarefaViewModel } from '../view-models/forms-tarefa.view-model';
 import { PrioridadeTarefaEnum } from '../view-models/prioridade-tarefa.enum';
@@ -14,7 +15,10 @@ import { StatusItemTarefa } from '../view-models/status-item-tarefa.enum';
   styles: [
   ]
 })
-export class EditarTarefaComponent implements OnInit {
+export class EditarTarefaComponent
+  extends BaseFormComponent
+  implements OnInit {
+
   public formTarefa: FormGroup;
   public formItens: FormGroup;
   public prioridades = Object.values(PrioridadeTarefaEnum).filter(v => !Number.isFinite(v));
@@ -31,6 +35,7 @@ export class EditarTarefaComponent implements OnInit {
     private tarefasService: TarefasService,
     private notificacao: NotificationService
   ) {
+    super();
     titulo.setTitle('Editar Tarefa - e-Agenda');
   }
 
@@ -107,6 +112,7 @@ export class EditarTarefaComponent implements OnInit {
   public gravar() {
     if (this.formTarefa.invalid) {
       this.notificacao.aviso('Por favor, preencha o formulário corretamente.');
+      this.exibirMensagensValidacao(this.formTarefa);
       return;
     }
 
@@ -128,6 +134,4 @@ export class EditarTarefaComponent implements OnInit {
   private processarFalha(erro: any) {
     this.notificacao.erro(erro);
   }
-
-
 }

@@ -1,12 +1,12 @@
-import { Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { filter, map, shareReplay, withLatestFrom } from 'rxjs/operators';
 import { TokenViewModel, UsuarioTokenViewModel } from '../auth/view-models/token.view-model';
 import { UsuarioService } from '../core/services/usuario.service';
 import { AuthService } from '../auth/services/auth.service';
 import { LocalStorageService } from '../auth/services/local-storage.service';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
@@ -36,9 +36,11 @@ import { MatSidenav } from '@angular/material/sidenav';
     }
   `]
 })
-export class ShellComponent {
+export class ShellComponent implements AfterViewInit {
   usuarioLogado$: Observable<UsuarioTokenViewModel | null> = this.usuarioService.usuarioLogado;
   navbarExpandida: boolean = false;
+
+  @ViewChild('sidebar') sidebar: MatSidenav;
 
   links: any[] = [
     {
@@ -65,6 +67,14 @@ export class ShellComponent {
     private authService: AuthService,
     private localStorageService: LocalStorageService,
     private router: Router) { }
+
+
+  ngAfterViewInit(): void {
+    this.router.events.pipe(
+      withLatestFrom(this.isHandset$),
+      filter(([a, b]) => b && a instanceof NavigationEnd)
+    ).subscribe(() => this.sidebar.close());
+  }
 
   public logout() {
     this.authService.logout().subscribe({

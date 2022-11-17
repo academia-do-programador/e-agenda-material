@@ -1,5 +1,5 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav text-center justify-content-center" fixedInViewport
+  <mat-sidenav #sidebar class="sidenav text-center justify-content-center" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false && (usuarioLogado$ | async) != null">
@@ -10,7 +10,7 @@
       </a>
     </mat-toolbar>
 
-    <mat-nav-list class="mt-lg-3">
+    <mat-nav-list #linksAtivos class="mt-lg-3">
       <a *ngFor="let link of links"
         mat-list-item
         routerLinkActive="link-ativo"
@@ -23,19 +23,18 @@
   </mat-sidenav>
   <mat-sidenav-content class="d-flex flex-column">
     <mat-toolbar color="primary" class="d-flex px-md-3 py-3 border-bottom">
-      <button *ngIf="(usuarioLogado$ | async) != null"
+      <button mat-icon-button
         type="button"
         aria-label="Ativar barra lateral"
-        mat-icon-button
-        (click)="drawer.toggle()">
+        (click)="sidebar.toggle()">
         <mat-icon
           aria-label="Ícone ativador da barra lateral"
           class="botao-sidebar"
-          [ngClass]="{ 'rotacionar-botao-sidebar': drawer.opened }">menu_open
+          [ngClass]="{ 'rotacionar-botao-sidebar': sidebar.opened }">menu_open
         </mat-icon>
       </button>
 
-      <img *ngIf="!drawer.opened"
+      <img *ngIf="!sidebar.opened"
         class="logo-academia-toolbar"
         class="ms-2"
         src="/assets/logo-titulo.svg"
@@ -48,9 +47,9 @@
     </mat-toolbar>
 
     <!-- Conteúdo principal -->
-    <div class="container-fluid py-2 px-md-3   my-4 mb-5">
+    <main class="container-fluid py-2 px-md-3 my-4 mb-5">
       <ng-content></ng-content>
-    </div>
+    </main>
 
   </mat-sidenav-content>
 </mat-sidenav-container>

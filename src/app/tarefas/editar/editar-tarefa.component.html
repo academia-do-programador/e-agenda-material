@@ -10,7 +10,11 @@
         <form class="d-grid gap-3 fs-6 p-sm-3" [formGroup]="formTarefa" (ngSubmit)="gravar()">
           <mat-form-field appearance="outline">
             <mat-label for="titulo">Título</mat-label>
-            <input type="text" formControlName="titulo" matInput placeholder="Ex. Lavar o carro">
+            <input matInput
+              data-cy="txtTitulo"
+              type="text"
+              formControlName="titulo"
+              placeholder="Ex. Lavar o carro">
             <mat-error class="text-white" *ngIf="titulo?.touched && titulo?.invalid">
               <span *ngIf="titulo?.errors?.['minlength']">O título deve conter no mínimo 6 caracteres.</span>
               <span *ngIf="titulo?.errors?.['required']">O título é obrigatório.</span>
@@ -18,13 +22,12 @@
           </mat-form-field>
 
           <mat-label class="fs-5 fw-semibold" for="prioridade">Prioridade</mat-label>
-          <mat-radio-group class="row gap-2 fs-6" formControlName="prioridade">
+          <mat-radio-group data-cy="rdbPrioridade" class="row gap-2 fs-6" formControlName="prioridade">
             <mat-radio-button *ngFor="let prioridade of prioridades; index as i" [value]="i">{{prioridade}}</mat-radio-button>
             <mat-error class="text-white" *ngIf="prioridade?.touched && prioridade?.invalid">
               <span *ngIf="prioridade?.errors?.['required']">A prioridade é obrigatória.</span>
             </mat-error>
           </mat-radio-group>
-
 
           <section aria-label="Itens da Tarefa">
             <h2 class="fs-5 my-3 fw-semibold">Itens da Tarefa</h2>
@@ -32,18 +35,24 @@
               <div class="row align-items-center">
                 <mat-form-field class="col" appearance="outline">
                   <mat-label>Título do Item</mat-label>
-                  <input type="text" formControlName="tituloItem" matInput placeholder="Ex. Pegar o balde d'água">
+                  <input matInput
+                    type="text"
+                    data-cy="txtTituloItem"
+                    formControlName="tituloItem"
+                    placeholder="Ex. Pegar o balde d'água">
                   <mat-error class="text-white" *ngIf="titulo?.touched && titulo?.invalid">
                     <span *ngIf="titulo?.errors?.['minlength']">O título deve conter no mínimo 6 caracteres.</span>
                     <span *ngIf="titulo?.errors?.['required']">O título é obrigatório.</span>
                   </mat-error>
                 </mat-form-field>
-                <button
+                <button mat-mini-fab
+                  data-cy="btnAdicionarItem"
+                  matSuffix
                   type="button"
                   aria-label="Botão Adicionar Novo Item"
                   matTooltip="Adicionar Novo Item"
                   class="m-1"
-                  (click)="adicionarItem()" matSuffix mat-mini-fab>
+                  (click)="adicionarItem()">
                   <mat-icon>add</mat-icon>
                 </button>
               </div>
@@ -59,6 +68,7 @@
                 <th class="text-center fs-6 fw-bold" mat-header-cell *matHeaderCellDef>Concluído</th>
                 <td class="text-center fs-6" mat-cell *matCellDef="let item">
                   <mat-checkbox
+                  data-cy="checkConcluirItem"
                   matTooltip="Concluir Item"
                   (change)="atualizarItem(item)" [checked]="item.concluido">
                   </mat-checkbox>
@@ -71,6 +81,7 @@
                 <button
                   mat-icon-button
                   color="warn"
+                  data-cy="btnExcluirItem"
                   matTooltip="Excluir Item"
                   type="button"
                   (click)="removerItem(item)"

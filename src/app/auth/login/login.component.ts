@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/core/services/usuario.service';
 import { NotificationService } from 'src/app/notification/services/notification.service';
+import { BaseFormComponent } from 'src/app/shared/base-form/base-form.component';
 import { AuthService } from '../services/auth.service';
 import { LocalStorageService } from '../services/local-storage.service';
 import { AutenticarUsuarioViewModel } from '../view-models/autenticar-usuario.view-model';
@@ -17,7 +18,9 @@ import { TokenViewModel } from '../view-models/token.view-model';
     }
   `]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent
+  extends BaseFormComponent
+  implements OnInit {
   form: FormGroup;
   autenticarVM: AutenticarUsuarioViewModel;
 
@@ -28,7 +31,7 @@ export class LoginComponent implements OnInit {
     private usuarioService: UsuarioService,
     private localStorageService: LocalStorageService,
     private notificacao: NotificationService
-  ) { }
+  ) { super(); }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -48,6 +51,7 @@ export class LoginComponent implements OnInit {
   public login() {
     if (this.form.invalid) {
       this.notificacao.erro('Por favor, preencha o formulário corretamente antes de prosseguir.');
+      this.exibirMensagensValidacao(this.form);
       return;
     }
 
