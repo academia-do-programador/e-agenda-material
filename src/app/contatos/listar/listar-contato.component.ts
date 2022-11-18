@@ -18,16 +18,9 @@ export class ListarContatoComponent implements OnInit {
   contatos$: Observable<ListarContatoViewModel[]>;
   colunasExibidas = ['Nome', 'Telefone', 'Cargo', 'Ações'];
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
-
   constructor(
     titulo: Title,
-    private contatoService: ContatoService,
-    private breakpointObserver: BreakpointObserver,
+    private contatoService: ContatoService
   ) {
     titulo.setTitle('Contatos - e-Agenda')
   }

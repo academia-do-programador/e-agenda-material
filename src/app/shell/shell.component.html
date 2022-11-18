@@ -13,8 +13,8 @@
     <mat-nav-list #linksAtivos class="mt-lg-3">
       <a *ngFor="let link of links"
         mat-list-item
-        routerLinkActive="link-ativo"
-        [routerLink]="[link.url]">
+        [routerLink]="[link.url]"
+        routerLinkActive="link-ativo">
         <mat-icon>{{link.icone}}</mat-icon>
         <span class="ms-2"></span>
         {{ link.texto }}

@@ -23,6 +23,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     loadChildren: () => import('./contatos/contato.module')
       .then(m => m.ContatoModule)
+  },
+  {
+    path: 'compromissos',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./compromissos/compromisso.module')
+      .then(m => m.CompromissoModule)
   }
 ];
 

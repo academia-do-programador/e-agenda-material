@@ -49,14 +49,19 @@ export class ShellComponent implements AfterViewInit {
       icone: 'view_timeline'
     },
     {
-      url: '/tarefas/listar',
+      url: '/tarefas',
       texto: 'Tarefas',
       icone: 'check_circle'
     },
     {
-      url: '/contatos/listar',
+      url: '/contatos',
       texto: 'Contatos',
       icone: 'group'
+    },
+    {
+      url: '/compromissos',
+      texto: 'Compromissos',
+      icone: 'calendar_month'
     }
   ];
 

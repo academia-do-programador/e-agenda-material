@@ -14,10 +14,13 @@ import { MatTableModule } from '@angular/material/table';
 import { CompromissoService } from './services/compromisso.service';
 import { FormsCompromissoResolver } from './services/forms-compromisso.resolver';
 import { VisualizarCompromissoResolver } from './services/visualizar-compromisso.resolver';
+import { ListarCompromissoComponent } from './listar/listar-compromisso.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ListarCompromissoComponent
+  ],
   imports: [
     CommonModule,
     CompromissoRoutingModule,

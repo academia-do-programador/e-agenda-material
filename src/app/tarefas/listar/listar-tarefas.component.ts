@@ -18,17 +18,9 @@ export class ListarTarefasComponent implements OnInit {
   tarefas$: Observable<ListarTarefaViewModel[]>;
   colunasExibidas = ['Título', 'Prioridade', 'Ações'];
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
-
-
   constructor(
     titulo: Title,
-    private tarefasService: TarefasService,
-    private breakpointObserver: BreakpointObserver,
+    private tarefasService: TarefasService
   ) {
     titulo.setTitle('Tarefas - e-Agenda')
   }

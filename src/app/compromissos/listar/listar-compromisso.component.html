@@ -1,0 +1,85 @@
+<a mat-fab
+  data-cy="btnAdicionar"
+  color="accent"
+  matTooltip="Adicionar Novo Compromisso"
+  routerLink="/compromissos/inserir"
+  class="btn-adicionar">
+  <mat-icon>add</mat-icon>
+</a>
+
+<div class="row align-content-start justify-content-center h-100">
+  <app-titulo-pagina icone="list">Visualização de Compromissos</app-titulo-pagina>
+
+  <ng-container [ngSwitch]="(compromissos$ | async)?.length">
+    <app-descricao-pagina *ngSwitchCase="0">
+      Nenhum compromisso cadastrado.
+    </app-descricao-pagina>
+    <app-descricao-pagina *ngSwitchCase="1">
+      Você tem apenas um compromisso cadastrado.
+    </app-descricao-pagina>
+    <app-descricao-pagina *ngSwitchDefault>
+      Você tem {{ (compromissos$  | async)?.length }} compromissos cadastrados.
+    </app-descricao-pagina>
+  </ng-container>
+
+  <section aria-label="Tabela de Compromissos" #tabelaCompromissos>
+    <table class="w-100" mat-table *ngIf="(compromissos$ | async)?.length" [dataSource]="compromissos$">
+      <ng-container matColumnDef="Assunto">
+        <th class="fs-6 fw-semibold" mat-header-cell *matHeaderCellDef>Assunto</th>
+        <td class="fs-6 fw-light" mat-cell *matCellDef="let compromisso"> {{compromisso.assunto}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Telefone">
+        <th class="fs-6 fw-semibold" mat-header-cell *matHeaderCellDef>Data</th>
+        <td class="fs-6 fw-light" mat-cell *matCellDef="let compromisso">{{ compromisso.data | date: 'dd/MM/yyyy' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Início">
+        <th class="fs-6 fw-semibold" mat-header-cell *matHeaderCellDef>Início</th>
+        <td class="fs-6 fw-light" mat-cell *matCellDef="let compromisso">{{ compromisso.horaInicio }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Término">
+        <th class="fs-6 fw-semibold" mat-header-cell *matHeaderCellDef>Término</th>
+        <td class="fs-6 fw-light" mat-cell *matCellDef="let compromisso">{{ compromisso.horaTermino }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Contato">
+        <th class="fs-6 fw-semibold" mat-header-cell *matHeaderCellDef>Contato</th>
+        <td class="fs-6 fw-light" mat-cell *matCellDef="let compromisso">{{ compromisso.nomeContato ?? 'Sem Contato' }}</td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="Ações">
+        <th class="text-center fs-6 fw-semibold" mat-header-cell *matHeaderCellDef>Ações</th>
+        <td mat-cell *matCellDef="let compromisso">
+          <div class="row justify-content-center gap-2">
+            <!-- Editar -->
+            <a mat-icon-button
+              data-cy="btnEditar"
+              color="accent"
+              role="button"
+              [routerLink]="['/compromissos/editar', compromisso.id]"
+              matTooltip="Editar Compromisso"
+              aria-label="Editar Compromisso">
+              <mat-icon>edit</mat-icon>
+            </a>
+            <!-- Excluir -->
+            <a mat-icon-button
+              data-cy="btnExcluir"
+              color="warn"
+              role="button"
+              [routerLink]="['/compromissos/excluir', compromisso.id]"
+              matTooltip="Excluir Compromisso"
+              aria-label="Excluir Compromisso">
+              <mat-icon>delete</mat-icon>
+            </a>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="colunasExibidas"></tr>
+      <tr mat-row *matRowDef="let row; columns: colunasExibidas;"></tr>
+    </table>
+
+  </section>
+</div>
