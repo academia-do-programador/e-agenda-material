@@ -1,17 +1,14 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, map, catchError, throwError } from "rxjs";
+import { catchError, map, Observable, throwError } from "rxjs";
 import { LocalStorageService } from "src/app/auth/services/local-storage.service";
-import { FormsTarefaViewModel } from "src/app/tarefas/view-models/forms-tarefa.view-model";
-import { ListarTarefaViewModel } from "src/app/tarefas/view-models/listar-tarefa.view-model";
-import { VisualizarTarefaViewModel } from "src/app/tarefas/view-models/visualizar-tarefa.view-model";
 import { environment } from "src/environments/environment";
-import { FormsContatoViewModel } from "../view-models/forms-contato.view-model";
-import { ListarContatoViewModel } from "../view-models/listar-contato.view-model";
-import { VisualizarContatoViewModel } from "../view-models/visualizar-contato.view-model";
+import { FormsCompromissoViewModel } from "../view-models/forms-compromisso.view-model";
+import { ListarCompromissoViewModel } from "../view-models/listar-compromisso.view-model";
+import { VisualizarCompromissoViewModel } from "../view-models/visualizar-compromisso.view-model";
 
 @Injectable()
-export class ContatoService {
+export class CompromissoService {
   private apiUrl: string = environment.apiUrl;
 
   constructor(
@@ -19,17 +16,17 @@ export class ContatoService {
     private localStorageService: LocalStorageService
   ) { }
 
-  public inserir(contato: FormsContatoViewModel): Observable<FormsContatoViewModel> {
+  public inserir(compromisso: FormsCompromissoViewModel): Observable<FormsCompromissoViewModel> {
     const resposta = this.http
-      .post<FormsContatoViewModel>(this.apiUrl + 'contatos', contato, this.obterHeadersAutorizacao())
+      .post<FormsCompromissoViewModel>(this.apiUrl + 'compromissos', compromisso, this.obterHeadersAutorizacao())
       .pipe(map(this.processarDados), catchError(this.processarFalha));
 
     return resposta;
   }
 
-  public editar(contato: FormsContatoViewModel): Observable<FormsContatoViewModel> {
+  public editar(compromisso: FormsCompromissoViewModel): Observable<FormsCompromissoViewModel> {
     const resposta = this.http
-      .put<FormsContatoViewModel>(this.apiUrl + 'contatos/' + contato.id, contato, this.obterHeadersAutorizacao())
+      .put<FormsCompromissoViewModel>(this.apiUrl + 'compromissos/' + compromisso.id, compromisso, this.obterHeadersAutorizacao())
       .pipe(map(this.processarDados), catchError(this.processarFalha));
 
     return resposta;
@@ -37,31 +34,31 @@ export class ContatoService {
 
   public excluir(id: string): Observable<string> {
     const resposta = this.http
-      .delete<string>(this.apiUrl + 'contatos/' + id, this.obterHeadersAutorizacao())
+      .delete<string>(this.apiUrl + 'compromissos/' + id, this.obterHeadersAutorizacao())
       .pipe(map(this.processarDados), catchError(this.processarFalha));
 
     return resposta;
   }
 
-  public selecionarTodos(): Observable<ListarContatoViewModel[]> {
+  public selecionarTodos(): Observable<ListarCompromissoViewModel[]> {
     const resposta = this.http
-      .get<ListarContatoViewModel[]>(this.apiUrl + 'contatos', this.obterHeadersAutorizacao())
+      .get<ListarCompromissoViewModel[]>(this.apiUrl + 'compromissos', this.obterHeadersAutorizacao())
       .pipe(map(this.processarDados), catchError(this.processarFalha));
 
     return resposta;
   }
 
-  public selecionarPorId(id: string): Observable<FormsContatoViewModel> {
+  public selecionarPorId(id: string): Observable<FormsCompromissoViewModel> {
     const resposta = this.http
-      .get<FormsContatoViewModel>(this.apiUrl + 'contatos/' + id, this.obterHeadersAutorizacao())
+      .get<FormsCompromissoViewModel>(this.apiUrl + 'compromissos/' + id, this.obterHeadersAutorizacao())
       .pipe(map(this.processarDados), catchError(this.processarFalha));
 
     return resposta;
   }
 
-  public selecionarContatoCompletoPorId(id: string): Observable<VisualizarContatoViewModel> {
+  public selecionarCompromissoCompletoPorId(id: string): Observable<VisualizarCompromissoViewModel> {
     const resposta = this.http
-      .get<VisualizarContatoViewModel>(this.apiUrl + 'contatos/visualizacao-completa/' + id, this.obterHeadersAutorizacao())
+      .get<VisualizarCompromissoViewModel>(this.apiUrl + 'compromissos/visualizacao-completa/' + id, this.obterHeadersAutorizacao())
       .pipe(map(this.processarDados), catchError(this.processarFalha));
 
     return resposta;
