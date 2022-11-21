@@ -15,11 +15,20 @@ import { CompromissoService } from './services/compromisso.service';
 import { FormsCompromissoResolver } from './services/forms-compromisso.resolver';
 import { VisualizarCompromissoResolver } from './services/visualizar-compromisso.resolver';
 import { ListarCompromissoComponent } from './listar/listar-compromisso.component';
+import { InserirCompromissoComponent } from './inserir/inserir-compromisso.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { ContatoModule } from '../contatos/contato.module';
+import { MatSelectModule } from '@angular/material/select';
+import { EditarCompromissoComponent } from './editar/editar-compromisso.component';
+import { ExcluirCompromissoComponent } from './excluir/excluir-compromisso.component';
 
 
 @NgModule({
   declarations: [
-    ListarCompromissoComponent
+    ListarCompromissoComponent,
+    InserirCompromissoComponent,
+    EditarCompromissoComponent,
+    ExcluirCompromissoComponent
   ],
   imports: [
     CommonModule,
@@ -32,8 +41,12 @@ import { ListarCompromissoComponent } from './listar/listar-compromisso.componen
     MatInputModule,
     MatIconModule,
     MatListModule,
+    MatRadioModule,
+    MatSelectModule,
+
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    ContatoModule
   ],
 
   providers: [

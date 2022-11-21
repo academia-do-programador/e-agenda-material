@@ -1,0 +1,134 @@
+<div class="row h-100 align-items-start justify-content-start">
+  <section class="d-grid gap-2 col-sm col-lg-6 col-xxl-7">
+    <app-titulo-pagina icone="add">Cadastro de Compromissos</app-titulo-pagina>
+    <app-descricao-pagina>
+      Gerencie seus compromissos com facilidade.
+    </app-descricao-pagina>
+    <mat-card class="p-md-4">
+      <mat-card-content>
+        <form class="d-grid gap-3 fs-6 p-3" [formGroup]="formCompromisso" (ngSubmit)="gravar()">
+          <mat-form-field appearance="outline">
+            <mat-label for="titulo">Assunto</mat-label>
+            <input matInput
+              type="text"
+              data-cy="txtAssunto"
+              formControlName="assunto"
+              placeholder="Ex. Reunião de Vendas">
+              <mat-error class="text-white" *ngIf="assunto?.touched && assunto?.invalid">
+                <span *ngIf="assunto?.errors?.['minlength']">O assunto deve conter no mínimo 3 caracteres.</span>
+                <span *ngIf="assunto?.errors?.['required']">O assunto é obrigatório.</span>
+              </mat-error>
+          </mat-form-field>
+          <mat-label class="fs-5 fw-semibold" for="tipoLocal">Tipo do Compromisso</mat-label>
+          <mat-radio-group
+            data-cy="rdbTipoLocal"
+            class="row-cols-2 gap-2 fs-6 my-2"
+            formControlName="tipoLocal">
+            <mat-radio-button
+              *ngFor="let opcao of opcoesLocal; index as i"
+              [value]="i">
+              {{ opcao }}
+            </mat-radio-button>
+          </mat-radio-group>
+
+          <ng-container [ngSwitch]="exibirInputLink$ | async">
+
+            <mat-form-field *ngSwitchCase="false" appearance="outline">
+              <mat-label>Local</mat-label>
+              <input matInput
+                type="text"
+                data-cy="txtLocal"
+                formControlName="local"
+                placeholder="Ex. Rua Avenida Brasil, 20 C">
+              <mat-error class="text-white" *ngIf="local?.touched && local?.invalid">
+                <span *ngIf="local?.errors?.['required']">O local é obrigatório.</span>
+              </mat-error>
+            </mat-form-field>
+
+          <mat-form-field *ngSwitchDefault appearance="outline">
+              <mat-label>Link</mat-label>
+              <input matInput
+                type="text"
+                data-cy="txtLink"
+                formControlName="link"
+                placeholder="Ex. www.zoom.com">
+              <mat-error class="text-white" *ngIf="link?.touched && link?.invalid">
+                <span *ngIf="link?.errors?.['required']">O link é obrigatório.</span>
+              </mat-error>
+            </mat-form-field>
+
+          </ng-container>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Data</mat-label>
+            <input matInput
+              type="date"
+              data-cy="txtData"
+              formControlName="data">
+            <mat-error class="text-white" *ngIf="data?.touched && data?.invalid">
+              <span *ngIf="data?.errors?.['required']">A data é obrigatória.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <div class="row">
+            <mat-form-field class="w-50" appearance="outline">
+              <mat-label>Horário de Início</mat-label>
+              <input matInput
+                type="time"
+                data-cy="txtHoraInicio"
+                formControlName="horaInicio">
+              <mat-error class="text-white" *ngIf="horaInicio?.touched && horaInicio?.invalid">
+                <span *ngIf="horaInicio?.errors?.['required']">O horário de início é obrigatório.</span>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="w-50" appearance="outline">
+              <mat-label>Horário de Término</mat-label>
+              <input matInput
+                type="time"
+                data-cy="txtHoraTermino"
+                formControlName="horaTermino">
+              <mat-error class="text-white" *ngIf="horaTermino?.touched && horaTermino?.invalid">
+                <span *ngIf="horaTermino?.errors?.['required']">O horário de término é obrigatório.</span>
+              </mat-error>
+            </mat-form-field>
+
+          </div>
+
+          <mat-label class="fs-5 fw-semibold">Contato (opcional)</mat-label>
+          <mat-form-field appearance="outline">
+            <mat-label>Selecione um contato</mat-label>
+            <mat-select formControlName="contatoId">
+              <mat-option
+                *ngFor="let contato of (contatos$ | async)"
+                [value]="contato.id">
+                {{ contato.nome }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+      <mat-card-footer class="my-2">
+        <div class="row px-4 gap-2">
+          <button mat-stroked-button
+            color="accent"
+            class="col"
+            type="button"
+            routerLink="/compromissos">
+            <mat-icon>home</mat-icon>
+            Voltar
+          </button>
+          <button mat-flat-button
+            color="accent"
+            class="col"
+            data-cy="btnConfirmar"
+            (click)="gravar()"
+            type="button">
+            <mat-icon>check</mat-icon>
+            Confirmar
+          </button>
+        </div>
+      </mat-card-footer>
+    </mat-card>
+  </section>
+</div>

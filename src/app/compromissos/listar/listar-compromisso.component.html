@@ -28,9 +28,10 @@
         <th class="fs-6 fw-semibold" mat-header-cell *matHeaderCellDef>Assunto</th>
         <td class="fs-6 fw-light" mat-cell *matCellDef="let compromisso"> {{compromisso.assunto}} </td>
       </ng-container>
-      <ng-container matColumnDef="Telefone">
+
+      <ng-container matColumnDef="Data">
         <th class="fs-6 fw-semibold" mat-header-cell *matHeaderCellDef>Data</th>
-        <td class="fs-6 fw-light" mat-cell *matCellDef="let compromisso">{{ compromisso.data | date: 'dd/MM/yyyy' }}</td>
+        <td class="fs-6 fw-light" mat-cell *matCellDef="let compromisso">{{ compromisso.data }}</td>
       </ng-container>
 
       <ng-container matColumnDef="Início">
