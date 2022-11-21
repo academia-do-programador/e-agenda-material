@@ -1,0 +1,47 @@
+<div class="row h-100 align-items-start justify-content-start">
+  <section class="d-grid gap-2 col-sm col-lg-6 col-xxl-7">
+    <app-titulo-pagina icone="add">Cadastro de Categorias</app-titulo-pagina>
+    <app-descricao-pagina>
+      Crie categorias para organizar melhor suas despesas.
+    </app-descricao-pagina>
+    <mat-card class="p-md-4">
+      <mat-card-content>
+        <form class="d-grid gap-3 fs-6 p-3" [formGroup]="formCategoria" (ngSubmit)="gravar()">
+          <mat-form-field appearance="outline">
+            <mat-label for="titulo">Título</mat-label>
+            <input matInput
+              type="text"
+              data-cy="txtTitulo"
+              formControlName="titulo"
+              placeholder="Ex. Lazer">
+            <mat-error class="text-white" *ngIf="titulo?.touched && titulo?.invalid">
+              <span *ngIf="titulo?.errors?.['minlength']">O título deve conter no mínimo 3 caracteres.</span>
+              <span *ngIf="titulo?.errors?.['required']">O título é obrigatório.</span>
+            </mat-error>
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+      <mat-card-footer class="my-2">
+        <div class="row px-4 gap-2">
+          <button mat-stroked-button
+            color="accent"
+            class="col"
+            type="button"
+            routerLink="/categorias">
+            <mat-icon>home</mat-icon>
+            Voltar
+          </button>
+          <button mat-flat-button
+            color="accent"
+            class="col"
+            data-cy="btnConfirmar"
+            (click)="gravar()"
+            type="button">
+            <mat-icon>check</mat-icon>
+            Confirmar
+          </button>
+        </div>
+      </mat-card-footer>
+    </mat-card>
+  </section>
+</div>

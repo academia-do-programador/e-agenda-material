@@ -1,0 +1,47 @@
+<div class="row h-100 align-self-start justify-content-start">
+
+  <section class="d-grid gap-2 col-sm col-lg-6 col-xxl-7">
+    <app-titulo-pagina icone="delete">Exclusão de Categorias</app-titulo-pagina>
+    <app-descricao-pagina>
+      Aqui você pode excluir categorias obsoletas.
+    </app-descricao-pagina>
+
+    <mat-card>
+      <mat-card-content class="d-grid gap-4 p-md-4">
+        <mat-list>
+          <mat-list-item class="row align-items-center">
+            <dt class="col">
+              <label class="control-label">Título:</label>
+            </dt>
+            <dd class="col">
+              {{ categoriaFormVM.titulo }}
+            </dd>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </mat-list>
+      </mat-card-content>
+      <mat-card-footer class="my-2">
+        <div class="row px-4 gap-2">
+          <button mat-stroked-button
+            color="accent"
+            class="col"
+            type="button"
+            routerLink="/categorias/listar">
+            <mat-icon>home</mat-icon>
+            Voltar
+          </button>
+          <button mat-flat-button
+            color="accent"
+            class="col"
+            data-cy="btnConfirmar"
+            (click)="gravar()"
+            type="button">
+            <mat-icon>check</mat-icon>
+            Confirmar
+          </button>
+        </div>
+      </mat-card-footer>
+    </mat-card>
+
+  </section>
+</div>

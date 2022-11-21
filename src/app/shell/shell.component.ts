@@ -62,6 +62,16 @@ export class ShellComponent implements AfterViewInit {
       url: '/compromissos',
       texto: 'Compromissos',
       icone: 'calendar_month'
+    },
+    {
+      url: '/categorias',
+      texto: 'Categorias',
+      icone: 'category'
+    },
+    {
+      url: '/despesas',
+      texto: 'Despesas',
+      icone: 'payments'
     }
   ];
 
