@@ -10,7 +10,7 @@
 <div class="row align-content-start justify-content-center h-100">
   <app-titulo-pagina icone="list">Visualização de Categorias</app-titulo-pagina>
 
-  <ng-container [ngSwitch]="(categorias$  | async)?.length">
+  <ng-container [ngSwitch]="(categorias$ | async)?.length">
     <app-descricao-pagina *ngSwitchCase="0">
       Nenhuma categoria cadastrada.
     </app-descricao-pagina>
@@ -18,12 +18,12 @@
       Você tem apenas uma categoria cadastrada.
     </app-descricao-pagina>
     <app-descricao-pagina *ngSwitchDefault>
-      Você tem {{ (categorias$  | async)?.length }} categorias cadastradas.
+      Você tem {{ (categorias$ | async)?.length }} categorias cadastradas.
     </app-descricao-pagina>
   </ng-container>
 
   <section aria-label="Tabela de Categorias" #tabelaContatos>
-    <table class="w-100" mat-table *ngIf="(categorias$ | async)?.length" [dataSource]="categorias$">
+    <table class="w-100 mat-elevation-z8" mat-table *ngIf="(categorias$ | async)?.length; else carregando" [dataSource]="categorias$">
       <ng-container matColumnDef="Título">
         <th class="fs-6 fw-semibold" mat-header-cell *matHeaderCellDef>Título</th>
         <td class="fs-6 fw-light" mat-cell *matCellDef="let categoria"> {{categoria.titulo}} </td>
@@ -63,3 +63,9 @@
 
   </section>
 </div>
+
+<ng-template #carregando>
+  <div class="col-6 justify-content-center mt-3">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+</ng-template>

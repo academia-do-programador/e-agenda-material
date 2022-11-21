@@ -18,7 +18,7 @@ import { VisualizarCategoriaResolver } from './services/visualizar-categoria.res
 import { InserirCategoriaComponent } from './inserir/inserir-categoria.component';
 import { EditarCategoriaComponent } from './editar/editar-categoria.component';
 import { ExcluirCategoriaComponent } from './excluir/excluir-categoria.component';
-
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -38,6 +38,7 @@ import { ExcluirCategoriaComponent } from './excluir/excluir-categoria.component
     MatInputModule,
     MatIconModule,
     MatListModule,
+    MatProgressBarModule,
     ReactiveFormsModule,
     SharedModule
   ],

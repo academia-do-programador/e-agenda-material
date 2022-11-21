@@ -5,10 +5,13 @@ import { Component, Input, OnInit } from '@angular/core';
   template: `
     <h1 class="row align-items-center gap-4 fs-5 fw-semibold col-sm my-2">
       <mat-icon *ngIf="icone">{{ icone }}</mat-icon>
-      <ng-content></ng-content>
+      <span [ngClass]="{ 'text-center': center === true }">
+        <ng-content></ng-content>
+      </span>
     </h1>
   `
 })
 export class TituloPaginaComponent {
   @Input() icone?: string;
+  @Input() center?: boolean;
 }

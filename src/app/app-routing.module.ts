@@ -5,13 +5,13 @@ import { RegistroComponent } from './auth/registro/registro.component';
 import { AuthGuard } from './auth/services/auth.guard';
 import { LoginGuard } from './auth/services/login.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'conta/autenticar', pathMatch: 'full' },
   { path: 'conta/autenticar', component: LoginComponent, canActivate: [LoginGuard] },
   { path: 'conta/registrar', component: RegistroComponent, canActivate: [LoginGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-
   {
     path: 'tarefas',
     canActivate: [AuthGuard],
@@ -41,7 +41,8 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     loadChildren: () => import('./despesas/despesa.module')
       .then(m => m.DespesaModule)
-  }
+  },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

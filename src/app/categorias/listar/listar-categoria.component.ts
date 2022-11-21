@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Observable } from 'rxjs';
+import { delay, Observable } from 'rxjs';
 import { CategoriaService } from '../services/categoria.service';
 import { ListarCategoriaViewModel } from '../view-models/listar-categoria.view-model';
 
@@ -22,7 +22,7 @@ export class ListarCategoriaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.categorias$ = this.categoriaService.selecionarTodos();
+    this.categorias$ = this.categoriaService.selecionarTodos()
+      .pipe(delay(3000));
   }
-
 }

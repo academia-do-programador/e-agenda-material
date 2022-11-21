@@ -137,10 +137,10 @@ export class EditarCompromissoComponent
   private trocarValidacaoTipoLocal(tipoLocal: number) {
     if (tipoLocal === 0) {
       this.link?.addValidators([Validators.required]);
-      this.local?.removeValidators([Validators.required]);
+      this.local?.clearValidators();
     } else {
-      this.link?.removeValidators([Validators.required]);
       this.local?.addValidators([Validators.required]);
+      this.link?.clearValidators();
     }
 
     this.link?.updateValueAndValidity();

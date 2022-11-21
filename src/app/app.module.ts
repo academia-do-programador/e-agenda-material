@@ -8,6 +8,7 @@ import { ShellModule } from './shell/shell.module';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 import { NotificationModule } from './notification/notification.module';
+import { NotFoundModule } from './not-found/not-found.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { NotificationModule } from './notification/notification.module';
     CoreModule,
     AuthModule,
     ShellModule,
+    NotFoundModule,
     NotificationModule
   ],
   providers: [],
