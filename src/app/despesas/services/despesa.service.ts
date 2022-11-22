@@ -83,6 +83,6 @@ export class DespesaService {
   }
 
   private processarFalha(resposta: any) {
-    return throwError(() => new Error(resposta.error.erros[0]));
+    return throwError(() => new Error(resposta.error?.erros[0]));
   }
 }

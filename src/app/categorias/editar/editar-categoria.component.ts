@@ -65,7 +65,7 @@ export class EditarCategoriaComponent
   }
 
   private processarSucesso(categoria: FormsCategoriaViewModel): void {
-    this.notification.sucesso(`Categoria "${categoria.titulo}" cadastrada com sucesso!`);
+    this.notification.sucesso(`Categoria "${categoria.titulo}" editada com sucesso!`);
     this.router.navigate(['/categorias/listar']);
   }
 

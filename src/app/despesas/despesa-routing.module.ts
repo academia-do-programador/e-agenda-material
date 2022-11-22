@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ListarDespesaComponent } from './listar/listar-despesa.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'listar', pathMatch: 'full' },
-  // { path: 'listar', component: ListarDespesaComponent },
+  { path: 'listar', component: ListarDespesaComponent },
   // { path: 'inserir', component: InserirDespesaComponent },
   // {
   //   path: 'editar/:id',

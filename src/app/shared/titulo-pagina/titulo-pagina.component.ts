@@ -3,11 +3,9 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'app-titulo-pagina',
   template: `
-    <h1 class="row align-items-center gap-4 fs-5 fw-semibold col-sm my-2">
+    <h1 class="row align-items-center gap-4 fs-5 fw-semibold my-2 col-sm">
       <mat-icon *ngIf="icone">{{ icone }}</mat-icon>
-      <span [ngClass]="{ 'text-center': center === true }">
-        <ng-content></ng-content>
-      </span>
+      <ng-content></ng-content>
     </h1>
   `
 })

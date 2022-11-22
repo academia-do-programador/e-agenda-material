@@ -23,7 +23,7 @@
   </ng-container>
 
   <section aria-label="Tabela de Categorias" #tabelaContatos>
-    <table class="w-100 mat-elevation-z8" mat-table *ngIf="(categorias$ | async)?.length; else carregando" [dataSource]="categorias$">
+    <table class="w-100 mat-elevation-z8" mat-table *ngIf="(categorias$ | async)" [dataSource]="categorias$">
       <ng-container matColumnDef="Título">
         <th class="fs-6 fw-semibold" mat-header-cell *matHeaderCellDef>Título</th>
         <td class="fs-6 fw-light" mat-cell *matCellDef="let categoria"> {{categoria.titulo}} </td>

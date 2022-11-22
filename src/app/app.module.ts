@@ -1,14 +1,21 @@
-import { NgModule } from '@angular/core';
+import { NgModule, DEFAULT_CURRENCY_CODE, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { registerLocaleData } from '@angular/common';
+import ptBr from '@angular/common/locales/pt';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ShellModule } from './shell/shell.module';
-import { AuthModule } from './auth/auth.module';
+
 import { CoreModule } from './core/core.module';
+import { AuthModule } from './auth/auth.module';
+import { ShellModule } from './shell/shell.module';
 import { NotificationModule } from './notification/notification.module';
 import { NotFoundModule } from './not-found/not-found.module';
+
+// Configuração de localização
+registerLocaleData(ptBr);
 
 @NgModule({
   declarations: [
@@ -16,16 +23,20 @@ import { NotFoundModule } from './not-found/not-found.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
 
+    AppRoutingModule,
     CoreModule,
     AuthModule,
     ShellModule,
     NotFoundModule,
     NotificationModule
   ],
-  providers: [],
+  providers: [
+    // Configuração de providers de localização
+    { provide: LOCALE_ID, useValue: 'pt' },
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

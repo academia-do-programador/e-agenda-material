@@ -15,16 +15,22 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { SharedModule } from '../shared/shared.module';
+import { ListarDespesaComponent } from './listar/listar-despesa.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatChipsModule } from '@angular/material/chips';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ListarDespesaComponent
+  ],
   imports: [
     CommonModule,
     DespesaRoutingModule,
 
     MatCardModule,
-    MatTableModule,
+    MatGridListModule,
+    MatChipsModule,
     MatButtonModule,
     MatMenuModule,
     MatInputModule,

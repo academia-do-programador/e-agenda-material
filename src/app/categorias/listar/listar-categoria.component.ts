@@ -22,7 +22,6 @@ export class ListarCategoriaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.categorias$ = this.categoriaService.selecionarTodos()
-      .pipe(delay(3000));
+    this.categorias$ = this.categoriaService.selecionarTodos();
   }
 }

@@ -1,0 +1,43 @@
+<a mat-fab
+  data-cy="btnAdicionar"
+  color="accent"
+  matTooltip="Adicionar Nova Despesa"
+  routerLink="/despesas/inserir"
+  class="btn-adicionar">
+  <mat-icon>add</mat-icon>
+</a>
+
+<div class="row align-items-center justify-content-center h-100 w-100">
+  <app-titulo-pagina icone="list">Visualização de Despesas</app-titulo-pagina>
+  <ng-container [ngSwitch]="(despesas$  | async)?.length">
+    <app-descricao-pagina *ngSwitchCase="0">
+      Nenhuma despesa cadastrada.
+    </app-descricao-pagina>
+    <app-descricao-pagina *ngSwitchCase="1">
+      Você tem apenas uma despesa cadastrada.
+    </app-descricao-pagina>
+    <app-descricao-pagina *ngSwitchDefault>
+      Você tem {{ (despesas$  | async)?.length }} despesas cadastradas.
+    </app-descricao-pagina>
+  </ng-container>
+  <section #tabelaDespesas>
+    <div class="row container-fluid gap-2">
+      <mat-card class="col-md-4 p-" *ngFor="let despesa of (despesas$ | async)">
+        <mat-card-title class="d-flex align-items-center gap-1 fs-5">
+          <mat-icon class="fs-5">payments</mat-icon>
+          <span>{{ despesa.descricao }}</span>
+        </mat-card-title>
+        <mat-card-subtitle>
+            Registrada em {{ despesa.data | date: 'dd/MM/yyyy' }}
+        </mat-card-subtitle>
+        <mat-card-footer class="p-2">
+          <div class="row align-items-center me-1">
+            <mat-chip-list>
+              <mat-chip class="col-7 justify-content-center"><small>{{ despesa.formaPagamento }}</small></mat-chip><span class="col text-end fs-6">{{ despesa.valor | currency }}</span>
+            </mat-chip-list>
+          </div>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+  </section>
+</div>
