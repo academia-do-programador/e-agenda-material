@@ -8,14 +8,17 @@ html, body { height: 100%; }
 body { margin: 0; }
 * { font-family: Poppins, sans-serif; }
 
-
-
 .text-primary {
   color: #DA3DBA !important;
 }
 
 .text-bg-dark {
   background-color: #323259 !important;
+}
+
+.card-hover-buttons {
+  position: absolute;
+  left: 250px;
 }
 
 $border-color: rgba(255, 255, 255, 0.12);

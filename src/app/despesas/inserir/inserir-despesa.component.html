@@ -1,0 +1,102 @@
+<div class="row h-100 align-items-start justify-content-start">
+  <section class="d-grid gap-2 col-sm col-lg-6 col-xxl-7">
+    <app-titulo-pagina icone="add">Cadastro de Despesas</app-titulo-pagina>
+    <app-descricao-pagina>
+      Tome controle sobre sua vida financeira.
+    </app-descricao-pagina>
+    <mat-card class="p-md-4">
+      <mat-card-content>
+        <form class="d-grid gap-3 fs-6 p-3" [formGroup]="formDespesa" (ngSubmit)="gravar()">
+        <mat-label class="fs-5 fw-semibold">Informações Básicas</mat-label>
+
+          <mat-form-field appearance="outline">
+            <mat-label for="descricao">Descrição</mat-label>
+            <input matInput
+              type="text"
+              data-cy="txtDescricao"
+              formControlName="descricao"
+              placeholder="Ex. Compras diversas">
+            <mat-error class="text-white" *ngIf="descricao?.touched && descricao?.invalid">
+              <span *ngIf="descricao?.errors?.['minlength']">A descrição deve conter no mínimo 3 caracteres.</span>
+              <span *ngIf="descricao?.errors?.['required']">A descrição é obrigatório.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label for="descricao">Valor</mat-label>
+              <input matInput currencyMask
+                type="text"
+                data-cy="txtValor"
+                formControlName="valor">
+            <mat-error class="text-white" *ngIf="valor?.touched && valor?.invalid">
+              <span *ngIf="valor?.errors?.['required']">O valor é obrigatório.</span>
+              <span *ngIf="valor?.errors?.['minlength']">O valor deve ser maior que 0.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Data</mat-label>
+            <input matInput
+              type="date"
+              data-cy="txtData"
+              formControlName="data">
+            <mat-error class="text-white" *ngIf="data?.touched && data?.invalid">
+              <span *ngIf="data?.errors?.['required']">A data é obrigatória.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-label class="fs-5 fw-semibold">Forma de Pagamento</mat-label>
+          <mat-form-field appearance="outline">
+            <mat-label>Selecione a forma de pagamento</mat-label>
+            <mat-select formControlName="formaPagamento">
+              <mat-option
+                *ngFor="let formaPagamento of formasPagamento; index as i;"
+                [value]="i">
+                {{ formaPagamento }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        <mat-label class="fs-5 fw-semibold">Categorias</mat-label>
+        <mat-form-field appearance="outline">
+          <mat-label>Selecione uma ou mais categorias</mat-label>
+          <mat-select
+            [contentEditable]="false"
+            [multiple]="true"
+            formControlName="categoriasSelecionadas">
+            <mat-option
+              *ngFor="let categoria of (categorias$ | async); index as i;"
+              [value]="categoria.id">
+              {{ categoria.titulo }}
+            </mat-option>
+          </mat-select>
+          <mat-error class="text-white" *ngIf="categoriasSelecionadas?.touched && categoriasSelecionadas?.invalid">
+            <span *ngIf="categoriasSelecionadas?.errors?.['minlength']">Pelo menos uma categoria deve ser selecionada.</span>
+          </mat-error>
+        </mat-form-field>
+        </form>
+      </mat-card-content>
+      <mat-card-footer class="my-2">
+        <div class="row px-4 gap-2">
+          <button mat-stroked-button
+            color="accent"
+            class="col"
+            type="button"
+            routerLink="/despesas">
+            <mat-icon>home</mat-icon>
+            Voltar
+          </button>
+          <button mat-flat-button
+            color="accent"
+            class="col"
+            data-cy="btnConfirmar"
+            (click)="gravar()"
+            type="button">
+            <mat-icon>check</mat-icon>
+            Confirmar
+          </button>
+        </div>
+      </mat-card-footer>
+    </mat-card>
+  </section>
+</div>

@@ -12,6 +12,7 @@ import { ListarDespesaViewModel } from '../view-model/listar-despesa.view-model'
 })
 export class ListarDespesaComponent implements OnInit {
   despesas$: Observable<ListarDespesaViewModel[]>;
+  elementoComHover: string | null;
 
   constructor(
     titulo: Title,
@@ -24,4 +25,11 @@ export class ListarDespesaComponent implements OnInit {
     this.despesas$ = this.despesaService.selecionarTodos();
   }
 
+  ativarHover(elemento: string) {
+    this.elementoComHover = elemento;
+  }
+
+  desativarHover() {
+    this.elementoComHover = null;
+  }
 }

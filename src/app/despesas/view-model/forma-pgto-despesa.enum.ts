@@ -1,3 +1,3 @@
 export enum FormaPgtoDespesaEnum {
-  PIX, Dinheiro, CartaoCredito
+  PIX, Dinheiro, CartaoCredito = 'Cartão de Crédito'
 }

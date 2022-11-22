@@ -21,11 +21,28 @@
     </app-descricao-pagina>
   </ng-container>
   <section #tabelaDespesas>
-    <div class="row container-fluid gap-2">
-      <mat-card class="col-md-4 p-" *ngFor="let despesa of (despesas$ | async)">
-        <mat-card-title class="d-flex align-items-center gap-1 fs-5">
+    <div class="row container-fluid gap-3">
+      <mat-card *ngFor="let despesa of (despesas$ | async)"
+        (mouseenter)="ativarHover(despesa.id)"
+        (mouseleave)="desativarHover()"
+        class="col-md-4">
+        <mat-card-title class="d-flex align-items-center gap-1 fs-6">
           <mat-icon class="fs-5">payments</mat-icon>
           <span>{{ despesa.descricao }}</span>
+          <div class="card-hover-buttons" *ngIf="elementoComHover == despesa.id">
+            <a mat-icon-button
+              color="accent"
+              [routerLink]="['/despesas/editar', despesa.id]"
+              matTooltip="Editar Despesa">
+              <mat-icon class="fs-4">edit</mat-icon>
+            </a>
+            <a mat-icon-button
+              color="warn"
+              [routerLink]="['/despesas/excluir', despesa.id]"
+              matTooltip="Excluir Despesa">
+              <mat-icon class="fs-4">delete</mat-icon>
+            </a>
+          </div>
         </mat-card-title>
         <mat-card-subtitle>
             Registrada em {{ despesa.data | date: 'dd/MM/yyyy' }}
