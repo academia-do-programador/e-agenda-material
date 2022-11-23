@@ -40,7 +40,7 @@ export class EditarCompromissoComponent
     private notification: NotificationService
   ) {
     super();
-    titulo.setTitle('Cadastrar Compromisso - e-Agenda');
+    titulo.setTitle('Cadastro de Compromisso - e-Agenda');
   }
 
   ngOnInit(): void {

@@ -29,7 +29,7 @@ export class ExcluirCategoriaComponent implements OnInit {
     private categoriaService: CategoriaService,
     private notificacao: NotificationService
   ) {
-    titulo.setTitle('Excluir Contato - e-Agenda');
+    titulo.setTitle('Exclusão de Categoria - e-Agenda');
   }
 
   ngOnInit(): void {

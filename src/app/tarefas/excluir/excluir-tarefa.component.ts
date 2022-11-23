@@ -22,8 +22,6 @@ export class ExcluirTarefaComponent implements OnInit {
 
   public tarefaFormVM: VisualizarTarefaViewModel = new VisualizarTarefaViewModel();
 
-  public dataTableObject: any;
-
   constructor(
     titulo: Title,
     private route: ActivatedRoute,
@@ -31,26 +29,23 @@ export class ExcluirTarefaComponent implements OnInit {
     private tarefasService: TarefasService,
     private notificacao: NotificationService
   ) {
-    titulo.setTitle('Excluir Tarefa - e-Agenda');
+    titulo.setTitle('Exclusão de Tarefa - e-Agenda');
   }
 
   ngOnInit(): void {
     this.tarefaFormVM = this.route.snapshot.data['tarefa'];
   }
 
-
-
   public gravar() {
-
     this.tarefasService.excluir(this.tarefaFormVM.id)
       .subscribe({
-        next: (tarefaId) => this.processarSucesso(tarefaId),
+        next: () => this.processarSucesso(),
         error: (erro) => this.processarFalha(erro)
       })
   }
 
-  private processarSucesso(tarefaId: string): void {
-    this.notificacao.sucesso('Tarefa excluída com sucesso!');
+  private processarSucesso(): void {
+    this.notificacao.sucesso(`Tarefa "${this.tarefaFormVM.titulo}" excluída com sucesso!`);
     this.router.navigate(['/tarefas/listar']);
   }
 
@@ -59,5 +54,4 @@ export class ExcluirTarefaComponent implements OnInit {
       this.notificacao.erro(erro);
     }
   }
-
 }

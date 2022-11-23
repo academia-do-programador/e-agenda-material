@@ -8,7 +8,7 @@
 </a>
 
 <div class="row align-items-center justify-content-center h-100 w-100">
-  <app-titulo-pagina icone="list">Visualização de Categorias</app-titulo-pagina>
+  <app-titulo-pagina icone="list">Categorias</app-titulo-pagina>
   <ng-container [ngSwitch]="(categorias$ | async)?.length">
     <app-descricao-pagina *ngSwitchCase="0">
       Nenhuma categoria cadastrada.

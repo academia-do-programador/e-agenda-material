@@ -29,7 +29,7 @@ export class ExcluirDespesaComponent implements OnInit {
     private despesasService: DespesaService,
     private notificacao: NotificationService
   ) {
-    titulo.setTitle('Excluir Despesa - e-Agenda');
+    titulo.setTitle('Exclusão de Despesa - e-Agenda');
   }
 
   ngOnInit(): void {

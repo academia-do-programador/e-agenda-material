@@ -8,7 +8,7 @@
 </a>
 
 <div class="row align-items-center justify-content-center h-100 w-100">
-  <app-titulo-pagina icone="list">Visualização de Despesas</app-titulo-pagina>
+  <app-titulo-pagina icone="list">Despesas</app-titulo-pagina>
   <ng-container [ngSwitch]="(despesas$  | async)?.length">
     <app-descricao-pagina *ngSwitchCase="0">
       Nenhuma despesa cadastrada.
@@ -27,7 +27,7 @@
         (mouseleave)="desativarHover()"
         class="col-md-4">
         <mat-card-title class="d-flex align-items-center gap-1 fs-6">
-          <mat-icon class="fs-5">payments</mat-icon>
+          <mat-icon class="fs-5">currency_exchange</mat-icon>
           <span>{{ despesa.descricao }}</span>
           <div class="card-hover-buttons" *ngIf="cardSelecionada == despesa.id && !(usuarioMobile$ | async)">
             <a mat-mini-fab color="primary"
@@ -68,10 +68,11 @@
           <div class="row align-items-center me-1">
             <mat-chip-list>
               <mat-chip
-                class="chip-forma-pagamento col-7 justify-content-center">
-                <small>
+                class="chip-forma-pagamento col-5 justify-content-between px-3">
+                <mat-icon matChipAvatar>{{ gerarIconeFormaPagamento(despesa.formaPagamento) }}</mat-icon>
+                <span class="fw-light">
                   {{ despesa.formaPagamento }}
-                </small>
+                </span>
               </mat-chip>
               <span class="col text-end fs-6 fw-normal">
                 {{ despesa.valor | currency }}

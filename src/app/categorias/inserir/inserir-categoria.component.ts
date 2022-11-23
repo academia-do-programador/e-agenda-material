@@ -28,7 +28,7 @@ export class InserirCategoriaComponent
     private notification: NotificationService
   ) {
     super();
-    titulo.setTitle('Cadastrar Categoria - e-Agenda');
+    titulo.setTitle('Cadastro de Categoria - e-Agenda');
   }
 
   ngOnInit(): void {

@@ -35,7 +35,7 @@ export class EditarDespesaComponent
     private notification: NotificationService
   ) {
     super();
-    titulo.setTitle('Editar Despesa - e-Agenda');
+    titulo.setTitle('Edição de Despesa - e-Agenda');
   }
 
   ngOnInit(): void {

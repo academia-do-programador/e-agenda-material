@@ -31,7 +31,7 @@ export class ExcluirContatoComponent implements OnInit {
     private contatoService: ContatoService,
     private notificacao: NotificationService
   ) {
-    titulo.setTitle('Excluir Contato - e-Agenda');
+    titulo.setTitle('Exclusão de Contato - e-Agenda');
   }
 
   ngOnInit(): void {

@@ -1,14 +1,14 @@
 <a mat-fab
   data-cy="btnAdicionar"
   color="accent"
-  matTooltip="Adicionar Novo COmpromisso"
+  matTooltip="Adicionar Novo Compromisso"
   routerLink="/compromissos/inserir"
   class="btn-adicionar">
   <mat-icon>add</mat-icon>
 </a>
 
 <div class="row align-items-center justify-content-center h-100 w-100">
-  <app-titulo-pagina icone="list">Visualização de Compromissos</app-titulo-pagina>
+  <app-titulo-pagina icone="list">Compromissos</app-titulo-pagina>
   <ng-container [ngSwitch]="(compromissos$  | async)?.length">
     <app-descricao-pagina *ngSwitchCase="0">
       Nenhuma compromisso cadastrado.

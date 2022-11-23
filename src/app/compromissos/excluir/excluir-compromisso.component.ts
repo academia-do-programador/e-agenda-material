@@ -24,7 +24,7 @@ export class ExcluirCompromissoComponent implements OnInit {
     private compromissoService: CompromissoService,
     private notificacao: NotificationService
   ) {
-    titulo.setTitle('Excluir Compromisso - e-Agenda');
+    titulo.setTitle('Exclusão de Compromisso - e-Agenda');
   }
 
   ngOnInit(): void {

@@ -30,7 +30,7 @@ export class EditarContatoComponent
     private notificacao: NotificationService
   ) {
     super();
-    titulo.setTitle('Editar Contato - e-Agenda');
+    titulo.setTitle('Edição de Contato - e-Agenda');
   }
 
   ngOnInit(): void {

@@ -29,7 +29,7 @@ export class InserirContatoComponent
     private notification: NotificationService
   ) {
     super();
-    titulo.setTitle('Cadastrar Contato - e-Agenda');
+    titulo.setTitle('Cadastro de Contato - e-Agenda');
   }
 
   ngOnInit(): void {

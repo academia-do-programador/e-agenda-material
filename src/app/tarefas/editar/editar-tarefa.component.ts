@@ -36,7 +36,7 @@ export class EditarTarefaComponent
     private notificacao: NotificationService
   ) {
     super();
-    titulo.setTitle('Editar Tarefa - e-Agenda');
+    titulo.setTitle('Edição de Tarefa - e-Agenda');
   }
 
   ngOnInit(): void {

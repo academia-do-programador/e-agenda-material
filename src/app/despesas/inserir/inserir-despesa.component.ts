@@ -35,7 +35,7 @@ export class InserirDespesaComponent
     private notification: NotificationService
   ) {
     super();
-    titulo.setTitle('Cadastrar Despesa - e-Agenda');
+    titulo.setTitle('Cadastro de Despesa - e-Agenda');
   }
 
   ngOnInit(): void {

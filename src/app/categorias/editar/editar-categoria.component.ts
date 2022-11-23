@@ -29,7 +29,7 @@ export class EditarCategoriaComponent
     private notification: NotificationService
   ) {
     super();
-    titulo.setTitle('Cadastrar Categoria - e-Agenda');
+    titulo.setTitle('Edição de Categoria - e-Agenda');
   }
 
   ngOnInit(): void {

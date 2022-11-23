@@ -8,7 +8,7 @@
 </a>
 
 <div class="row align-items-center justify-content-center h-100 w-100">
-  <app-titulo-pagina icone="list">Visualização de Contatos</app-titulo-pagina>
+  <app-titulo-pagina icone="list">Contatos</app-titulo-pagina>
   <ng-container [ngSwitch]="(contatos$  | async)?.length">
     <app-descricao-pagina *ngSwitchCase="0">
       Nenhuma contato cadastrado.

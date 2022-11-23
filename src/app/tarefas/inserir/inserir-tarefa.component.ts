@@ -38,7 +38,7 @@ export class InserirTarefaComponent
     private notification: NotificationService
   ) {
     super();
-    titulo.setTitle('Cadastrar Tarefa - e-Agenda');
+    titulo.setTitle('Cadastro de Tarefa - e-Agenda');
   }
 
   ngOnInit(): void {
