@@ -10,12 +10,7 @@ import { VisualizarCompromissoViewModel } from '../view-models/visualizar-compro
   templateUrl: './excluir-compromisso.component.html',
   styles: [
     `
-      dt { text-align: left; }
-      dd { text-align: right; }
-
-    .bg-card {
-      background-color: #323259 !important;
-    }`
+  `
   ]
 })
 export class ExcluirCompromissoComponent implements OnInit {

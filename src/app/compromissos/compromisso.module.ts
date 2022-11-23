@@ -21,6 +21,7 @@ import { ContatoModule } from '../contatos/contato.module';
 import { MatSelectModule } from '@angular/material/select';
 import { EditarCompromissoComponent } from './editar/editar-compromisso.component';
 import { ExcluirCompromissoComponent } from './excluir/excluir-compromisso.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { ExcluirCompromissoComponent } from './excluir/excluir-compromisso.compo
     MatListModule,
     MatRadioModule,
     MatSelectModule,
+    MatChipsModule,
 
     ReactiveFormsModule,
     SharedModule,

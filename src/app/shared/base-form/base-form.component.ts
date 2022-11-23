@@ -8,4 +8,8 @@ export abstract class BaseFormComponent {
       control?.markAsTouched({ onlySelf: true });
     });
   }
+
+  protected mapearFormularioParaViewModel<T>(formGroup: FormGroup, viewModel: T) {
+    return Object.assign({}, viewModel, formGroup.value) as T;
+  }
 }

@@ -1,64 +1,62 @@
 <div class="row h-100 align-self-start justify-content-start">
 
   <section class="d-grid col-sm col-lg-6 col-xxl-7">
-    <app-titulo-pagina icone="delete">Exclusão de Tarefas</app-titulo-pagina>
+    <app-titulo-pagina icone="delete">Exclusão de Despesas</app-titulo-pagina>
     <app-descricao-pagina>
-      Aqui você pode excluir tarefas já concluídas para organizar sua rotina.
+      Controle seu histórico de despesas.
     </app-descricao-pagina>
 
     <mat-card>
       <mat-card-content class="d-grid gap-3 p-md-4">
         <mat-label class="fs-5 fw-semibold">Informações</mat-label>
-
         <mat-list>
           <mat-list-item class="row align-items-center">
             <dt class="col">
-              <label class="control-label">Título:</label>
+              <label class="control-label">Descrição:</label>
             </dt>
             <dd class="col">
-              {{ tarefaFormVM.titulo }}
+              {{ despesaFormVM.descricao }}
             </dd>
           </mat-list-item>
           <mat-divider></mat-divider>
           <mat-list-item class="row align-items-center">
             <dt class="col">
-              <label class="control-label">Data de Criação:</label>
+              <label class="control-label">Valor:</label>
             </dt>
             <dd class="col">
-              {{ tarefaFormVM.dataCriacao | date: 'dd/MM/yyyy' }}
+              {{ despesaFormVM.valor | currency }}
             </dd>
           </mat-list-item>
           <mat-divider></mat-divider>
           <mat-list-item class="row align-items-center">
             <dt class="col">
-              <label class="control-label">Prioridade:</label>
+              <label class="control-label">Forma de Pagamento:</label>
             </dt>
             <dd class="col">
-              {{ tarefaFormVM.prioridade }}
+              {{ despesaFormVM.formaPagamento }}
             </dd>
           </mat-list-item>
           <mat-divider></mat-divider>
           <mat-list-item class="row align-items-center">
             <dt class="col">
-              <label class="control-label">Quantidade de Itens:</label>
+              <label class="control-label">Data:</label>
             </dt>
             <dd class="col">
-              {{ tarefaFormVM.itens.length }}
+              {{ despesaFormVM.data | date: 'dd/MM/yyyy' }}
             </dd>
           </mat-list-item>
           <mat-divider></mat-divider>
-          <mat-list-item class="row align-items-center">
-            <dt class="col">
-              <label class="control-label">Percentual Concluído:</label>
-            </dt>
-            <dd class="col">
-              {{ tarefaFormVM.percentualConcluido }}
-            </dd>
-          </mat-list-item>
         </mat-list>
-        <section aria-label="Itens da Tarefa" *ngIf="tarefaFormVM.itens.length > 0">
-          <p class="fs-6">Itens da Tarefa</p>
-          <app-item-list [itens]="tarefaFormVM.itens"></app-item-list>
+        <section aria-label="Categorias da Despesa"
+          *ngIf="despesaFormVM.categorias.length > 0">
+          <div class="d-grid gap-3 mt-3">
+            <mat-label class="fs-5 fw-semibold">Categorias</mat-label>
+              <mat-chip-list class="row">
+                <mat-chip class="row gap-2" *ngFor="let categoria of despesaFormVM.categorias">
+                  <span>{{ categoria }}</span>
+                </mat-chip>
+              </mat-chip-list>
+          </div>
         </section>
       </mat-card-content>
       <mat-card-footer class="my-2">
@@ -67,7 +65,7 @@
             color="accent"
             class="col"
             type="button"
-            routerLink="/tarefas/listar">
+            routerLink="/despesas/listar">
             <mat-icon>home</mat-icon>
             Voltar
           </button>

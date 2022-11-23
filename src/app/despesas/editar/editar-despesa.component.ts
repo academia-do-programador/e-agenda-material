@@ -1,22 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CategoriaService } from 'src/app/categorias/services/categoria.service';
 import { ListarCategoriaViewModel } from 'src/app/categorias/view-models/listar-categoria.view-model';
 import { NotificationService } from 'src/app/notification/services/notification.service';
 import { BaseFormComponent } from 'src/app/shared/base-form/base-form.component';
 import { DespesaService } from '../services/despesa.service';
-import { CategoriaSelecionadaViewModel } from '../view-model/categoria-selecionada.view-model';
 import { FormaPgtoDespesaEnum } from '../view-model/forma-pgto-despesa.enum';
 import { FormsDespesaViewModel } from '../view-model/forms-despesa.view-model';
 
 @Component({
-  selector: 'app-inserir-despesa',
-  templateUrl: './inserir-despesa.component.html'
+  selector: 'app-editar-despesa',
+  templateUrl: './editar-despesa.component.html'
 })
-export class InserirDespesaComponent
+export class EditarDespesaComponent
   extends BaseFormComponent
   implements OnInit {
 
@@ -31,14 +30,17 @@ export class InserirDespesaComponent
     private formBuilder: FormBuilder,
     private despesaService: DespesaService,
     private categoriaService: CategoriaService,
+    private route: ActivatedRoute,
     private router: Router,
     private notification: NotificationService
   ) {
     super();
-    titulo.setTitle('Cadastrar Despesa - e-Agenda');
+    titulo.setTitle('Editar Despesa - e-Agenda');
   }
 
   ngOnInit(): void {
+    this.despesaFormVM = this.route.snapshot.data['despesa'];
+
     this.formDespesa = this.formBuilder.group({
       descricao: ['', [Validators.required, Validators.minLength(3)]],
       valor: [0.0, [Validators.required, Validators.min(0.1)]],
@@ -47,6 +49,15 @@ export class InserirDespesaComponent
       categoriasSelecionadas: [[], [Validators.required]],
     });
 
+    this.formDespesa.patchValue({
+      descricao: this.despesaFormVM.descricao,
+      valor: this.despesaFormVM.valor,
+      data: this.despesaFormVM.data.toString().substring(0, 10),
+      formaPagamento: this.despesaFormVM.formaPagamento,
+      categoriasSelecionadas: this.despesaFormVM.categoriasSelecionadas,
+    })
+
+    console.log(this.despesaFormVM.categoriasSelecionadas)
     this.categorias$ = this.categoriaService.selecionarTodos();
   }
 
@@ -75,11 +86,11 @@ export class InserirDespesaComponent
       this.notification.aviso('Por favor, preencha o formulário corretamente.');
       this.exibirMensagensValidacao(this.formDespesa);
       return;
-    };
+    }
 
     this.despesaFormVM = this.mapearFormularioParaViewModel(this.formDespesa, this.despesaFormVM);
 
-    this.despesaService.inserir(this.despesaFormVM)
+    this.despesaService.editar(this.despesaFormVM)
       .subscribe({
         next: (despesaInserida) => this.processarSucesso(despesaInserida),
         error: (erro) => this.processarFalha(erro)
@@ -87,7 +98,7 @@ export class InserirDespesaComponent
   }
 
   private processarSucesso(despesa: FormsDespesaViewModel): void {
-    this.notification.sucesso(`Despesa "${despesa.descricao}" cadastrada com sucesso!`);
+    this.notification.sucesso(`Despesa "${despesa.descricao}" editada com sucesso!`);
     this.router.navigate(['/despesas']);
   }
 

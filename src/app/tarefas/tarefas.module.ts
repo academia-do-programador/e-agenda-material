@@ -26,6 +26,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatRadioModule } from '@angular/material/radio';
 import { SharedModule } from '../shared/shared.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatChipsModule } from '@angular/material/chips';
 @NgModule({
   declarations: [
     ListarTarefasComponent,
@@ -36,6 +37,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   imports: [
     CommonModule,
     TarefasRoutingModule,
+    MatChipsModule,
     MatCardModule,
     MatTableModule,
     MatButtonModule,

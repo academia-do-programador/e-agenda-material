@@ -1,12 +1,14 @@
 <div class="row h-100 align-items-start justify-content-start">
-  <section class="d-grid gap-2 col-sm col-lg-6 col-xxl-7">
-    <app-titulo-pagina icone="add">Edição de Contatos</app-titulo-pagina>
+  <section class="d-grid col-sm col-lg-6 col-xxl-7">
+    <app-titulo-pagina icone="edit">Edição de Contatos</app-titulo-pagina>
     <app-descricao-pagina>
       Salve seus contatos e mantenha-os atualizados.
     </app-descricao-pagina>
     <mat-card class="p-md-4">
       <mat-card-content>
         <form class="d-grid gap-3 fs-6 p-3" [formGroup]="formContato" (ngSubmit)="gravar()">
+          <mat-label class="fs-5 fw-semibold">Informações</mat-label>
+
           <mat-form-field appearance="outline">
             <mat-label for="titulo">Nome</mat-label>
             <input matInput

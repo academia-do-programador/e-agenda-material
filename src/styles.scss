@@ -4,9 +4,21 @@
 @import '/node_modules/bootstrap/scss/bootstrap-utilities.scss';
 @import '/node_modules/bootstrap/scss/bootstrap-grid.scss';
 
+$app-primary: #DA3DBA;
+$border-color: rgba(255, 255, 255, 0.12);
+
 html, body { height: 100%; }
+
 body { margin: 0; }
+
 * { font-family: Poppins, sans-serif; }
+
+dt { text-align: left; }
+dd { text-align: right; }
+
+.bg-card {
+  background-color: #323259 !important;
+}
 
 .text-primary {
   color: #DA3DBA !important;
@@ -17,16 +29,41 @@ body { margin: 0; }
 }
 
 .card-hover-buttons {
+  display: grid;
+  gap: 5px;
+  grid-template-columns: 2fr;
   position: absolute;
-  left: 250px;
+  margin-top: 0%;
+  margin-left: 88%;
+  z-index: 1000;
+
+  @media screen and (min-width: 1370px) {
+    margin-left: 92%;
+  }
 }
 
-$border-color: rgba(255, 255, 255, 0.12);
+.mini-fab-transparent {
+  background: transparent !important;
+  color: #ffffff !important;
+  border: 1px $app-primary solid !important;
+}
+
+.mat-menu,
+.mat-menu-panel,
+.mat-menu-content {
+  min-width: 0 !important;
+  width: 55px !important;
+
+  border-radius: 100vmax !important;
+}
+
+.chip-forma-pagamento::after {
+  background: inherit !important;
+}
 
 .border-bottom {
   border-color: $border-color !important;
 }
-
 
 .link-ativo {
   background-color: #bd62abc7;
@@ -72,7 +109,8 @@ $border-color: rgba(255, 255, 255, 0.12);
 }
 
 .mat-tooltip {
-  font-size: 15px !important;
+  font-size: 14px !important;
+  font-family: Poppins, sans-serif;
   font-weight: 300;
 }
 
