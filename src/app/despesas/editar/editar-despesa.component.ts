@@ -21,7 +21,9 @@ export class EditarDespesaComponent
 
   public formDespesa: FormGroup;
   public despesaFormVM: FormsDespesaViewModel = new FormsDespesaViewModel();
+
   public categorias$: Observable<ListarCategoriaViewModel[]>;
+
   public formasPagamento = Object.values(FormaPgtoDespesaEnum)
     .filter(v => !Number.isFinite(v));
 
@@ -55,9 +57,8 @@ export class EditarDespesaComponent
       data: this.despesaFormVM.data.toString().substring(0, 10),
       formaPagamento: this.despesaFormVM.formaPagamento,
       categoriasSelecionadas: this.despesaFormVM.categoriasSelecionadas,
-    })
+    });
 
-    console.log(this.despesaFormVM.categoriasSelecionadas)
     this.categorias$ = this.categoriaService.selecionarTodos();
   }
 

@@ -30,31 +30,25 @@ dd { text-align: right; }
 
 .card-hover-buttons {
   display: grid;
-  gap: 5px;
   grid-template-columns: 2fr;
   position: absolute;
-  margin-top: 0%;
-  margin-left: 88%;
+  margin-top: -5%;
+  margin-left: 84%;
   z-index: 1000;
 
   @media screen and (min-width: 1370px) {
-    margin-left: 92%;
+    margin-left: 88%;
   }
+}
+
+.card-shadow {
+  box-shadow: 0 4px 4px 4px rgba(0,0,0,.2), 0 8px 8px 0 rgba(0,0,0,.14), 0 8px 8px 0 rgba(0,0,0,.12) !important;
 }
 
 .mini-fab-transparent {
   background: transparent !important;
   color: #ffffff !important;
   border: 1px $app-primary solid !important;
-}
-
-.mat-menu,
-.mat-menu-panel,
-.mat-menu-content {
-  min-width: 0 !important;
-  width: 55px !important;
-
-  border-radius: 100vmax !important;
 }
 
 .chip-forma-pagamento::after {

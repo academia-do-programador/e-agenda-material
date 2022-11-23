@@ -7,7 +7,7 @@
   <mat-icon>add</mat-icon>
 </a>
 
-<div class="row align-items-center justify-content-center h-100 w-100">
+<div class="container align-items-center justify-content-center h-100 w-100">
   <app-titulo-pagina icone="list">Categorias</app-titulo-pagina>
   <ng-container [ngSwitch]="(categorias$ | async)?.length">
     <app-descricao-pagina *ngSwitchCase="0">

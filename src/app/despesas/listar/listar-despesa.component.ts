@@ -1,6 +1,7 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { map, Observable, shareReplay } from 'rxjs';
 import { BaseCardListComponent } from 'src/app/shared/base-card-list/base-card-list.component';
 import { PrioridadeTarefaEnum } from 'src/app/tarefas/view-models/prioridade-tarefa.enum';
@@ -10,20 +11,20 @@ import { ListarDespesaViewModel } from '../view-model/listar-despesa.view-model'
 
 @Component({
   selector: 'app-listar-despesa',
-  templateUrl: './listar-despesa.component.html',
-  styles: [
-  ]
+  templateUrl: './listar-despesa.component.html'
 })
 export class ListarDespesaComponent
   extends BaseCardListComponent
   implements OnInit {
+
   despesas$: Observable<ListarDespesaViewModel[]>;
   constructor(
     titulo: Title,
-    breakpointObserver: BreakpointObserver,
+    breakpoint: BreakpointObserver,
+    private router: Router,
     private despesaService: DespesaService
   ) {
-    super(breakpointObserver);
+    super(breakpoint);
     titulo.setTitle('Despesas - e-Agenda');
   }
 
@@ -41,5 +42,9 @@ export class ListarDespesaComponent
     }
 
     return iconeFormaPagamento;
+  }
+
+  public editar(despesa: ListarDespesaViewModel) {
+    this.router.navigate(['/despesas/editar', despesa.id]);
   }
 }
