@@ -21,21 +21,16 @@
     </app-descricao-pagina>
   </ng-container>
   <section #tabelaDespesas>
-    <div class="row container-fluid gap-3">
+    <div class="row gap-3">
       <mat-card *ngFor="let categoria of (categorias$ | async)"
         (mouseenter)="ativarHover(categoria.id)"
         (mouseleave)="desativarHover()"
-        class="col-md-4">
-        <mat-card-title class="d-flex align-items-center gap-1 fs-6">
-          <mat-icon class="fs-5">category</mat-icon>
-          <span>{{ categoria.titulo }}</span>
+        class="col-md-3">
+        <mat-card-title class="d-flex fs-6">
+          <a class="card-titulo" [routerLink]="['/categorias/editar', categoria.id]">
+            <mat-label>{{ categoria.titulo }}</mat-label>
+          </a>
           <div class="card-hover-buttons" *ngIf="cardSelecionada == categoria.id && !(usuarioMobile$ | async)">
-            <a mat-mini-fab color="primary"
-              [routerLink]="['/categorias/editar', categoria.id]"
-              aria-label="Editar"
-              matTooltip="Editar">
-              <mat-icon class="fs-4">edit</mat-icon>
-            </a>
             <a mat-mini-fab color="warn"
               [routerLink]="['/categorias/excluir', categoria.id]"
               aria-label="Excluir"
@@ -44,20 +39,13 @@
             </a>
           </div>
           <div class="ms-auto" *ngIf="(usuarioMobile$ | async)">
-            <button mat-icon-button><mat-icon [matMenuTriggerFor]="mobileCardMenu">more_vert</mat-icon></button>
-          </div>
-          <mat-menu #mobileCardMenu class="card-mobile-menu">
-            <a mat-menu-item
-              aria-label="Editar"
-              [routerLink]="['/categorias/editar', categoria.id]">
-              <mat-icon color="accent">edit</mat-icon>
-            </a>
-            <a mat-menu-item
+            <a mat-mini-fab color="warn"
+              [routerLink]="['/categorias/excluir', categoria.id]"
               aria-label="Excluir"
-              [routerLink]="['/categorias/excluir', categoria.id]">
-              <mat-icon color="warn">delete</mat-icon>
+              matTooltip="Excluir">
+              <mat-icon class="">delete</mat-icon>
             </a>
-          </mat-menu>
+          </div>
         </mat-card-title>
       </mat-card>
     </div>

@@ -1,13 +1,13 @@
 <a mat-fab
   data-cy="btnAdicionar"
   color="accent"
-  matTooltip="Adicionar Nova Despesa"
+  matTooltip="Adicionar Novo Contato"
   routerLink="/contatos/inserir"
   class="btn-adicionar">
   <mat-icon>add</mat-icon>
 </a>
 
-<div class="row align-items-center justify-content-center h-100 w-100">
+<div class="container align-items-center justify-content-center h-100 w-100">
   <app-titulo-pagina icone="list">Contatos</app-titulo-pagina>
   <ng-container [ngSwitch]="(contatos$  | async)?.length">
     <app-descricao-pagina *ngSwitchCase="0">
@@ -21,21 +21,16 @@
     </app-descricao-pagina>
   </ng-container>
   <section #tabelaDespesas>
-    <div class="row container-fluid gap-3">
+    <div class="row gap-3">
       <mat-card *ngFor="let contato of (contatos$ | async)"
         (mouseenter)="ativarHover(contato.id)"
         (mouseleave)="desativarHover()"
-        class="col-md-4">
-        <mat-card-title class="d-flex align-items-center gap-1 fs-6">
-          <mat-icon class="fs-5">person</mat-icon>
-          <span>{{ contato.nome }}</span>
+        class="col-md-4 p-4">
+        <mat-card-title class="d-flex fs-6">
+          <a class="card-titulo" [routerLink]="['/contatos/editar', contato.id]">
+            <mat-label>{{ contato.nome }}</mat-label>
+          </a>
           <div class="card-hover-buttons" *ngIf="cardSelecionada == contato.id && !(usuarioMobile$ | async)">
-            <a mat-mini-fab color="primary"
-              [routerLink]="['/contatos/editar', contato.id]"
-              aria-label="Editar"
-              matTooltip="Editar">
-              <mat-icon class="fs-4">edit</mat-icon>
-            </a>
             <a mat-mini-fab color="warn"
               [routerLink]="['/contatos/excluir', contato.id]"
               aria-label="Excluir"
@@ -44,22 +39,13 @@
             </a>
           </div>
           <div class="ms-auto" *ngIf="(usuarioMobile$ | async)">
-            <button mat-icon-button [matMenuTriggerFor]="mobileCardMenu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-          </div>
-          <mat-menu #mobileCardMenu class="card-mobile-menu">
-            <a mat-menu-item
-              aria-label="Editar"
-              [routerLink]="['/contatos/editar', contato.id]">
-              <mat-icon color="accent">edit</mat-icon>
-            </a>
-            <a mat-menu-item
+            <a mat-mini-fab color="warn"
+              [routerLink]="['/contatos/excluir', contato.id]"
               aria-label="Excluir"
-              [routerLink]="['/contatos/excluir', contato.id]">
-              <mat-icon color="warn">delete</mat-icon>
+              matTooltip="Excluir">
+              <mat-icon class="">delete</mat-icon>
             </a>
-          </mat-menu>
+          </div>
         </mat-card-title>
         <mat-card-subtitle>
           {{ contato.cargo }} na empresa {{ contato.empresa }}

@@ -7,11 +7,11 @@
   <mat-icon>add</mat-icon>
 </a>
 
-<div class="row align-items-center justify-content-center h-100 w-100">
+<div class="container align-items-center justify-content-center h-100 w-100">
   <app-titulo-pagina icone="list">Compromissos</app-titulo-pagina>
   <ng-container [ngSwitch]="(compromissos$  | async)?.length">
     <app-descricao-pagina *ngSwitchCase="0">
-      Nenhuma compromisso cadastrado.
+      Nenhum compromisso cadastrado.
     </app-descricao-pagina>
     <app-descricao-pagina *ngSwitchCase="1">
       Você tem apenas um compromisso cadastrado.
@@ -21,21 +21,16 @@
     </app-descricao-pagina>
   </ng-container>
   <section #tabelaDespesas>
-    <div class="row container-fluid gap-3">
-      <mat-card *ngFor="let compromisso of (compromissos$ | async)"
+    <div class="row gap-3">
+      <mat-card [ngClass]="{ 'card-shadow': cardSelecionada === compromisso.id }" *ngFor="let compromisso of (compromissos$ | async)"
         (mouseenter)="ativarHover(compromisso.id)"
         (mouseleave)="desativarHover()"
-        class="col-md-4">
-        <mat-card-title class="d-flex align-items-center gap-1 fs-6">
-          <mat-icon class="fs-5">calendar_month</mat-icon>
-          <span>{{ compromisso.assunto }}</span>
+        class="col-md-4 p-4">
+        <mat-card-title class="d-flex fs-6">
+          <a class="card-titulo" [routerLink]="['/compromissos/editar', compromisso.id]">
+            <mat-label>{{ compromisso.assunto }}</mat-label>
+          </a>
           <div class="card-hover-buttons" *ngIf="cardSelecionada == compromisso.id && !(usuarioMobile$ | async)">
-            <a mat-mini-fab color="primary"
-              [routerLink]="['/compromissos/editar', compromisso.id]"
-              aria-label="Editar"
-              matTooltip="Editar">
-              <mat-icon class="fs-4">edit</mat-icon>
-            </a>
             <a mat-mini-fab color="warn"
               [routerLink]="['/compromissos/excluir', compromisso.id]"
               aria-label="Excluir"
@@ -44,30 +39,21 @@
             </a>
           </div>
           <div class="ms-auto" *ngIf="(usuarioMobile$ | async)">
-            <button mat-icon-button [matMenuTriggerFor]="mobileCardMenu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-          </div>
-          <mat-menu #mobileCardMenu class="card-mobile-menu">
-            <a mat-menu-item
-              aria-label="Editar"
-              [routerLink]="['/compromissos/editar', compromisso.id]">
-              <mat-icon color="accent">edit</mat-icon>
-            </a>
-            <a mat-menu-item
+            <a mat-mini-fab color="warn"
+              [routerLink]="['/compromissos/excluir', compromisso.id]"
               aria-label="Excluir"
-              [routerLink]="['/compromissos/excluir', compromisso.id]">
-              <mat-icon color="warn">delete</mat-icon>
+              matTooltip="Excluir">
+              <mat-icon class="">delete</mat-icon>
             </a>
-          </mat-menu>
+          </div>
         </mat-card-title>
         <mat-card-subtitle>{{ compromisso.data }}</mat-card-subtitle>
 
         <mat-card-content>
           <mat-label class="fw-semibold">Contato</mat-label>
-          <p class="fw-light">{{ compromisso.nomeContato ? compromisso.nomeContato : 'Nenhum compromisso selecionado.' }}</p>
+          <p class="fw-light">{{ compromisso.nomeContato ? compromisso.nomeContato : 'Nenhum contato selecionado.' }}</p>
         </mat-card-content>
-        <mat-card-footer class="p-2">
+        <mat-card-footer>
           <mat-list>
             <mat-chip-list>
             <mat-list-item>

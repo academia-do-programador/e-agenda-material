@@ -21,22 +21,30 @@ dd { text-align: right; }
 }
 
 .text-primary {
-  color: #DA3DBA !important;
+  color: $app-primary !important;
 }
 
 .text-bg-dark {
   background-color: #323259 !important;
 }
 
-.card-titulo-hover {
-  cursor: pointer;
+.card-titulo {
+  text-decoration: none;
+  color: white;
+
+  transition: all 200ms ease-in;
+
+  &:hover {
+    color: inherit;
+    text-decoration: underline;
+  }
 }
 
 .card-hover-buttons {
   display: grid;
   grid-template-columns: 2fr;
   position: absolute;
-  margin-top: -5%;
+  margin-top: -7%;
   margin-left: 84%;
   z-index: 1000;
 

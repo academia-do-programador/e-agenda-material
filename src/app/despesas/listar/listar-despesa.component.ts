@@ -36,15 +36,11 @@ export class ListarDespesaComponent
     let iconeFormaPagamento: 'mobile_friendly' | 'payments' | 'credit_card' | '' = '';
 
     switch (formaPagamento) {
-      case 'PIX': iconeFormaPagamento = 'mobile_friendly'; break;
+      case 'Pix': iconeFormaPagamento = 'mobile_friendly'; break;
       case 'Dinheiro': iconeFormaPagamento = 'payments'; break;
-      case 'Cartão de Crédito': iconeFormaPagamento = 'credit_card'; break;
+      case 'Cartão': iconeFormaPagamento = 'credit_card'; break;
     }
 
     return iconeFormaPagamento;
-  }
-
-  public editar(despesa: ListarDespesaViewModel) {
-    this.router.navigate(['/despesas/editar', despesa.id]);
   }
 }
