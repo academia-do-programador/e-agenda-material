@@ -23,13 +23,13 @@
   <section #tabelaDespesas>
     <div class="row gap-3 container-fluid">
       <mat-card [ngClass]="{ 'card-shadow': cardSelecionada === despesa.id }" *ngFor="let despesa of (despesas$ | async)"
-        (mouseup)="editar(despesa)"
         (mouseenter)="ativarHover(despesa.id)"
         (mouseleave)="desativarHover()"
         class="col-md-4">
         <mat-card-title class="d-flex align-items-center gap-1 fs-6">
-          <mat-icon class="fs-5">currency_exchange</mat-icon>
-          <span>{{ despesa.descricao }}</span>
+          <div class="d-flex align-items-center card-titulo-hover" [routerLink]="['/despesas/editar', despesa.id]">
+            <span>{{ despesa.descricao }}</span>
+          </div>
           <div class="card-hover-buttons" *ngIf="cardSelecionada === despesa.id && !(usuarioMobile$ | async)">
             <a mat-mini-fab color="warn"
               [routerLink]="['/despesas/excluir', despesa.id]"
@@ -62,15 +62,15 @@
         <mat-card-subtitle>
           Registrada em {{ despesa.data | date: 'dd/MM/yyyy' }}
         </mat-card-subtitle>
-        <mat-card-footer class="p-2">
-          <div class="row align-items-center me-1">
+        <mat-card-footer class="py-2 px-3">
+          <div class="row align-items-center">
             <mat-chip-list>
               <mat-chip
-                class="chip-forma-pagamento col-5 justify-content-between px-3">
+                class="chip-forma-pagamento col-5 px-2">
                 <mat-icon matChipAvatar>{{ gerarIconeFormaPagamento(despesa.formaPagamento) }}</mat-icon>
-                <span class="fw-light">
+                <small class="fw-light">
                   {{ despesa.formaPagamento }}
-                </span>
+                </small>
               </mat-chip>
               <span class="col text-end fs-6 fw-normal">
                 {{ despesa.valor | currency }}

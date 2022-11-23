@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, map, catchError, throwError } from "rxjs";
+import { Observable, map, catchError, throwError, shareReplay } from "rxjs";
 import { LocalStorageService } from "src/app/auth/services/local-storage.service";
 import { FormsTarefaViewModel } from "src/app/tarefas/view-models/forms-tarefa.view-model";
 import { ListarTarefaViewModel } from "src/app/tarefas/view-models/listar-tarefa.view-model";
@@ -54,7 +54,7 @@ export class ContatoService {
   public selecionarPorId(id: string): Observable<FormsContatoViewModel> {
     const resposta = this.http
       .get<FormsContatoViewModel>(this.apiUrl + 'contatos/' + id, this.obterHeadersAutorizacao())
-      .pipe(map(this.processarDados), catchError(this.processarFalha));
+      .pipe(map(this.processarDados), shareReplay(), catchError(this.processarFalha));
 
     return resposta;
   }

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, map, Observable, throwError } from "rxjs";
+import { catchError, map, Observable, shareReplay, throwError } from "rxjs";
 import { LocalStorageService } from "src/app/auth/services/local-storage.service";
 import { environment } from "src/environments/environment";
 import { FormsTarefaViewModel } from "../view-models/forms-tarefa.view-model";
@@ -43,7 +43,7 @@ export class TarefasService {
   public selecionarTodos(): Observable<ListarTarefaViewModel[]> {
     const resposta = this.http
       .get<ListarTarefaViewModel[]>(this.apiUrl + 'tarefas', this.obterHeadersAutorizacao())
-      .pipe(map(this.processarDados), catchError(this.processarFalha));
+      .pipe(map(this.processarDados), shareReplay(), catchError(this.processarFalha));
 
     return resposta;
   }

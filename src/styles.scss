@@ -28,6 +28,10 @@ dd { text-align: right; }
   background-color: #323259 !important;
 }
 
+.card-titulo-hover {
+  cursor: pointer;
+}
+
 .card-hover-buttons {
   display: grid;
   grid-template-columns: 2fr;
