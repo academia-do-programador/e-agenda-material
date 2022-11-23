@@ -46,7 +46,7 @@ export class ContatoService {
   public selecionarTodos(): Observable<ListarContatoViewModel[]> {
     const resposta = this.http
       .get<ListarContatoViewModel[]>(this.apiUrl + 'contatos', this.obterHeadersAutorizacao())
-      .pipe(map(this.processarDados), catchError(this.processarFalha));
+      .pipe(map(this.processarDados), shareReplay(), catchError(this.processarFalha));
 
     return resposta;
   }
@@ -54,7 +54,7 @@ export class ContatoService {
   public selecionarPorId(id: string): Observable<FormsContatoViewModel> {
     const resposta = this.http
       .get<FormsContatoViewModel>(this.apiUrl + 'contatos/' + id, this.obterHeadersAutorizacao())
-      .pipe(map(this.processarDados), shareReplay(), catchError(this.processarFalha));
+      .pipe(map(this.processarDados), catchError(this.processarFalha));
 
     return resposta;
   }
