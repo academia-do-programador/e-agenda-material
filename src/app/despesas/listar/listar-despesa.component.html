@@ -25,7 +25,7 @@
       <mat-card [ngClass]="{ 'card-shadow': cardSelecionada === despesa.id }" *ngFor="let despesa of (despesas$ | async)"
         (mouseenter)="ativarHover(despesa.id)"
         (mouseleave)="desativarHover()"
-        class="col-md-4 p-4">
+        class="col-md-3 p-3">
         <mat-card-title class="d-flex fs-6">
           <a class="card-titulo" [routerLink]="['/despesas/editar', despesa.id]">
             <mat-label>{{ despesa.descricao }}</mat-label>
@@ -50,7 +50,7 @@
         <mat-card-subtitle>
           Registrada em {{ despesa.data | date: 'dd/MM/yyyy' }}
         </mat-card-subtitle>
-        <mat-card-footer class="px-2">
+        <mat-card-actions class="px-2">
           <div class="row align-items-center">
             <mat-chip-list>
               <mat-chip
@@ -65,7 +65,7 @@
               </span>
             </mat-chip-list>
           </div>
-        </mat-card-footer>
+        </mat-card-actions>
       </mat-card>
     </div>
   </section>

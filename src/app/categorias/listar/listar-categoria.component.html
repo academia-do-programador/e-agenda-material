@@ -25,7 +25,7 @@
       <mat-card *ngFor="let categoria of (categorias$ | async)"
         (mouseenter)="ativarHover(categoria.id)"
         (mouseleave)="desativarHover()"
-        class="col-md-3">
+        class="col-md-3 p-3">
         <mat-card-title class="d-flex fs-6">
           <a class="card-titulo" [routerLink]="['/categorias/editar', categoria.id]">
             <mat-label>{{ categoria.titulo }}</mat-label>

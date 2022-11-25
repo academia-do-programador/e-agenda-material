@@ -25,7 +25,7 @@
       <mat-card [ngClass]="{ 'card-shadow': cardSelecionada === compromisso.id }" *ngFor="let compromisso of (compromissos$ | async)"
         (mouseenter)="ativarHover(compromisso.id)"
         (mouseleave)="desativarHover()"
-        class="col-md-4 p-4">
+        class="col-md-3 p-3">
         <mat-card-title class="d-flex fs-6">
           <a class="card-titulo" [routerLink]="['/compromissos/editar', compromisso.id]">
             <mat-label>{{ compromisso.assunto }}</mat-label>
@@ -53,7 +53,7 @@
           <mat-label class="fw-semibold">Contato</mat-label>
           <p class="fw-light">{{ compromisso.nomeContato ? compromisso.nomeContato : 'Nenhum contato selecionado.' }}</p>
         </mat-card-content>
-        <mat-card-footer>
+        <mat-card-actions>
           <mat-list>
             <mat-chip-list>
             <mat-list-item>
@@ -74,7 +74,7 @@
             </mat-list-item>
           </mat-chip-list>
           </mat-list>
-        </mat-card-footer>
+        </mat-card-actions>
       </mat-card>
     </div>
   </section>

@@ -21,11 +21,11 @@
     </app-descricao-pagina>
   </ng-container>
   <section #tabelaDespesas>
-    <div class="row gap-3">
+    <div class="row gap-3 align-items-stretch">
       <mat-card *ngFor="let contato of (contatos$ | async)"
         (mouseenter)="ativarHover(contato.id)"
         (mouseleave)="desativarHover()"
-        class="col-md-4 p-4">
+        class="col-md-3 align-items-stretch">
         <mat-card-title class="d-flex fs-6">
           <a class="card-titulo" [routerLink]="['/contatos/editar', contato.id]">
             <mat-label>{{ contato.nome }}</mat-label>
@@ -47,15 +47,13 @@
             </a>
           </div>
         </mat-card-title>
-        <mat-card-subtitle>
-          {{ contato.cargo }} na empresa {{ contato.empresa }}
+        <mat-card-subtitle class="h-25">
+          <span>{{ contato.cargo }} na empresa {{ contato.empresa }}</span>
         </mat-card-subtitle>
-        <mat-card-footer class="p-2">
-          <mat-label class="row row-cols-2 gap-2 align-items-center fs-6 fw-normal">
-            <mat-icon class="ms-auto">phone</mat-icon>
-            <span>{{ contato.telefone }}</span>
-          </mat-label>
-        </mat-card-footer>
+
+        <mat-card-actions class="container-fluid px-2 my-2 my-md-0">
+          <mat-label class="row align-items-center justify-content-between"><mat-icon matPrefix>phone</mat-icon>{{ contato.telefone }}</mat-label>
+        </mat-card-actions>
       </mat-card>
     </div>
   </section>

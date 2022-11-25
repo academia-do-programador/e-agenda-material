@@ -25,7 +25,7 @@
       <mat-card *ngFor="let tarefa of (tarefas$ | async)"
         (mouseenter)="ativarHover(tarefa.id)"
         (mouseleave)="desativarHover()"
-        class="col-md-4 p-4">
+        class="col-md-3 p-3">
         <mat-card-title class="d-flex fs-6">
           <a class="card-titulo" [routerLink]="['/tarefas/editar', tarefa.id]">
             <mat-label>{{ tarefa.titulo }}</mat-label>
@@ -48,7 +48,7 @@
           </div>
         </mat-card-title>
         <mat-card-subtitle>Prioridade: {{ tarefa.prioridade }}</mat-card-subtitle>
-        <mat-card-footer>
+        <mat-card-actions>
           <div class="row align-items-center me-1">
             <mat-chip-list>
               <mat-chip
@@ -59,7 +59,7 @@
               </mat-chip>
             </mat-chip-list>
           </div>
-        </mat-card-footer>
+        </mat-card-actions>
       </mat-card>
     </div>
   </section>
