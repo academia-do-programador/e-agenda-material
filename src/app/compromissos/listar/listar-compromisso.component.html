@@ -7,7 +7,7 @@
   <mat-icon>add</mat-icon>
 </a>
 
-<div class="container align-items-center justify-content-center h-100 w-100">
+<div class="container-fluid">
   <app-titulo-pagina icone="list">Compromissos</app-titulo-pagina>
   <ng-container [ngSwitch]="(compromissos$  | async)?.length">
     <app-descricao-pagina *ngSwitchCase="0">
@@ -20,12 +20,12 @@
       Você tem {{ (compromissos$  | async)?.length }} compromissos cadastrados.
     </app-descricao-pagina>
   </ng-container>
-  <section #tabelaDespesas>
-    <div class="row gap-3">
+  <section aria-label="Listagem de Compromissos">
+    <div class="d-inline-flex flex-wrap gap-3 w-100">
       <mat-card [ngClass]="{ 'card-shadow': cardSelecionada === compromisso.id }" *ngFor="let compromisso of (compromissos$ | async)"
         (mouseenter)="ativarHover(compromisso.id)"
         (mouseleave)="desativarHover()"
-        class="col-md-3 p-3">
+        class="col p-3">
         <mat-card-title class="d-flex fs-6">
           <a class="card-titulo" [routerLink]="['/compromissos/editar', compromisso.id]">
             <mat-label>{{ compromisso.assunto }}</mat-label>

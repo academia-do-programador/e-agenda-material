@@ -7,7 +7,7 @@
   <mat-icon>add</mat-icon>
 </a>
 
-<div class="container align-items-center justify-content-center h-100 w-100">
+<div class="container-fluid">
   <app-titulo-pagina icone="list">Tarefas</app-titulo-pagina>
   <ng-container [ngSwitch]="(tarefas$ | async)?.length">
     <app-descricao-pagina *ngSwitchCase="0">
@@ -20,12 +20,12 @@
       Você tem {{ (tarefas$  | async)?.length }} tarefas cadastradas.
     </app-descricao-pagina>
   </ng-container>
-  <section #tabelaDespesas>
-    <div class="row gap-3">
+  <section aria-label="Listagem de Tarefas">
+    <div class="d-inline-flex flex-wrap gap-3 w-100">
       <mat-card *ngFor="let tarefa of (tarefas$ | async)"
         (mouseenter)="ativarHover(tarefa.id)"
         (mouseleave)="desativarHover()"
-        class="col-md-3 p-3">
+        class="col p-3">
         <mat-card-title class="d-flex fs-6">
           <a class="card-titulo" [routerLink]="['/tarefas/editar', tarefa.id]">
             <mat-label>{{ tarefa.titulo }}</mat-label>

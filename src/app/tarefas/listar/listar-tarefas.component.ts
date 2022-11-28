@@ -8,12 +8,7 @@ import { ListarTarefaViewModel } from '../view-models/listar-tarefa.view-model';
 
 @Component({
   selector: 'app-listar-tarefas',
-  templateUrl: './listar-tarefas.component.html',
-  styles: [`
-    mat-header-cell, mat-cell {
-      justify-content: center;
-    }
-  `]
+  templateUrl: './listar-tarefas.component.html'
 })
 export class ListarTarefasComponent
   extends BaseCardListComponent

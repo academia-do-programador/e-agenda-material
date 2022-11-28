@@ -7,7 +7,7 @@
   <mat-icon>add</mat-icon>
 </a>
 
-<div class="container align-items-center justify-content-center h-100 w-100">
+<div class="container-fluid">
   <app-titulo-pagina icone="list">Categorias</app-titulo-pagina>
   <ng-container [ngSwitch]="(categorias$ | async)?.length">
     <app-descricao-pagina *ngSwitchCase="0">
@@ -20,12 +20,12 @@
       Você tem {{ (categorias$ | async)?.length }} categorias cadastradas.
     </app-descricao-pagina>
   </ng-container>
-  <section #tabelaDespesas>
-    <div class="row gap-3">
+  <section aria-label="Listagem de Categorias">
+    <div class="d-inline-flex flex-wrap gap-3 w-100">
       <mat-card *ngFor="let categoria of (categorias$ | async)"
         (mouseenter)="ativarHover(categoria.id)"
         (mouseleave)="desativarHover()"
-        class="col-md-3 p-3">
+        class="col p-3">
         <mat-card-title class="d-flex fs-6">
           <a class="card-titulo" [routerLink]="['/categorias/editar', categoria.id]">
             <mat-label>{{ categoria.titulo }}</mat-label>
