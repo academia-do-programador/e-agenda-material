@@ -138,6 +138,15 @@ mat-header-row,
 th.mat-header-cell {
   border-bottom-color: #ADACD9 !important;
 }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+transition: background-color 5000s;
+-webkit-text-fill-color: #fff !important;
+}
+
 /**
 * Generated theme by Material Theme Generator
 * https://materialtheme.arcsine.dev

@@ -13,6 +13,7 @@ import { AuthModule } from './auth/auth.module';
 import { ShellModule } from './shell/shell.module';
 import { NotificationModule } from './notification/notification.module';
 import { NotFoundModule } from './not-found/not-found.module';
+import { SharedModule } from './shared/shared.module';
 
 // Configuração de localização
 registerLocaleData(ptBr);

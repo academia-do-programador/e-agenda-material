@@ -14,6 +14,7 @@ import { ShellComponent } from './shell.component';
 import { ShellUserInfoComponent } from './shell-user-info/shell-user-info.component';
 import { DashboardModule } from '../dashboard/dashboard.module';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 @NgModule({
   declarations: [ShellComponent, ShellUserInfoComponent],
   exports: [ShellComponent, ShellUserInfoComponent],
@@ -28,7 +29,8 @@ import { RouterModule } from '@angular/router';
     MatMenuModule,
     MatExpansionModule,
     RouterModule,
-    DashboardModule
+    DashboardModule,
+    SharedModule
   ]
 })
 export class ShellModule { }

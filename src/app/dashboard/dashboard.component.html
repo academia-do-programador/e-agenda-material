@@ -1,10 +1,10 @@
-<div class="container-fluid align-items-center justify-content-center h-100">
+<div class="container-fluid">
 
-  <div class="row align-items-center">
-    <section aria-label="Painel do Usuário" class="col-sm col-lg-4">
+  <div class="row justify-content-center">
+    <section aria-label="Painel do Usuário" class="col-md-6">
       <app-titulo-pagina icone="view_timeline">Dashboard</app-titulo-pagina>
       <mat-card>
-        <mat-card-content class="p-2 p-md-4 d-grid gap-4">
+        <mat-card-content class="p-2 p-md-4 d-grid gap-3">
           <h2 class="fs-4">
             Olá,
             <span class="text-primary">{{ (usuarioLogado$ | async)?.nome }}</span>!
@@ -14,10 +14,10 @@
             <p>Você pode explorar as funcionalidades através da barra lateral esquerda.</p>
           </section>
 
-          <section class="fs-6 mt-3 row justify-content-center text-center" aria-label="Redirecionamento para cadastro de tarefas">
+          <section class="fs-6 row justify-content-center text-center" aria-label="Redirecionamento para cadastro de tarefas">
             <p>Ainda não sabe o que fazer?</p>
             <a mat-flat-button
-              class="fs-6 col-11 py-1"
+              class="fs-6 col py-1"
               routerLink="/tarefas/listar"
               color="accent"
               role="button">
@@ -30,8 +30,8 @@
 
     </section>
 
-    <figure class="d-none d-lg-block col-auto align-items-center p-2">
-      <img src="/assets/undraw-join.svg" class="img-fluid mw-100" height="450" alt="Imagem ilustrando pessoas interagindo com uma aplicação">
+    <figure class=" d-lg-block col-auto align-items-center p-2">
+      <img src="/assets/undraw-join.svg" class="img-fluid mw-100" height="420" alt="Imagem ilustrando uma pessoa interagindo com a aplicação">
     </figure>
   </div>
 </div>

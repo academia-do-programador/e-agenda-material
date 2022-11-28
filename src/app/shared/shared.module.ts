@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatListModule } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { DescricaoPaginaComponent } from './descricao-pagina/descricao-pagina.component';
 
@@ -21,7 +22,8 @@ import { DescricaoPaginaComponent } from './descricao-pagina/descricao-pagina.co
     ItemListComponent,
     DescricaoPaginaComponent,
 
-    MatTooltipModule
+    MatTooltipModule,
+    MatTabsModule,
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { DescricaoPaginaComponent } from './descricao-pagina/descricao-pagina.co
     MatCardModule,
     MatListModule,
     MatChipsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatTabsModule
   ]
 })
 export class SharedModule { }
