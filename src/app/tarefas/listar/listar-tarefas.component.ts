@@ -1,7 +1,7 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { map, Observable, shareReplay } from 'rxjs';
+import { Observable } from 'rxjs';
 import { BaseCardListComponent } from 'src/app/shared/base-card-list/base-card-list.component';
 import { TarefasService } from '../services/tarefas.service';
 import { ListarTarefaViewModel } from '../view-models/listar-tarefa.view-model';
@@ -15,6 +15,8 @@ export class ListarTarefasComponent
   implements OnInit {
 
   tarefas$: Observable<ListarTarefaViewModel[]>;
+  filtrosTarefas: string[] = ['Todas', 'Pendentes', 'Concluídas'];
+  filtroSelecionado: number = 0;
 
   constructor(
     titulo: Title,
@@ -29,4 +31,13 @@ export class ListarTarefasComponent
     this.tarefas$ = this.tarefasService.selecionarTodos();
   }
 
+  trocarFiltro(tipoFiltro: number) {
+    this.filtroSelecionado = tipoFiltro;
+
+    switch (tipoFiltro) {
+      default: this.tarefas$ = this.tarefasService.selecionarTodos(); break;
+      case 1: this.tarefas$ = this.tarefasService.selecionarTarefasPendentes(); break;
+      case 2: this.tarefas$ = this.tarefasService.selecionarTarefasConcluidas(); break;
+    }
+  }
 }

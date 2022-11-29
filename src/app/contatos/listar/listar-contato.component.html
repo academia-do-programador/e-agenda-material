@@ -20,12 +20,12 @@
       Você tem {{ (contatos$  | async)?.length }} contatos cadastrados.
     </app-descricao-pagina>
   </ng-container>
-  <section #tabelaDespesas>
-    <div class="d-inline-flex flex-wrap gap-3 w-100">
+  <section aria-label="Listagem de Contatos">
+    <div class="app-card-list">
       <mat-card *ngFor="let contato of (contatos$ | async)"
         (mouseenter)="ativarHover(contato.id)"
         (mouseleave)="desativarHover()"
-        class="col p-3">
+        class="app-card">
         <mat-card-title class="d-flex fs-6 h-25">
           <a class="card-titulo" [routerLink]="['/contatos/editar', contato.id]">
             <mat-label>{{ contato.nome }}</mat-label>

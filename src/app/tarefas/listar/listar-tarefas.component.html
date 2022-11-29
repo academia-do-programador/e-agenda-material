@@ -9,58 +9,51 @@
 
 <div class="container-fluid">
   <app-titulo-pagina icone="list">Tarefas</app-titulo-pagina>
-  <ng-container [ngSwitch]="(tarefas$ | async)?.length">
-    <app-descricao-pagina *ngSwitchCase="0">
-      Nenhuma tarefa cadastrada.
-    </app-descricao-pagina>
-    <app-descricao-pagina *ngSwitchCase="1">
-      Você tem apenas uma tarefa cadastrada.
-    </app-descricao-pagina>
-    <app-descricao-pagina *ngSwitchDefault>
-      Você tem {{ (tarefas$  | async)?.length }} tarefas cadastradas.
-    </app-descricao-pagina>
-  </ng-container>
   <section aria-label="Listagem de Tarefas">
-    <div class="d-inline-flex flex-wrap gap-3 w-100">
-      <mat-card *ngFor="let tarefa of (tarefas$ | async)"
-        (mouseenter)="ativarHover(tarefa.id)"
-        (mouseleave)="desativarHover()"
-        class="col p-3">
-        <mat-card-title class="d-flex fs-6">
-          <a class="card-titulo" [routerLink]="['/tarefas/editar', tarefa.id]">
-            <mat-label>{{ tarefa.titulo }}</mat-label>
-          </a>
-          <div class="card-hover-buttons" *ngIf="cardSelecionada == tarefa.id && !(usuarioMobile$ | async)">
-            <a mat-mini-fab color="warn"
-              [routerLink]="['/tarefas/excluir', tarefa.id]"
-              aria-label="Excluir"
-              matTooltip="Excluir">
-              <mat-icon class="fs-4">delete</mat-icon>
-            </a>
-          </div>
-          <div class="ms-auto" *ngIf="(usuarioMobile$ | async)">
-            <a mat-mini-fab color="warn"
-              [routerLink]="['/tarefas/excluir', tarefa.id]"
-              aria-label="Excluir"
-              matTooltip="Excluir">
-              <mat-icon class="">delete</mat-icon>
-            </a>
-          </div>
-        </mat-card-title>
-        <mat-card-subtitle>Prioridade: {{ tarefa.prioridade }}</mat-card-subtitle>
-        <mat-card-actions>
-          <div class="row align-items-center me-1">
-            <mat-chip-list>
-              <mat-chip
-                class="ms-auto chip-forma-pagamento col-5 justify-content-center">
-                <small>
-                  {{ tarefa.situacao }}
-                </small>
-              </mat-chip>
-            </mat-chip-list>
-          </div>
-        </mat-card-actions>
-      </mat-card>
-    </div>
+    <mat-tab-group dynamicHeight (selectedIndexChange)="trocarFiltro($event)">
+      <mat-tab *ngFor="let filtro of filtrosTarefas" [label]="filtro">
+        <div class="app-card-list mt-3">
+          <mat-card *ngFor="let tarefa of (tarefas$ | async)"
+            (mouseenter)="ativarHover(tarefa.id)"
+            (mouseleave)="desativarHover()"
+            class="app-card">
+            <mat-card-title class="d-flex fs-6">
+              <a class="card-titulo" [routerLink]="['/tarefas/editar', tarefa.id]">
+                <mat-label>{{ tarefa.titulo }}</mat-label>
+              </a>
+              <div class="card-hover-buttons" *ngIf="cardSelecionada == tarefa.id && !(usuarioMobile$ | async)">
+                <a mat-mini-fab color="warn"
+                  [routerLink]="['/tarefas/excluir', tarefa.id]"
+                  aria-label="Excluir"
+                  matTooltip="Excluir">
+                  <mat-icon class="fs-4">delete</mat-icon>
+                </a>
+              </div>
+              <div class="ms-auto" *ngIf="(usuarioMobile$ | async)">
+                <a mat-mini-fab color="warn"
+                  [routerLink]="['/tarefas/excluir', tarefa.id]"
+                  aria-label="Excluir"
+                  matTooltip="Excluir">
+                  <mat-icon class="">delete</mat-icon>
+                </a>
+              </div>
+            </mat-card-title>
+            <mat-card-subtitle>Prioridade: {{ tarefa.prioridade }}</mat-card-subtitle>
+            <mat-card-actions>
+              <div class="row align-items-center me-1">
+                <mat-chip-list>
+                  <mat-chip
+                    class="ms-auto chip-forma-pagamento col-5 justify-content-center">
+                    <small>
+                      {{ tarefa.situacao }}
+                    </small>
+                  </mat-chip>
+                </mat-chip-list>
+              </div>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
   </section>
 </div>

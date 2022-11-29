@@ -16,6 +16,23 @@ body { margin: 0; }
 dt { text-align: left; }
 dd { text-align: right; }
 
+.app-card-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+
+  height: 100%;
+  gap: 1em;
+}
+
+.app-card {
+  flex-basis: 240px;
+
+  @media screen and (max-width: 768px) {
+    flex-grow: 1;
+  }
+}
+
 .bg-card {
   background-color: #323259 !important;
 }
@@ -137,6 +154,10 @@ mat-form-field .mat-form-field {
 mat-header-row,
 th.mat-header-cell {
   border-bottom-color: #ADACD9 !important;
+}
+
+.mat-tab-label-active{
+  opacity: 1;
 }
 
 input:-webkit-autofill,

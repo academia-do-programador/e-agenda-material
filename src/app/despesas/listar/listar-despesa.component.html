@@ -21,11 +21,11 @@
     </app-descricao-pagina>
   </ng-container>
   <section #tabelaDespesas>
-    <div class="d-inline-flex flex-wrap gap-3 w-100">
+    <div class="app-card-list">
       <mat-card [ngClass]="{ 'card-shadow': cardSelecionada === despesa.id }" *ngFor="let despesa of (despesas$ | async)"
         (mouseenter)="ativarHover(despesa.id)"
         (mouseleave)="desativarHover()"
-        class="col p-3">
+        class="app-card">
         <mat-card-title class="d-flex fs-6">
           <a class="card-titulo" [routerLink]="['/despesas/editar', despesa.id]">
             <mat-label>{{ despesa.descricao }}</mat-label>

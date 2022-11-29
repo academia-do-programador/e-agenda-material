@@ -43,6 +43,31 @@ export class TarefasService {
   public selecionarTodos(): Observable<ListarTarefaViewModel[]> {
     const resposta = this.http
       .get<ListarTarefaViewModel[]>(this.apiUrl + 'tarefas', this.obterHeadersAutorizacao())
+      .pipe(
+        map(this.processarDados),
+        map(this.ordenarTarefasPorSituacao),
+        shareReplay(),
+        catchError(this.processarFalha)
+      );
+
+    return resposta;
+  }
+
+  public selecionarTarefasPendentes(): Observable<ListarTarefaViewModel[]> {
+    const resposta = this.http
+      .get<ListarTarefaViewModel[]>(this.apiUrl + 'tarefas?status=1', this.obterHeadersAutorizacao())
+      .pipe(
+        map(this.processarDados),
+        shareReplay(),
+        catchError(this.processarFalha)
+      );
+
+    return resposta;
+  }
+
+  public selecionarTarefasConcluidas(): Observable<ListarTarefaViewModel[]> {
+    const resposta = this.http
+      .get<ListarTarefaViewModel[]>(this.apiUrl + 'tarefas?status=2', this.obterHeadersAutorizacao())
       .pipe(map(this.processarDados), shareReplay(), catchError(this.processarFalha));
 
     return resposta;
@@ -85,5 +110,17 @@ export class TarefasService {
 
   private processarFalha(resposta: any) {
     return throwError(() => new Error(resposta.error.erros[0]));
+  }
+
+  private ordenarTarefasPorSituacao(tarefas: ListarTarefaViewModel[]) {
+    return tarefas.sort((a: ListarTarefaViewModel, b: ListarTarefaViewModel) => {
+      if (a.situacao < b.situacao)
+        return 1;
+
+      if (a.situacao > b.situacao)
+        return -1;
+
+      return 0;
+    });
   }
 }

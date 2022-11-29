@@ -21,11 +21,11 @@
     </app-descricao-pagina>
   </ng-container>
   <section aria-label="Listagem de Compromissos">
-    <div class="d-inline-flex flex-wrap gap-3 w-100">
+    <div class="app-card-list">
       <mat-card [ngClass]="{ 'card-shadow': cardSelecionada === compromisso.id }" *ngFor="let compromisso of (compromissos$ | async)"
         (mouseenter)="ativarHover(compromisso.id)"
         (mouseleave)="desativarHover()"
-        class="col p-3">
+        class="app-card">
         <mat-card-title class="d-flex fs-6">
           <a class="card-titulo" [routerLink]="['/compromissos/editar', compromisso.id]">
             <mat-label>{{ compromisso.assunto }}</mat-label>
