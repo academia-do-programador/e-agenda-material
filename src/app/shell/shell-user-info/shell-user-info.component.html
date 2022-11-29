@@ -1,7 +1,7 @@
 <div class="shell-user-info" *ngIf="usuario; else auth;">
   <button data-cy="btnMenuUsuario" mat-stroked-button [matMenuTriggerFor]="menu" aria-label="Abrir menu do usuário">
     <mat-icon>person</mat-icon>
-    {{ (handset | async) ? '' : usuario.nome }}
+    {{ (handset | async) ? usuario.nome.substring(0, 1) : usuario.nome }}
 
   </button>
     <mat-menu #menu>
