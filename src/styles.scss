@@ -81,6 +81,10 @@ dd { text-align: right; }
   border: 1px $app-primary solid !important;
 }
 
+.mini-fab-user-info {
+  border-width: 2.5px !important;
+}
+
 .chip-forma-pagamento::after {
   background: inherit !important;
 }
