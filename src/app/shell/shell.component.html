@@ -22,7 +22,7 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="row">
-    <mat-toolbar color="primary" class="d-flex px-4 border-bottom">
+    <mat-toolbar [ngClass]="{ 'app-top-toolbar-mobile': (isHandset$ | async)}" color="primary" class="d-flex px-4 border-bottom">
       <button mat-icon-button
         type="button"
         aria-label="Ativar barra lateral"

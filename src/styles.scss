@@ -33,6 +33,11 @@ dd { text-align: right; }
   }
 }
 
+.app-top-toolbar-mobile {
+  min-height: 70px !important;
+  height: 70px !important;
+}
+
 .bg-card {
   background-color: #323259 !important;
 }
@@ -164,6 +169,8 @@ th.mat-header-cell {
 .mat-tab-label-active{
   opacity: 1;
 }
+
+
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
