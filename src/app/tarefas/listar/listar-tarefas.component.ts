@@ -15,8 +15,7 @@ export class ListarTarefasComponent
   implements OnInit {
 
   tarefas$: Observable<ListarTarefaViewModel[]>;
-  filtrosTarefas: string[] = ['Todas', 'Pendentes', 'Concluídas'];
-  filtroSelecionado: number = 0;
+  filtrosTarefas: string[] = ['Pendentes', 'Concluídas'];
 
   constructor(
     titulo: Title,
@@ -28,16 +27,13 @@ export class ListarTarefasComponent
   }
 
   ngOnInit(): void {
-    this.tarefas$ = this.tarefasService.selecionarTodos();
+    this.tarefas$ = this.tarefasService.selecionarTarefasPendentes();
   }
 
   trocarFiltro(tipoFiltro: number) {
-    this.filtroSelecionado = tipoFiltro;
-
     switch (tipoFiltro) {
-      default: this.tarefas$ = this.tarefasService.selecionarTodos(); break;
-      case 1: this.tarefas$ = this.tarefasService.selecionarTarefasPendentes(); break;
-      case 2: this.tarefas$ = this.tarefasService.selecionarTarefasConcluidas(); break;
+      default: this.tarefas$ = this.tarefasService.selecionarTarefasPendentes(); break;
+      case 1: this.tarefas$ = this.tarefasService.selecionarTarefasConcluidas(); break;
     }
   }
 }
