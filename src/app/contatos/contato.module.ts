@@ -12,6 +12,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
 import { SharedModule } from '../shared/shared.module';
 import { ListarContatoComponent } from './listar/listar-contato.component';
 import { InserirContatoComponent } from './inserir/inserir-contato.component';
@@ -36,6 +38,7 @@ import { NgxMaskModule } from 'ngx-mask';
     MatCardModule,
     MatTableModule,
     MatButtonModule,
+    MatSlideToggleModule,
     MatMenuModule,
     MatInputModule,
     MatIconModule,

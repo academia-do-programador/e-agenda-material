@@ -10,9 +10,7 @@ import { FormsContatoViewModel } from '../view-models/forms-contato.view-model';
 
 @Component({
   selector: 'app-inserir-contato',
-  templateUrl: './inserir-contato.component.html',
-  styles: [
-  ]
+  templateUrl: './inserir-contato.component.html'
 })
 export class InserirContatoComponent
   extends BaseFormComponent
@@ -39,6 +37,7 @@ export class InserirContatoComponent
       email: ['', [Validators.required, Validators.email]],
       empresa: ['', [Validators.required, Validators.minLength(3)]],
       cargo: ['', [Validators.required, Validators.minLength(3)]],
+      favorito: [false, [Validators.required]],
     });
   }
 
@@ -61,6 +60,11 @@ export class InserirContatoComponent
   get cargo() {
     return this.formContato.get('cargo');
   }
+
+  get favorito() {
+    return this.formContato.get('favorito');
+  }
+
 
   public gravar() {
     if (this.formContato.invalid) {

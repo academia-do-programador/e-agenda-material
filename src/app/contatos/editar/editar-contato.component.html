@@ -75,6 +75,15 @@
                 <span *ngIf="cargo?.errors?.['required']">O cargo é obrigatório.</span>
               </mat-error>
           </mat-form-field>
+
+
+          <div class="d-flex justify-content-between align-items-center">
+            <mat-label class="fs-5 fw-semibold">Contato Favorito?</mat-label>
+
+            <mat-slide-toggle class="text-center" formControlName="favorito" class="ms-auto">
+              {{favorito?.value === true ? 'Sim' : 'Não' }}
+            </mat-slide-toggle>
+          </div>
         </form>
       </mat-card-content>
       <mat-card-footer class="my-2">

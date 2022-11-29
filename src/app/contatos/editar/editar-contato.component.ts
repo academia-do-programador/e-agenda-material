@@ -42,6 +42,7 @@ export class EditarContatoComponent
       email: ['', [Validators.required, Validators.email]],
       empresa: ['', [Validators.required, Validators.minLength(3)]],
       cargo: ['', [Validators.required, Validators.minLength(3)]],
+      favorito: ['', [Validators.required]],
     });
 
     this.formContato.patchValue({
@@ -50,7 +51,9 @@ export class EditarContatoComponent
       email: this.contatoFormVM.email,
       empresa: this.contatoFormVM.empresa,
       cargo: this.contatoFormVM.cargo,
+      favorito: this.contatoFormVM.favorito,
     });
+
   }
   get nome() {
     return this.formContato.get('nome');
@@ -70,6 +73,10 @@ export class EditarContatoComponent
 
   get cargo() {
     return this.formContato.get('cargo');
+  }
+
+  get favorito() {
+    return this.formContato.get('favorito');
   }
 
   public gravar() {

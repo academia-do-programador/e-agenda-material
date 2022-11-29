@@ -5,4 +5,5 @@ export class FormsContatoViewModel {
   email: string;
   empresa: string;
   cargo: string;
+  favorito: string;
 }

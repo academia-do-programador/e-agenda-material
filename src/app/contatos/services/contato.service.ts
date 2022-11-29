@@ -48,6 +48,22 @@ export class ContatoService {
     return resposta;
   }
 
+  public selecionarContatosFavoritos(): Observable<ListarContatoViewModel[]> {
+    const resposta = this.http
+      .get<ListarContatoViewModel[]>(this.apiUrl + 'contatos?statusFavorito=1', this.obterHeadersAutorizacao())
+      .pipe(map(this.processarDados), shareReplay(), catchError(this.processarFalha));
+
+    return resposta;
+  }
+
+  public selecionarContatosNaoFavoritos(): Observable<ListarContatoViewModel[]> {
+    const resposta = this.http
+      .get<ListarContatoViewModel[]>(this.apiUrl + 'contatos?statusFavorito=2', this.obterHeadersAutorizacao())
+      .pipe(map(this.processarDados), shareReplay(), catchError(this.processarFalha));
+
+    return resposta;
+  }
+
   public selecionarPorId(id: string): Observable<FormsContatoViewModel> {
     const resposta = this.http
       .get<FormsContatoViewModel>(this.apiUrl + 'contatos/' + id, this.obterHeadersAutorizacao())
@@ -59,6 +75,18 @@ export class ContatoService {
   public selecionarContatoCompletoPorId(id: string): Observable<VisualizarContatoViewModel> {
     const resposta = this.http
       .get<VisualizarContatoViewModel>(this.apiUrl + 'contatos/visualizacao-completa/' + id, this.obterHeadersAutorizacao())
+      .pipe(map(this.processarDados), catchError(this.processarFalha));
+
+    return resposta;
+  }
+
+  public ativarStatusFavorito(contatoId: string): Observable<FormsContatoViewModel> {
+    const resposta = this.http
+      .put<FormsContatoViewModel>(
+        this.apiUrl + 'contatos/favoritos/' + contatoId,
+        null,
+        this.obterHeadersAutorizacao()
+      )
       .pipe(map(this.processarDados), catchError(this.processarFalha));
 
     return resposta;

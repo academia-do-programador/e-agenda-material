@@ -30,8 +30,8 @@ export class ListarTarefasComponent
     this.tarefas$ = this.tarefasService.selecionarTarefasPendentes();
   }
 
-  trocarFiltro(tipoFiltro: number) {
-    switch (tipoFiltro) {
+  trocarFiltro(filtroSelecionado: number) {
+    switch (filtroSelecionado) {
       default: this.tarefas$ = this.tarefasService.selecionarTarefasPendentes(); break;
       case 1: this.tarefas$ = this.tarefasService.selecionarTarefasConcluidas(); break;
     }

@@ -4,4 +4,5 @@ export class ListarContatoViewModel {
   telefone: string;
   cargo: string;
   empresa: string;
+  favorito: boolean;
 }

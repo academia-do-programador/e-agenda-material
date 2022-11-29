@@ -8,53 +8,56 @@
 </a>
 
 <div class="container-fluid">
-  <app-titulo-pagina icone="list">Contatos</app-titulo-pagina>
-  <ng-container [ngSwitch]="(contatos$  | async)?.length">
-    <app-descricao-pagina *ngSwitchCase="0">
-      Nenhuma contato cadastrado.
-    </app-descricao-pagina>
-    <app-descricao-pagina *ngSwitchCase="1">
-      Você tem apenas um contato cadastrado.
-    </app-descricao-pagina>
-    <app-descricao-pagina *ngSwitchDefault>
-      Você tem {{ (contatos$  | async)?.length }} contatos cadastrados.
-    </app-descricao-pagina>
-  </ng-container>
-  <section aria-label="Listagem de Contatos">
-    <div class="app-card-list">
-      <mat-card *ngFor="let contato of (contatos$ | async)"
-        (mouseenter)="ativarHover(contato.id)"
-        (mouseleave)="desativarHover()"
-        class="app-card">
-        <mat-card-title class="d-flex fs-6 h-25">
-          <a class="card-titulo" [routerLink]="['/contatos/editar', contato.id]">
-            <mat-label>{{ contato.nome }}</mat-label>
-          </a>
-          <div class="card-hover-buttons" *ngIf="cardSelecionada == contato.id && !(usuarioMobile$ | async)">
-            <a mat-mini-fab color="warn"
-              [routerLink]="['/contatos/excluir', contato.id]"
-              aria-label="Excluir"
-              matTooltip="Excluir">
-              <mat-icon class="fs-4">delete</mat-icon>
-            </a>
-          </div>
-          <div class="ms-auto" *ngIf="(usuarioMobile$ | async)">
-            <a mat-mini-fab color="warn"
-              [routerLink]="['/contatos/excluir', contato.id]"
-              aria-label="Excluir"
-              matTooltip="Excluir">
-              <mat-icon class="">delete</mat-icon>
-            </a>
-          </div>
-        </mat-card-title>
-        <mat-card-subtitle class="h-25">
-          <span>{{ contato.cargo }} na empresa {{ contato.empresa }}</span>
-        </mat-card-subtitle>
+  <app-titulo-pagina>Visualização de Contatos</app-titulo-pagina>
+  <section>
+    <mat-tab-group #tabGroup dynamicHeight (selectedIndexChange)="trocarFiltro($event)">
+      <mat-tab *ngFor="let filtro of filtrosContatos" [label]="filtro">
+        <div class="app-card-list mt-3">
+          <mat-card *ngFor="let contato of (contatos$ | async)"
+            (mouseenter)="ativarHover(contato.id)"
+            (mouseleave)="desativarHover()"
+            class="app-card">
+            <mat-card-title class="d-flex fs-6 h-25">
+              <a class="card-titulo" [routerLink]="['/contatos/editar', contato.id]">
+                <mat-label>{{ contato.nome }}</mat-label>
+              </a>
+              <div class="card-hover-buttons" *ngIf="cardSelecionada == contato.id && !(usuarioMobile$ | async)">
+                <a mat-mini-fab color="warn"
+                  (click)="ativarStatusFavorito(contato)"
+                  [attr.aria-label]="contato.favorito ? 'Remover dos Favoritos' : 'Adicionar aos Favoritos'"
+                  [matTooltip]="contato.favorito ? 'Remover dos Favoritos' : 'Adicionar aos Favoritos'">
+                  <mat-icon class="fs-4">{{ contato.favorito ? 'bookmark_remove' : 'bookmark_add' }}</mat-icon>
+                </a>
+                <a mat-mini-fab color="warn"
+                  [routerLink]="['/contatos/excluir', contato.id]"
+                  aria-label="Excluir"
+                  matTooltip="Excluir">
+                  <mat-icon class="fs-4">delete</mat-icon>
+                </a>
+              </div>
+              <div class="row gap-1 ms-auto me-1" *ngIf="(usuarioMobile$ | async)">
+                <a mat-mini-fab color="warn" class="mini-fab-transparent mat-elevation-z0"
+                  (click)="ativarStatusFavorito(contato)"
+                  [attr.aria-label]="contato.favorito ? 'Remover dos Favoritos' : 'Adicionar aos Favoritos'">
+                  <mat-icon class="fs-4">{{ contato.favorito ? 'bookmark_remove' : 'bookmark_add' }}</mat-icon>
+                </a>
+                <a mat-mini-fab color="warn" class="mini-fab-transparent mat-elevation-z0"
+                  [routerLink]="['/contatos/excluir', contato.id]"
+                  aria-label="Excluir">
+                  <mat-icon class="">delete</mat-icon>
+                </a>
+              </div>
+            </mat-card-title>
+            <mat-card-subtitle class="h-25">
+              <span>{{ contato.cargo }} na empresa {{ contato.empresa }}</span>
+            </mat-card-subtitle>
 
-        <mat-card-actions class="container-fluid px-2 my-2 my-md-0 h-25">
-          <mat-label class="row align-items-center justify-content-between"><mat-icon matPrefix>phone</mat-icon>{{ contato.telefone }}</mat-label>
-        </mat-card-actions>
-      </mat-card>
-    </div>
+            <mat-card-actions class="container-fluid px-2 my-2 my-md-0 h-25">
+              <mat-label class="row align-items-center justify-content-between"><mat-icon matPrefix>phone</mat-icon>{{ contato.telefone }}</mat-label>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
   </section>
 </div>
