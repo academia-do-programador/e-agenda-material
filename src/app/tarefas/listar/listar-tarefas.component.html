@@ -8,7 +8,7 @@
 </a>
 
 <div class="container-fluid">
-  <app-titulo-pagina icone="list">Visualização de Tarefas</app-titulo-pagina>
+  <app-titulo-pagina>Visualização de Tarefas</app-titulo-pagina>
   <section aria-label="Listagem de Tarefas">
     <mat-tab-group dynamicHeight (selectedIndexChange)="trocarFiltro($event)">
       <mat-tab *ngFor="let filtro of filtrosTarefas" [label]="filtro">
