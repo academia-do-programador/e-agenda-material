@@ -12,12 +12,12 @@
   <section aria-label="Listagem de Tarefas">
     <mat-tab-group dynamicHeight (selectedIndexChange)="trocarFiltro($event)">
       <mat-tab *ngFor="let filtro of filtrosTarefas" [label]="filtro">
-        <div class="app-card-list mt-3">
+        <div class="app-card-list mt-4">
           <mat-card *ngFor="let tarefa of (tarefas$ | async)"
             (mouseenter)="ativarHover(tarefa.id)"
             (mouseleave)="desativarHover()"
             class="app-card">
-            <mat-card-title class="d-flex fs-6">
+            <mat-card-title class="d-flex align-items-center fs-6">
               <a class="card-titulo" [routerLink]="['/tarefas/editar', tarefa.id]">
                 <mat-label>{{ tarefa.titulo }}</mat-label>
               </a>
@@ -30,7 +30,7 @@
                 </a>
               </div>
               <div class="ms-auto" *ngIf="(usuarioMobile$ | async)">
-                <a mat-mini-fab color="warn"
+                <a mat-mini-fab color="warn" class="mini-fab-transparent mat-elevation-z0"
                   [routerLink]="['/tarefas/excluir', tarefa.id]"
                   aria-label="Excluir"
                   matTooltip="Excluir">
