@@ -1,3 +1,20 @@
+<div class="overlay-botoes">
+  <button mat-fab
+    color="primary"
+    aria-label="Voltar"
+    matTooltip="Voltar"
+    routerLink="/despesas">
+    <mat-icon>home</mat-icon>
+  </button>
+  <button mat-fab
+    aria-label="Confirmar"
+    matTooltip="Confirmar"
+    (click)="gravar()">
+    <mat-icon>check</mat-icon>
+  </button>
+</div>
+
+
 <div class="container h-100 align-items-start justify-content-start">
   <section class="col-sm col-lg-6 col-xxl-7">
     <app-titulo-pagina icone="add">Despesas</app-titulo-pagina>
@@ -76,27 +93,6 @@
         </mat-form-field>
         </form>
       </mat-card-content>
-      <mat-card-footer class="my-2">
-        <div class="row px-4 gap-2">
-          <button mat-stroked-button
-            color="accent"
-            class="col"
-            type="button"
-            routerLink="/despesas">
-            <mat-icon>home</mat-icon>
-            Voltar
-          </button>
-          <button mat-flat-button
-            color="accent"
-            class="col"
-            data-cy="btnConfirmar"
-            (click)="gravar()"
-            type="button">
-            <mat-icon>check</mat-icon>
-            Confirmar
-          </button>
-        </div>
-      </mat-card-footer>
     </mat-card>
   </section>
 </div>

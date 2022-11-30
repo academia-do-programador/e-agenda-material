@@ -15,6 +15,8 @@ export class ListarDespesaComponent
   implements OnInit {
 
   despesas$: Observable<ListarDespesaViewModel[]>;
+  filtrosDespesas: string[] = ['Recentes (30 dias)', 'Antigas']
+
   constructor(
     titulo: Title,
     breakpoint: BreakpointObserver,
@@ -25,7 +27,14 @@ export class ListarDespesaComponent
   }
 
   ngOnInit(): void {
-    this.despesas$ = this.despesaService.selecionarTodos();
+    this.despesas$ = this.despesaService.selecionarDespesasRecentes();
+  }
+
+  trocarFiltro(filtroSelecionado: number) {
+    switch (filtroSelecionado) {
+      default: this.despesas$ = this.despesaService.selecionarDespesasRecentes(); break;
+      case 1: this.despesas$ = this.despesaService.selecionarDespesasAntigas(); break;
+    }
   }
 
   public gerarIconeFormaPagamento(formaPagamento?: string): string {

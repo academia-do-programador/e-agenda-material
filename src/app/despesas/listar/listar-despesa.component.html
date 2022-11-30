@@ -9,65 +9,58 @@
 
 <div class="container-fluid">
   <app-titulo-pagina>Visualização de Despesas</app-titulo-pagina>
-  <ng-container [ngSwitch]="(despesas$  | async)?.length">
-    <app-descricao-pagina *ngSwitchCase="0">
-      Nenhuma despesa cadastrada.
-    </app-descricao-pagina>
-    <app-descricao-pagina *ngSwitchCase="1">
-      Você tem apenas uma despesa cadastrada.
-    </app-descricao-pagina>
-    <app-descricao-pagina *ngSwitchDefault>
-      Você tem {{ (despesas$  | async)?.length }} despesas cadastradas.
-    </app-descricao-pagina>
-  </ng-container>
-  <section #tabelaDespesas>
-    <div class="app-card-list">
-      <mat-card [ngClass]="{ 'card-shadow': cardSelecionada === despesa.id }" *ngFor="let despesa of (despesas$ | async)"
-        (mouseenter)="ativarHover(despesa.id)"
-        (mouseleave)="desativarHover()"
-        class="app-card">
-        <mat-card-title class="d-flex align-items-center fs-6">
-          <a class="card-titulo" [routerLink]="['/despesas/editar', despesa.id]">
-            <mat-label>{{ despesa.descricao }}</mat-label>
-          </a>
-          <div class="card-hover-buttons" *ngIf="cardSelecionada === despesa.id && !(usuarioMobile$ | async)">
-            <a mat-mini-fab color="warn"
-              [routerLink]="['/despesas/excluir', despesa.id]"
-              aria-label="Excluir"
-              matTooltip="Excluir">
-              <mat-icon class="fs-4">delete</mat-icon>
-            </a>
-          </div>
-          <div class="ms-auto" *ngIf="(usuarioMobile$ | async)">
-            <a mat-mini-fab color="warn"
-              class="mini-fab-transparent mat-elevation-z0"
-              [routerLink]="['/despesas/excluir', despesa.id]"
-              aria-label="Excluir"
-              matTooltip="Excluir">
-              <mat-icon class="">delete</mat-icon>
-            </a>
-          </div>
-        </mat-card-title>
-        <mat-card-subtitle>
-          Registrada em {{ despesa.data | date: 'dd/MM/yyyy' }}
-        </mat-card-subtitle>
-        <mat-card-actions class="px-2">
-          <div class="row align-items-center">
-            <mat-chip-list>
-              <mat-chip disableRipple
-                class="chip-forma-pagamento col-6 px-2">
-                <mat-icon matChipAvatar>{{ gerarIconeFormaPagamento(despesa.formaPagamento) }}</mat-icon>
-                <small class="fw-light">
-                  {{ despesa.formaPagamento }}
-                </small>
-              </mat-chip>
-              <span class="col text-end fs-6 fw-normal">
-                {{ despesa.valor | currency }}
-              </span>
-            </mat-chip-list>
-          </div>
-        </mat-card-actions>
-      </mat-card>
-    </div>
+  <section>
+    <mat-tab-group dynamicHeight (selectedIndexChange)="trocarFiltro($event)">
+      <mat-tab *ngFor="let filtro of filtrosDespesas" [label]="filtro">
+        <div class="app-card-list mt-4">
+          <mat-card *ngFor="let despesa of (despesas$ | async)"
+            (mouseenter)="ativarHover(despesa.id)"
+            (mouseleave)="desativarHover()"
+            class="app-card">
+            <mat-card-title class="d-flex align-items-center fs-6">
+              <a class="card-titulo" [routerLink]="['/despesas/editar', despesa.id]">
+                <mat-label>{{ despesa.descricao }}</mat-label>
+              </a>
+              <div class="card-hover-buttons" *ngIf="cardSelecionada === despesa.id && !(usuarioMobile$ | async)">
+                <a mat-mini-fab color="warn"
+                  [routerLink]="['/despesas/excluir', despesa.id]"
+                  aria-label="Excluir"
+                  matTooltip="Excluir">
+                  <mat-icon class="fs-4">delete</mat-icon>
+                </a>
+              </div>
+              <div class="ms-auto" *ngIf="(usuarioMobile$ | async)">
+                <a mat-mini-fab color="warn"
+                  class="mini-fab-transparent mat-elevation-z0"
+                  [routerLink]="['/despesas/excluir', despesa.id]"
+                  aria-label="Excluir"
+                  matTooltip="Excluir">
+                  <mat-icon class="">delete</mat-icon>
+                </a>
+              </div>
+            </mat-card-title>
+            <mat-card-subtitle>
+              Registrada em {{ despesa.data | date: 'dd/MM/yyyy' }}
+            </mat-card-subtitle>
+            <mat-card-actions class="px-2">
+              <div class="row align-items-center">
+                <mat-chip-list>
+                  <mat-chip disableRipple
+                    class="chip-forma-pagamento col-6 px-2">
+                    <mat-icon matChipAvatar>{{ gerarIconeFormaPagamento(despesa.formaPagamento) }}</mat-icon>
+                    <small class="fw-light">
+                      {{ despesa.formaPagamento }}
+                    </small>
+                  </mat-chip>
+                  <span class="col text-end fs-6 fw-normal">
+                    {{ despesa.valor | currency }}
+                  </span>
+                </mat-chip-list>
+              </div>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
   </section>
 </div>

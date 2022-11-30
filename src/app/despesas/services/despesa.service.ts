@@ -48,6 +48,31 @@ export class DespesaService {
     return resposta;
   }
 
+  // Busca despesas dos últimos 30 dias
+  public selecionarDespesasRecentes(): Observable<ListarDespesaViewModel[]> {
+    const resposta = this.http
+      .get<ListarDespesaViewModel[]>(this.apiUrl + 'despesas/ultimos-30-dias', this.obterHeadersAutorizacao())
+      .pipe(
+        map(this.processarDados),
+        map(this.ordenarDespesasPorDataRecente),
+        shareReplay(),
+        catchError(this.processarFalha));
+
+    return resposta;
+  }
+
+  public selecionarDespesasAntigas(): Observable<ListarDespesaViewModel[]> {
+    const resposta = this.http
+      .get<ListarDespesaViewModel[]>(this.apiUrl + 'despesas/antigas', this.obterHeadersAutorizacao())
+      .pipe(
+        map(this.processarDados),
+        map(this.ordenarDespesasPorDataRecente),
+        shareReplay(),
+        catchError(this.processarFalha));
+
+    return resposta;
+  }
+
   public selecionarPorId(id: string): Observable<FormsDespesaViewModel> {
     const resposta = this.http
       .get<FormsDespesaViewModel>(this.apiUrl + 'despesas/' + id, this.obterHeadersAutorizacao())
@@ -84,5 +109,11 @@ export class DespesaService {
 
   private processarFalha(resposta: any) {
     return throwError(() => new Error(resposta.error?.erros[0]));
+  }
+
+  private ordenarDespesasPorDataRecente(despesas: ListarDespesaViewModel[]) {
+    return despesas.sort((a, b) => {
+      return new Date(a.data).getTime() - new Date(b.data).getTime();
+    });
   }
 }
