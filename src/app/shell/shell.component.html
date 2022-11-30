@@ -12,6 +12,7 @@
 
     <mat-nav-list #linksAtivos class="mt-lg-3">
       <a *ngFor="let link of links"
+        class="app-mat-list-item"
         mat-list-item
         [routerLink]="[link.url]"
         routerLinkActive="link-ativo">

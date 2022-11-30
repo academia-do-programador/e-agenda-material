@@ -26,6 +26,12 @@ dd { text-align: right; }
   gap: 1em;
 }
 
+.app-mat-list-item {
+  @media screen and (min-width: 768px) {
+    font-size: 15px !important;
+  }
+}
+
 .app-card {
   flex-basis: 240px;
 
