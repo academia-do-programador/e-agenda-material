@@ -1,4 +1,4 @@
-import { NgModule, DEFAULT_CURRENCY_CODE, LOCALE_ID } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -8,11 +8,10 @@ import ptBr from '@angular/common/locales/pt';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
-import { ShellModule } from './shell/shell.module';
+import { CoreModule } from './core/core.module';
 import { NotFoundModule } from './not-found/not-found.module';
-import { SharedModule } from './shared/shared.module';
+import { ShellModule } from './shell/shell.module';
 
 // Configuração de localização
 registerLocaleData(ptBr);

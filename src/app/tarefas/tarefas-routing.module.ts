@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { EditarTarefaComponent } from './editar/editar-tarefa.component';
 import { ExcluirTarefaComponent } from './excluir/excluir-tarefa.component';
 import { InserirTarefaComponent } from './inserir/inserir-tarefa.component';

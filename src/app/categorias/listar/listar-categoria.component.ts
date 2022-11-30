@@ -1,7 +1,7 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { delay, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { BaseCardListComponent } from 'src/app/shared/base-card-list/base-card-list.component';
 import { CategoriaService } from '../services/categoria.service';
 import { ListarCategoriaViewModel } from '../view-models/listar-categoria.view-model';

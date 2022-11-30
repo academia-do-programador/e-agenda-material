@@ -26,11 +26,6 @@ dd { text-align: right; }
   gap: 1em;
 }
 
-.app-mat-list-item {
-  @media screen and (min-width: 768px) {
-    font-size: 15px !important;
-  }
-}
 
 .app-card {
   flex-basis: 240px;
@@ -43,6 +38,12 @@ dd { text-align: right; }
 .app-top-toolbar-mobile {
   min-height: 70px !important;
   height: 70px !important;
+}
+
+.app-mat-list-item {
+  @media screen and (min-width: 768px) {
+    font-size: 15px !important;
+  }
 }
 
 .bg-card {

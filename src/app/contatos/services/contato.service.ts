@@ -56,7 +56,7 @@ export class ContatoService {
     return resposta;
   }
 
-  public selecionarContatosNaoFavoritos(): Observable<ListarContatoViewModel[]> {
+  public selecionarContatosComuns(): Observable<ListarContatoViewModel[]> {
     const resposta = this.http
       .get<ListarContatoViewModel[]>(this.apiUrl + 'contatos?statusFavorito=2', this.obterHeadersAutorizacao())
       .pipe(map(this.processarDados), shareReplay(), catchError(this.processarFalha));

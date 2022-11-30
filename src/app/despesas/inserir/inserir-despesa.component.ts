@@ -8,7 +8,6 @@ import { ListarCategoriaViewModel } from 'src/app/categorias/view-models/listar-
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { BaseFormComponent } from 'src/app/shared/base-form/base-form.component';
 import { DespesaService } from '../services/despesa.service';
-import { CategoriaSelecionadaViewModel } from '../view-model/categoria-selecionada.view-model';
 import { FormaPgtoDespesaEnum } from '../view-model/forma-pgto-despesa.enum';
 import { FormsDespesaViewModel } from '../view-model/forms-despesa.view-model';
 

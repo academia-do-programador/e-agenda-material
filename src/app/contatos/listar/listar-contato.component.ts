@@ -1,8 +1,7 @@
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTabGroup } from '@angular/material/tabs';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { map, Observable, shareReplay } from 'rxjs';
+import { Observable } from 'rxjs';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { BaseCardListComponent } from 'src/app/shared/base-card-list/base-card-list.component';
 import { ContatoService } from '../services/contato.service';
@@ -31,12 +30,12 @@ export class ListarContatoComponent
   }
 
   ngOnInit(): void {
-    this.contatos$ = this.contatoService.selecionarContatosNaoFavoritos();
+    this.contatos$ = this.contatoService.selecionarContatosComuns();
   }
 
   trocarFiltro(filtroSelecionado: number) {
     switch (filtroSelecionado) {
-      default: this.contatos$ = this.contatoService.selecionarContatosNaoFavoritos(); break;
+      default: this.contatos$ = this.contatoService.selecionarContatosComuns(); break;
       case 1: this.contatos$ = this.contatoService.selecionarContatosFavoritos(); break;
     }
   }
@@ -59,7 +58,7 @@ export class ListarContatoComponent
 
   private processarSucesso(contato: FormsContatoViewModel) {
     if (contato.favorito) {
-      this.contatos$ = this.contatoService.selecionarContatosNaoFavoritos();
+      this.contatos$ = this.contatoService.selecionarContatosComuns();
       return this.notification.sucesso(`Contato '${contato.nome}' adicionado aos favoritos com sucesso!`);
     }
 

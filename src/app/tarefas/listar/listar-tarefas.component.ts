@@ -1,7 +1,9 @@
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+
 import { Observable } from 'rxjs';
+
 import { BaseCardListComponent } from 'src/app/shared/base-card-list/base-card-list.component';
 import { TarefasService } from '../services/tarefas.service';
 import { ListarTarefaViewModel } from '../view-models/listar-tarefa.view-model';

@@ -1,12 +1,9 @@
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
-import { map, Observable, shareReplay } from 'rxjs';
+import { Observable } from 'rxjs';
 import { BaseCardListComponent } from 'src/app/shared/base-card-list/base-card-list.component';
-import { PrioridadeTarefaEnum } from 'src/app/tarefas/view-models/prioridade-tarefa.enum';
 import { DespesaService } from '../services/despesa.service';
-import { FormaPgtoDespesaEnum } from '../view-model/forma-pgto-despesa.enum';
 import { ListarDespesaViewModel } from '../view-model/listar-despesa.view-model';
 
 @Component({
@@ -21,7 +18,6 @@ export class ListarDespesaComponent
   constructor(
     titulo: Title,
     breakpoint: BreakpointObserver,
-    private router: Router,
     private despesaService: DespesaService
   ) {
     super(breakpoint);

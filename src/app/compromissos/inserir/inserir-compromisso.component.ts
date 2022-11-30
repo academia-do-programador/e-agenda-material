@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { from, map, Observable, of, shareReplay, startWith, tap } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 import { ContatoService } from 'src/app/contatos/services/contato.service';
 import { ListarContatoViewModel } from 'src/app/contatos/view-models/listar-contato.view-model';
 import { NotificationService } from 'src/app/core/services/notification.service';

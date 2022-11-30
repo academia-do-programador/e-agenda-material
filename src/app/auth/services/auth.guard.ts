@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { MatSnackBar } from "@angular/material/snack-bar";
 import { CanActivate, Router } from "@angular/router";
 import { map, Observable } from "rxjs";
 import { UsuarioService } from "src/app/core/services/usuario.service";
