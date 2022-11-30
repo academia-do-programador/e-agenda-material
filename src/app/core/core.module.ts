@@ -6,6 +6,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoadingService } from './services/loading.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingInterceptor } from './services/loading.interceptor';
+import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { NotificationService } from './services/notification.service';
 
 
 @NgModule({
@@ -15,7 +17,8 @@ import { LoadingInterceptor } from './services/loading.interceptor';
   exports: [LoadingComponent],
   imports: [
     CommonModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
   providers: [
     UsuarioService,
@@ -24,7 +27,15 @@ import { LoadingInterceptor } from './services/loading.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor,
       multi: true
-    }
+    },
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+      useValue: {
+        duration: 3000,
+        horizontalPosition: 'center'
+      }
+    },
+    NotificationService
   ]
 })
 export class CoreModule { }

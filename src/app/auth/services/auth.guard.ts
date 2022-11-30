@@ -3,7 +3,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { CanActivate, Router } from "@angular/router";
 import { map, Observable } from "rxjs";
 import { UsuarioService } from "src/app/core/services/usuario.service";
-import { NotificationService } from "src/app/notification/services/notification.service";
+import { NotificationService } from "src/app/core/services/notification.service";
 
 @Injectable()
 export class AuthGuard implements CanActivate {

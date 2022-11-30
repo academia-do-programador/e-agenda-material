@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CategoriaService } from 'src/app/categorias/services/categoria.service';
 import { ListarCategoriaViewModel } from 'src/app/categorias/view-models/listar-categoria.view-model';
-import { NotificationService } from 'src/app/notification/services/notification.service';
+import { NotificationService } from 'src/app/core/services/notification.service';
 import { BaseFormComponent } from 'src/app/shared/base-form/base-form.component';
 import { DespesaService } from '../services/despesa.service';
 import { FormaPgtoDespesaEnum } from '../view-model/forma-pgto-despesa.enum';

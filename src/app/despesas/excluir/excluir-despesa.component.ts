@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NotificationService } from 'src/app/notification/services/notification.service';
+import { NotificationService } from 'src/app/core/services/notification.service';
 import { DespesaService } from '../services/despesa.service';
 import { VisualizarDespesaViewModel } from '../view-model/visualizar-despesa.view-model';
 

@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, QueryList, ViewChild, ViewChildre
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { filter, map, shareReplay, withLatestFrom } from 'rxjs/operators';
-import { TokenViewModel, UsuarioTokenViewModel } from '../auth/view-models/token.view-model';
+import { UsuarioTokenViewModel } from '../auth/view-models/token.view-model';
 import { UsuarioService } from '../core/services/usuario.service';
 import { AuthService } from '../auth/services/auth.service';
 import { LocalStorageService } from '../auth/services/local-storage.service';
@@ -45,7 +45,7 @@ export class ShellComponent implements AfterViewInit {
   links: any[] = [
     {
       url: '/dashboard',
-      texto: 'Dashboard',
+      texto: 'Painel de Controle',
       icone: 'view_timeline'
     },
     {

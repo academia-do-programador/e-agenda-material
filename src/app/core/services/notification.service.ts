@@ -8,19 +8,22 @@ export class NotificationService {
 
   sucesso(mensagem: string) {
     this.snackbar.open(mensagem, 'OK', {
-      panelClass: ['snackbar-sucesso']
+      panelClass: ['snackbar-sucesso'],
+      horizontalPosition: 'center'
     });
   }
 
   aviso(mensagem: string) {
     this.snackbar.open(mensagem, 'OK', {
-      panelClass: ['snackbar-aviso']
+      panelClass: ['snackbar-aviso'],
+      horizontalPosition: 'center'
     });
   }
 
   erro(mensagem: string) {
     this.snackbar.open(mensagem, 'OK', {
-      panelClass: ['snackbar-erro']
+      panelClass: ['snackbar-erro'],
+      horizontalPosition: 'center'
     });
   }
 }

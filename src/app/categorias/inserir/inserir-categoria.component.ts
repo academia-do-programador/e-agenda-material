@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { NotificationService } from 'src/app/notification/services/notification.service';
+import { NotificationService } from 'src/app/core/services/notification.service';
 import { BaseFormComponent } from 'src/app/shared/base-form/base-form.component';
 import { CategoriaService } from '../services/categoria.service';
 import { FormsCategoriaViewModel } from '../view-models/forms-categoria.view-model';

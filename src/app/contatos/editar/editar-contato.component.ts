@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NotificationService } from 'src/app/notification/services/notification.service';
+import { NotificationService } from 'src/app/core/services/notification.service';
 import { BaseFormComponent } from 'src/app/shared/base-form/base-form.component';
 import { ContatoService } from '../services/contato.service';
 import { FormsContatoViewModel } from '../view-models/forms-contato.view-model';

@@ -5,6 +5,7 @@
 @import '/node_modules/bootstrap/scss/bootstrap-grid.scss';
 
 $app-primary: #DA3DBA;
+$app-text-primary: #FFFFFF;
 $border-color: rgba(255, 255, 255, 0.12);
 
 html, body { height: 100%; }
@@ -52,7 +53,7 @@ dd { text-align: right; }
 
 .card-titulo {
   text-decoration: none;
-  color: white;
+  color: $app-text-primary;
 
   transition: all 200ms ease-in;
 
@@ -82,7 +83,7 @@ dd { text-align: right; }
 
 .mini-fab-transparent {
   background: transparent !important;
-  color: #ffffff !important;
+  color: $app-text-primary !important;
   border: 1px $app-primary solid !important;
 }
 
@@ -110,6 +111,16 @@ dd { text-align: right; }
   bottom: 25px;
   right: 25px;
   transform: scale(1) !important;
+  z-index: 1000;
+}
+
+.overlay-botoes {
+  display: flex;
+  gap: 4px;
+  position: fixed;
+  bottom: 23px;
+  right: 23px;
+
   z-index: 1000;
 }
 
@@ -147,6 +158,14 @@ dd { text-align: right; }
   font-weight: 300;
 }
 
+.mat-error {
+  font-size: 14px;
+}
+
+.mat-tab-label-active{
+  opacity: 1;
+}
+
 mat-form-field .mat-form-field {
   &-underline {
     position: static;
@@ -156,21 +175,10 @@ mat-form-field .mat-form-field {
     position: static;
   }
 }
-
-.mat-error {
-  font-size: 14px;
-}
-
 mat-header-row,
 th.mat-header-cell {
   border-bottom-color: #ADACD9 !important;
 }
-
-.mat-tab-label-active{
-  opacity: 1;
-}
-
-
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

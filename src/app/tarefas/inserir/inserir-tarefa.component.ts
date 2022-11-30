@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatTable } from '@angular/material/table';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { NotificationService } from 'src/app/notification/services/notification.service';
+import { NotificationService } from 'src/app/core/services/notification.service';
 import { BaseFormComponent } from 'src/app/shared/base-form/base-form.component';
 import { TarefasService } from '../services/tarefas.service';
 import { FormsTarefaViewModel, ItemTarefaViewModel } from '../view-models/forms-tarefa.view-model';

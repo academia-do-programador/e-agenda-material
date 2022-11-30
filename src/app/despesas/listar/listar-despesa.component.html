@@ -8,7 +8,7 @@
 </a>
 
 <div class="container-fluid">
-  <app-titulo-pagina icone="list">Despesas</app-titulo-pagina>
+  <app-titulo-pagina>Visualização de Despesas</app-titulo-pagina>
   <ng-container [ngSwitch]="(despesas$  | async)?.length">
     <app-descricao-pagina *ngSwitchCase="0">
       Nenhuma despesa cadastrada.
@@ -26,7 +26,7 @@
         (mouseenter)="ativarHover(despesa.id)"
         (mouseleave)="desativarHover()"
         class="app-card">
-        <mat-card-title class="d-flex fs-6">
+        <mat-card-title class="d-flex align-items-center fs-6">
           <a class="card-titulo" [routerLink]="['/despesas/editar', despesa.id]">
             <mat-label>{{ despesa.descricao }}</mat-label>
           </a>
@@ -40,6 +40,7 @@
           </div>
           <div class="ms-auto" *ngIf="(usuarioMobile$ | async)">
             <a mat-mini-fab color="warn"
+              class="mini-fab-transparent mat-elevation-z0"
               [routerLink]="['/despesas/excluir', despesa.id]"
               aria-label="Excluir"
               matTooltip="Excluir">
@@ -53,7 +54,7 @@
         <mat-card-actions class="px-2">
           <div class="row align-items-center">
             <mat-chip-list>
-              <mat-chip
+              <mat-chip disableRipple
                 class="chip-forma-pagamento col-6 px-2">
                 <mat-icon matChipAvatar>{{ gerarIconeFormaPagamento(despesa.formaPagamento) }}</mat-icon>
                 <small class="fw-light">

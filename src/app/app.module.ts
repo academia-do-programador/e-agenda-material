@@ -11,7 +11,6 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 import { ShellModule } from './shell/shell.module';
-import { NotificationModule } from './notification/notification.module';
 import { NotFoundModule } from './not-found/not-found.module';
 import { SharedModule } from './shared/shared.module';
 
@@ -30,8 +29,7 @@ registerLocaleData(ptBr);
     CoreModule,
     AuthModule,
     ShellModule,
-    NotFoundModule,
-    NotificationModule
+    NotFoundModule
   ],
   providers: [
     // Configuração de providers de localização

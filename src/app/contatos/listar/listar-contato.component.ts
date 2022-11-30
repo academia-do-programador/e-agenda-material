@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTabGroup } from '@angular/material/tabs';
 import { Title } from '@angular/platform-browser';
 import { map, Observable, shareReplay } from 'rxjs';
-import { NotificationService } from 'src/app/notification/services/notification.service';
+import { NotificationService } from 'src/app/core/services/notification.service';
 import { BaseCardListComponent } from 'src/app/shared/base-card-list/base-card-list.component';
 import { ContatoService } from '../services/contato.service';
 import { FormsContatoViewModel } from '../view-models/forms-contato.view-model';
@@ -18,7 +18,7 @@ export class ListarContatoComponent
   implements OnInit {
 
   contatos$: Observable<ListarContatoViewModel[]>;
-  filtrosContatos: string[] = ['Não-Favoritos', 'Favoritos'];
+  filtrosContatos: string[] = ['Comuns', 'Favoritos'];
 
   constructor(
     titulo: Title,
@@ -41,14 +41,20 @@ export class ListarContatoComponent
     }
   }
 
-  ativarStatusFavorito(contato: ListarContatoViewModel) {
-    contato.favorito = !contato.favorito;
-
-    this.contatoService.ativarStatusFavorito(contato.id)
+  ativarStatusFavorito(contatoId: string) {
+    this.contatoService.ativarStatusFavorito(contatoId)
       .subscribe({
         next: (contatoSelecionado: FormsContatoViewModel) => this.processarSucesso(contatoSelecionado),
         error: (erro: any) => this.processarFalha(erro)
       });
+  }
+
+  exibirStatusFavorito(status: boolean) {
+    return status ? 'Remover dos Favoritos' : 'Adicionar aos Favoritos';
+  }
+
+  exibirIconeFavorito(status: boolean) {
+    return status ? 'bookmark_remove' : 'bookmark_add';
   }
 
   private processarSucesso(contato: FormsContatoViewModel) {
@@ -57,8 +63,8 @@ export class ListarContatoComponent
       return this.notification.sucesso(`Contato '${contato.nome}' adicionado aos favoritos com sucesso!`);
     }
 
-    this.notification.sucesso(`Contato '${contato.nome}' removido dos favoritos com sucesso!`);
     this.contatos$ = this.contatoService.selecionarContatosFavoritos();
+    this.notification.sucesso(`Contato '${contato.nome}' removido dos favoritos com sucesso!`);
   }
 
   private processarFalha(erro: any) {

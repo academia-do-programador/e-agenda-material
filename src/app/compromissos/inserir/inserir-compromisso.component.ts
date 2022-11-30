@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { from, map, Observable, of, shareReplay, startWith, tap } from 'rxjs';
 import { ContatoService } from 'src/app/contatos/services/contato.service';
 import { ListarContatoViewModel } from 'src/app/contatos/view-models/listar-contato.view-model';
-import { NotificationService } from 'src/app/notification/services/notification.service';
+import { NotificationService } from 'src/app/core/services/notification.service';
 import { BaseFormComponent } from 'src/app/shared/base-form/base-form.component';
 import { CompromissoService } from '../services/compromisso.service';
 import { FormsCompromissoViewModel } from '../view-models/forms-compromisso.view-model';

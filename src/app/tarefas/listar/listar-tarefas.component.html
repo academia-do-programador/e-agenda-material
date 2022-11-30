@@ -1,11 +1,11 @@
-<a mat-fab
+<button mat-fab
   data-cy="btnAdicionar"
   color="accent"
   matTooltip="Adicionar Nova Tarefa"
   routerLink="/tarefas/inserir"
   class="btn-adicionar">
   <mat-icon>add</mat-icon>
-</a>
+</button>
 
 <div class="container-fluid">
   <app-titulo-pagina>Visualização de Tarefas</app-titulo-pagina>
@@ -22,20 +22,22 @@
                 <mat-label>{{ tarefa.titulo }}</mat-label>
               </a>
               <div class="card-hover-buttons" *ngIf="cardSelecionada == tarefa.id && !(usuarioMobile$ | async)">
-                <a mat-mini-fab color="warn"
+                <button mat-mini-fab color="warn"
                   [routerLink]="['/tarefas/excluir', tarefa.id]"
                   aria-label="Excluir"
                   matTooltip="Excluir">
                   <mat-icon class="fs-4">delete</mat-icon>
-                </a>
+                </button>
               </div>
               <div class="ms-auto" *ngIf="(usuarioMobile$ | async)">
-                <a mat-mini-fab color="warn" class="mini-fab-transparent mat-elevation-z0"
+                <button mat-mini-fab
+                  color="warn"
+                  class="mini-fab-transparent mat-elevation-z0"
                   [routerLink]="['/tarefas/excluir', tarefa.id]"
                   aria-label="Excluir"
                   matTooltip="Excluir">
                   <mat-icon class="">delete</mat-icon>
-                </a>
+                </button>
               </div>
             </mat-card-title>
             <mat-card-subtitle>Prioridade: {{ tarefa.prioridade }}</mat-card-subtitle>

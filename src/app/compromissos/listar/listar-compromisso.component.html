@@ -8,7 +8,7 @@
 </a>
 
 <div class="container-fluid">
-  <app-titulo-pagina icone="list">Compromissos</app-titulo-pagina>
+  <app-titulo-pagina>Visualização de Compromissos</app-titulo-pagina>
   <ng-container [ngSwitch]="(compromissos$  | async)?.length">
     <app-descricao-pagina *ngSwitchCase="0">
       Nenhum compromisso cadastrado.
@@ -26,7 +26,7 @@
         (mouseenter)="ativarHover(compromisso.id)"
         (mouseleave)="desativarHover()"
         class="app-card">
-        <mat-card-title class="d-flex fs-6">
+        <mat-card-title class="d-flex align-items-center fs-6">
           <a class="card-titulo" [routerLink]="['/compromissos/editar', compromisso.id]">
             <mat-label>{{ compromisso.assunto }}</mat-label>
           </a>
@@ -40,6 +40,7 @@
           </div>
           <div class="ms-auto" *ngIf="(usuarioMobile$ | async)">
             <a mat-mini-fab color="warn"
+              class="mini-fab-transparent mat-elevation-z0"
               [routerLink]="['/compromissos/excluir', compromisso.id]"
               aria-label="Excluir"
               matTooltip="Excluir">

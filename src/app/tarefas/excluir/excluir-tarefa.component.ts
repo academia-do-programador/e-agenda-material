@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NotificationService } from 'src/app/notification/services/notification.service';
+import { NotificationService } from 'src/app/core/services/notification.service';
 import { TarefasService } from '../services/tarefas.service';
 import { VisualizarTarefaViewModel } from '../view-models/visualizar-tarefa.view-model';
 

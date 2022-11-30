@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NotificationService } from 'src/app/notification/services/notification.service';
+import { NotificationService } from 'src/app/core/services/notification.service';
 import { CompromissoService } from '../services/compromisso.service';
 import { VisualizarCompromissoViewModel } from '../view-models/visualizar-compromisso.view-model';
 
