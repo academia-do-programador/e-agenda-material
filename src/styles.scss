@@ -17,6 +17,10 @@ body { margin: 0; }
 dt { text-align: left; }
 dd { text-align: right; }
 
+.app-navbar {
+  z-index: 1000 !important;
+}
+
 .app-card-list {
   display: flex;
   flex-wrap: wrap;

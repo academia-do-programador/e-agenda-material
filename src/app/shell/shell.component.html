@@ -1,5 +1,5 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidebar class="sidenav text-center justify-content-center" fixedInViewport
+<mat-sidenav-container class="sidenav-container mat-elevation-z24">
+  <mat-sidenav #sidebar class="sidenav text-center justify-content-center " fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false && (usuarioLogado$ | async) != null">
@@ -23,7 +23,7 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="row">
-    <mat-toolbar [ngClass]="{ 'app-top-toolbar-mobile': (isHandset$ | async)}" color="primary" class="d-flex px-4 border-bottom">
+    <mat-toolbar [ngClass]="{ 'app-top-toolbar-mobile': (isHandset$ | async)}" color="primary" class="d-flex px-4 border-bottom app-navbar">
       <button mat-icon-button
         type="button"
         aria-label="Ativar barra lateral"
