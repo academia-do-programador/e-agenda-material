@@ -53,7 +53,12 @@ export class CompromissoService {
 
     const resposta = this.http
       .get<ListarCompromissoViewModel[]>(this.apiUrl + `compromissos/hoje/${data}`, this.obterHeadersAutorizacao())
-      .pipe(map(this.processarDados), shareReplay(), catchError(this.processarFalha));
+      .pipe(
+        map(this.processarDados),
+        map(this.ordenarCompromissosPorDataRecente),
+        shareReplay(),
+        catchError(this.processarFalha)
+      );
 
     return resposta;
   }
@@ -66,7 +71,12 @@ export class CompromissoService {
 
     const resposta = this.http
       .get<ListarCompromissoViewModel[]>(this.apiUrl + `compromissos/futuros/${dataHoje}=${dataFuturoProcessada}`, this.obterHeadersAutorizacao())
-      .pipe(map(this.processarDados), shareReplay(), catchError(this.processarFalha));
+      .pipe(
+        map(this.processarDados),
+        map(this.ordenarCompromissosPorDataRecente),
+        shareReplay(),
+        catchError(this.processarFalha)
+      );
 
     return resposta;
   }
@@ -76,7 +86,12 @@ export class CompromissoService {
 
     const resposta = this.http
       .get<ListarCompromissoViewModel[]>(this.apiUrl + `compromissos/passados/${dataHoje}`, this.obterHeadersAutorizacao())
-      .pipe(map(this.processarDados), shareReplay(), catchError(this.processarFalha));
+      .pipe(
+        map(this.processarDados),
+        map(this.ordenarCompromissosPorDataRecente),
+        shareReplay(),
+        catchError(this.processarFalha)
+      );
 
     return resposta;
   }
@@ -117,5 +132,11 @@ export class CompromissoService {
 
   private processarFalha(resposta: any) {
     return throwError(() => new Error(resposta.error.erros[0]));
+  }
+
+  private ordenarCompromissosPorDataRecente(compromissos: ListarCompromissoViewModel[]) {
+    return compromissos.sort((a, b) => {
+      return new Date(a.data).getTime() - new Date(b.data).getTime();
+    });
   }
 }
