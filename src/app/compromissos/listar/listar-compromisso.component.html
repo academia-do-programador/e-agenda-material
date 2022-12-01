@@ -22,7 +22,7 @@
             [min]="0">
         </mat-form-field>
 
-        <div class="app-card-list mt-3">
+        <div class="app-card-list mt-4">
           <mat-card *ngFor="let compromisso of (compromissos$ | async)"
             (mouseenter)="ativarHover(compromisso.id)"
             (mouseleave)="desativarHover()"
