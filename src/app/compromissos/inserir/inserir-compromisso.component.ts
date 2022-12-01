@@ -47,9 +47,9 @@ export class InserirCompromissoComponent
       tipoLocal: [0, [Validators.required]],
       link: ['', [Validators.required]],
       local: [''],
-      data: ['', [Validators.required]],
-      horaInicio: ['', [Validators.required]],
-      horaTermino: ['', [Validators.required]],
+      data: [new Date().toISOString().substring(0, 10), [Validators.required]],
+      horaInicio: ['08:00', [Validators.required]],
+      horaTermino: ['09:00', [Validators.required]],
       contatoId: ['']
     });
 
