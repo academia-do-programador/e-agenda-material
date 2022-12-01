@@ -9,22 +9,11 @@
 
 <div class="container-fluid">
   <app-titulo-pagina>Visualização de Compromissos</app-titulo-pagina>
-  <ng-container [ngSwitch]="(compromissos$  | async)?.length">
-    <app-descricao-pagina *ngSwitchCase="0">
-      Nenhum compromisso cadastrado.
-    </app-descricao-pagina>
-    <app-descricao-pagina *ngSwitchCase="1">
-      Você tem apenas um compromisso cadastrado.
-    </app-descricao-pagina>
-    <app-descricao-pagina *ngSwitchDefault>
-      Você tem {{ (compromissos$  | async)?.length }} compromissos cadastrados.
-    </app-descricao-pagina>
-  </ng-container>
   <section aria-label="Listagem de Compromissos">
     <mat-tab-group #tabGroup dynamicHeight (selectedIndexChange)="trocarFiltro($event)">
       <mat-tab *ngFor="let filtro of filtrosCompromissos" [label]="filtro">
         <div class="app-card-list mt-4">
-          <mat-card [ngClass]="{ 'card-shadow': cardSelecionada === compromisso.id }" *ngFor="let compromisso of (compromissos$ | async)"
+          <mat-card *ngFor="let compromisso of (compromissos$ | async)"
             (mouseenter)="ativarHover(compromisso.id)"
             (mouseleave)="desativarHover()"
             class="app-card">
