@@ -1,13 +1,14 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
+import { NavigationEnd, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, map, shareReplay, withLatestFrom } from 'rxjs/operators';
-import { UsuarioTokenViewModel } from '../auth/view-models/token.view-model';
-import { UsuarioService } from '../core/services/usuario.service';
 import { AuthService } from '../auth/services/auth.service';
 import { LocalStorageService } from '../auth/services/local-storage.service';
-import { NavigationEnd, Router } from '@angular/router';
-import { MatSidenav } from '@angular/material/sidenav';
+import { UsuarioTokenViewModel } from '../auth/view-models/token.view-model';
+import { LoadingService } from '../core/services/loading.service';
+import { UsuarioService } from '../core/services/usuario.service';
 
 @Component({
   selector: 'app-shell',
@@ -81,7 +82,10 @@ export class ShellComponent implements AfterViewInit {
       shareReplay()
     );
 
+  carregando$ = this.loadingService.observador;
+
   constructor(
+    private loadingService: LoadingService,
     private breakpointObserver: BreakpointObserver,
     private usuarioService: UsuarioService,
     private authService: AuthService,

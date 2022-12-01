@@ -1,23 +1,18 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UsuarioService } from './services/usuario.service';
-import { LoadingComponent } from './loading/loading.component';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { LoadingService } from './services/loading.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { LoadingInterceptor } from './services/loading.interceptor';
+import { NgModule } from '@angular/core';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { LoadingInterceptor } from './services/loading.interceptor';
+import { LoadingService } from './services/loading.service';
 import { NotificationService } from './services/notification.service';
-
+import { UsuarioService } from './services/usuario.service';
 
 @NgModule({
-  declarations: [
-    LoadingComponent
-  ],
-  exports: [LoadingComponent],
+  declarations: [],
   imports: [
     CommonModule,
-    MatProgressSpinnerModule,
+    MatProgressBarModule,
     MatSnackBarModule
   ],
   providers: [

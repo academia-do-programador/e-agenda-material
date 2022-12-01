@@ -21,6 +21,10 @@ dd { text-align: right; }
   z-index: 1000 !important;
 }
 
+.app-barra-loading {
+  height: 1px !important;
+}
+
 .app-card-list {
   display: flex;
   flex-wrap: wrap;
@@ -660,6 +664,7 @@ input.mat-input-element {
   width: 1px;
   white-space: nowrap;
   outline: 0;
+  appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none; }
 

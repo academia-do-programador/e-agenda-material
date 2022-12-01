@@ -46,6 +46,7 @@
       <app-shell-user-info class="ms-auto" [handset]="isHandset$" [usuario]="usuarioLogado$ | async" (logout)="logout()"></app-shell-user-info>
 
     </mat-toolbar>
+    <mat-progress-bar class="app-barra-loading" mode="indeterminate" *ngIf="(carregando$ | async)"></mat-progress-bar>
 
     <!-- Conteúdo principal -->
     <main class="px-md-2 py-4 mb-5">

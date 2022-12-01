@@ -1,20 +1,21 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
-import { ShellComponent } from './shell.component';
-import { ShellUserInfoComponent } from './shell-user-info/shell-user-info.component';
-import { DashboardModule } from '../dashboard/dashboard.module';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { RouterModule } from '@angular/router';
+import { DashboardModule } from '../dashboard/dashboard.module';
 import { SharedModule } from '../shared/shared.module';
+import { ShellUserInfoComponent } from './shell-user-info/shell-user-info.component';
+import { ShellComponent } from './shell.component';
 @NgModule({
   declarations: [ShellComponent, ShellUserInfoComponent],
   exports: [ShellComponent, ShellUserInfoComponent],
@@ -24,6 +25,7 @@ import { SharedModule } from '../shared/shared.module';
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
+    MatProgressBarModule,
     MatIconModule,
     MatListModule,
     MatMenuModule,
