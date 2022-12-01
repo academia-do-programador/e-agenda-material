@@ -15,6 +15,7 @@ export class ListarCompromissoComponent
   implements OnInit {
 
   compromissos$: Observable<ListarCompromissoViewModel[]>;
+  filtrosCompromissos: string[] = ['Hoje', 'Futuros', 'Passados'];
 
   constructor(
     titulo: Title,
@@ -26,7 +27,15 @@ export class ListarCompromissoComponent
   }
 
   ngOnInit(): void {
-    this.compromissos$ = this.compromissoService.selecionarTodos();
+    this.compromissos$ = this.compromissoService.selecionarCompromissosDeHoje();
+  }
+
+  trocarFiltro(filtroSelecionado: number) {
+    switch (filtroSelecionado) {
+      default: this.compromissos$ = this.compromissoService.selecionarCompromissosDeHoje(); break;
+      case 1: this.compromissos$ = this.compromissoService.selecionarCompromissosFuturos(); break;
+      case 2: this.compromissos$ = this.compromissoService.selecionarCompromissosPassados(); break;
+    }
   }
 
 }

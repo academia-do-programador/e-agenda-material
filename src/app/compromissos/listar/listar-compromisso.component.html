@@ -21,62 +21,66 @@
     </app-descricao-pagina>
   </ng-container>
   <section aria-label="Listagem de Compromissos">
-    <div class="app-card-list">
-      <mat-card [ngClass]="{ 'card-shadow': cardSelecionada === compromisso.id }" *ngFor="let compromisso of (compromissos$ | async)"
-        (mouseenter)="ativarHover(compromisso.id)"
-        (mouseleave)="desativarHover()"
-        class="app-card">
-        <mat-card-title class="d-flex align-items-center fs-6">
-          <a class="card-titulo" [routerLink]="['/compromissos/editar', compromisso.id]">
-            <mat-label>{{ compromisso.assunto }}</mat-label>
-          </a>
-          <div class="card-hover-buttons" *ngIf="cardSelecionada == compromisso.id && !(usuarioMobile$ | async)">
-            <a mat-mini-fab color="warn"
-              [routerLink]="['/compromissos/excluir', compromisso.id]"
-              aria-label="Excluir"
-              matTooltip="Excluir">
-              <mat-icon class="fs-4">delete</mat-icon>
-            </a>
-          </div>
-          <div class="ms-auto" *ngIf="(usuarioMobile$ | async)">
-            <a mat-mini-fab color="warn"
-              class="mini-fab-transparent mat-elevation-z0"
-              [routerLink]="['/compromissos/excluir', compromisso.id]"
-              aria-label="Excluir"
-              matTooltip="Excluir">
-              <mat-icon class="">delete</mat-icon>
-            </a>
-          </div>
-        </mat-card-title>
-        <mat-card-subtitle>{{ compromisso.data }}</mat-card-subtitle>
+    <mat-tab-group #tabGroup dynamicHeight (selectedIndexChange)="trocarFiltro($event)">
+      <mat-tab *ngFor="let filtro of filtrosCompromissos" [label]="filtro">
+        <div class="app-card-list mt-4">
+          <mat-card [ngClass]="{ 'card-shadow': cardSelecionada === compromisso.id }" *ngFor="let compromisso of (compromissos$ | async)"
+            (mouseenter)="ativarHover(compromisso.id)"
+            (mouseleave)="desativarHover()"
+            class="app-card">
+            <mat-card-title class="d-flex align-items-center fs-6">
+              <a class="card-titulo" [routerLink]="['/compromissos/editar', compromisso.id]">
+                <mat-label>{{ compromisso.assunto }}</mat-label>
+              </a>
+              <div class="card-hover-buttons" *ngIf="cardSelecionada == compromisso.id && !(usuarioMobile$ | async)">
+                <a mat-mini-fab color="warn"
+                  [routerLink]="['/compromissos/excluir', compromisso.id]"
+                  aria-label="Excluir"
+                  matTooltip="Excluir">
+                  <mat-icon class="fs-4">delete</mat-icon>
+                </a>
+              </div>
+              <div class="ms-auto" *ngIf="(usuarioMobile$ | async)">
+                <a mat-mini-fab color="warn"
+                  class="mini-fab-transparent mat-elevation-z0"
+                  [routerLink]="['/compromissos/excluir', compromisso.id]"
+                  aria-label="Excluir"
+                  matTooltip="Excluir">
+                  <mat-icon class="">delete</mat-icon>
+                </a>
+              </div>
+            </mat-card-title>
+            <mat-card-subtitle>{{ compromisso.data }}</mat-card-subtitle>
 
-        <mat-card-content>
-          <mat-label class="fw-semibold">Contato</mat-label>
-          <p class="fw-light">{{ compromisso.nomeContato ? compromisso.nomeContato : 'Nenhum contato selecionado.' }}</p>
-        </mat-card-content>
-        <mat-card-actions>
-          <mat-list>
-            <mat-chip-list>
-            <mat-list-item>
-              <dt class="col">
-                <label class="control-label">Início:</label>
-              </dt>
-              <dd class="col">
-                <mat-chip class="chip-forma-pagamento">{{ compromisso.horaInicio }}</mat-chip>
-              </dd>
-            </mat-list-item>
-            <mat-list-item>
-              <dt class="col">
-                <label class="control-label">Término:</label>
-              </dt>
-              <dd class="col">
-                <mat-chip class="chip-forma-pagamento">{{ compromisso.horaTermino }}</mat-chip>
-              </dd>
-            </mat-list-item>
-          </mat-chip-list>
-          </mat-list>
-        </mat-card-actions>
-      </mat-card>
-    </div>
+            <mat-card-content>
+              <mat-label class="fw-semibold">Contato</mat-label>
+              <p class="fw-light">{{ compromisso.nomeContato ? compromisso.nomeContato : 'Nenhum contato selecionado.' }}</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <mat-list>
+                <mat-chip-list>
+                <mat-list-item>
+                  <dt class="col">
+                    <label class="control-label">Início:</label>
+                  </dt>
+                  <dd class="col">
+                    <mat-chip class="chip-forma-pagamento">{{ compromisso.horaInicio }}</mat-chip>
+                  </dd>
+                </mat-list-item>
+                <mat-list-item>
+                  <dt class="col">
+                    <label class="control-label">Término:</label>
+                  </dt>
+                  <dd class="col">
+                    <mat-chip class="chip-forma-pagamento">{{ compromisso.horaTermino }}</mat-chip>
+                  </dd>
+                </mat-list-item>
+              </mat-chip-list>
+              </mat-list>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
   </section>
 </div>

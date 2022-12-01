@@ -48,6 +48,39 @@ export class CompromissoService {
     return resposta;
   }
 
+  public selecionarCompromissosDeHoje(): Observable<ListarCompromissoViewModel[]> {
+    const data = new Date().toISOString().substring(0, 10);
+
+    const resposta = this.http
+      .get<ListarCompromissoViewModel[]>(this.apiUrl + `compromissos/hoje/${data}`, this.obterHeadersAutorizacao())
+      .pipe(map(this.processarDados), shareReplay(), catchError(this.processarFalha));
+
+    return resposta;
+  }
+
+  public selecionarCompromissosFuturos(periodoDias: number = 7): Observable<ListarCompromissoViewModel[]> {
+    const dataHoje = new Date().toISOString().substring(0, 10);
+    const dataFuturo = new Date(new Date().setDate(new Date().getDate() + periodoDias));
+
+    const dataFuturoProcessada = dataFuturo.toISOString().substring(0, 10);
+
+    const resposta = this.http
+      .get<ListarCompromissoViewModel[]>(this.apiUrl + `compromissos/futuros/${dataHoje}=${dataFuturoProcessada}`, this.obterHeadersAutorizacao())
+      .pipe(map(this.processarDados), shareReplay(), catchError(this.processarFalha));
+
+    return resposta;
+  }
+
+  public selecionarCompromissosPassados(): Observable<ListarCompromissoViewModel[]> {
+    const dataHoje = new Date().toISOString().substring(0, 10);
+
+    const resposta = this.http
+      .get<ListarCompromissoViewModel[]>(this.apiUrl + `compromissos/passados/${dataHoje}`, this.obterHeadersAutorizacao())
+      .pipe(map(this.processarDados), shareReplay(), catchError(this.processarFalha));
+
+    return resposta;
+  }
+
   public selecionarPorId(id: string): Observable<FormsCompromissoViewModel> {
     const resposta = this.http
       .get<FormsCompromissoViewModel>(this.apiUrl + 'compromissos/' + id, this.obterHeadersAutorizacao())

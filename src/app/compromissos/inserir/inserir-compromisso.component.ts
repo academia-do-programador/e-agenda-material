@@ -110,7 +110,6 @@ export class InserirCompromissoComponent
 
     this.compromissoFormVM = Object.assign({}, this.compromissoFormVM, this.formCompromisso.value);
 
-    console.log(this.compromissoFormVM);
     this.compromissoService.inserir(this.compromissoFormVM)
       .subscribe({
         next: (compromissoInserido) => this.processarSucesso(compromissoInserido),
