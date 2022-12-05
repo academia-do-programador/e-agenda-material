@@ -14,6 +14,7 @@ import { LoginGuard } from './services/login.guard';
 import { RegistroComponent } from './registro/registro.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 
 
@@ -31,6 +32,7 @@ import { SharedModule } from '../shared/shared.module';
     MatButtonModule,
     MatIconModule,
     MatInputModule,
+    MatToolbarModule,
 
     ReactiveFormsModule,
     HttpClientModule,

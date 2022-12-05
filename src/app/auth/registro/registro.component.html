@@ -3,14 +3,10 @@
   <div class="row h-100 gap-3 justify-content-center align-items-center">
 
     <section aria-label="Formulário de Registro" class="d-grid gap-2 col-sm col-lg-4">
-      <app-titulo-pagina icone="person_add">e-Agenda</app-titulo-pagina>
       <mat-card class="p-md-4 col mb-3">
-        <div class="row gap-4 justify-content-center my-2 text-center">
-          <img src="/assets/logo-titulo.svg" class="col-6">
-          <h5 class="fs-5">Registro de Usuário</h5>
-        </div>
         <mat-card-content>
           <form class="d-grid gap-2 fs-6 p-3" [formGroup]="form" (ngSubmit)="registrar()">
+            <img src="/assets/logo-main.svg" width="150px" class="my-3">
             <mat-form-field appearance="outline">
               <mat-label>Nome de Usuário</mat-label>
               <input matInput
@@ -93,5 +89,11 @@
       <img src="/assets/undraw-registro.svg" class="img-fluid mw-100" alt="Imagem ilustrando uma garota interagindo com um formulário online">
     </figure>
 
+  </div>
+
+  <div class="row">
+    <mat-toolbar class="justify-content-end px-4">
+      <img src="/assets/logo-titulo.svg" width="150px" alt="Logo da Academia do Programador">
+    </mat-toolbar>
   </div>
 </div>

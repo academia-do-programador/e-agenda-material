@@ -4,9 +4,8 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false && (usuarioLogado$ | async) != null">
     <mat-toolbar class="d-flex justify-content-center align-items-center gap-2 py-lg-3 border-bottom">
-      <img src="/assets/logo-small.svg" width="60px" alt="Logo da Academia do Programador">
-      <a routerLink="/dashboard" class="text-white text-decoration-none fw-semibold">
-        e-Agenda
+      <a routerLink="/dashboard">
+        <img src="/assets/logo-main.svg" width="130px" alt="Logo da e-Agenda">
       </a>
     </mat-toolbar>
 
@@ -38,8 +37,8 @@
       <img *ngIf="!sidebar.opened"
         class="logo-academia-toolbar"
         class="ms-2"
-        src="/assets/logo-titulo.svg"
-        width="180"
+        src="/assets/logo-main.svg"
+        width="120px"
         alt="Logo da Academia do Programador">
 
       <!-- Menu de autenticação / gerenciamento de conta -->
