@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { UsuarioService } from 'src/app/core/services/usuario.service';
 import { NotificationService } from 'src/app/core/services/notification.service';
+import { UsuarioService } from 'src/app/core/services/usuario.service';
 import { BaseFormComponent } from 'src/app/shared/base-form/base-form.component';
 import { AuthService } from '../services/auth.service';
 import { LocalStorageService } from '../services/local-storage.service';
@@ -13,11 +13,6 @@ import { TokenViewModel } from '../view-models/token.view-model';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styles: [`
-    .grid-container {
-      margin: 20px;
-    }
-  `]
 })
 export class LoginComponent
   extends BaseFormComponent

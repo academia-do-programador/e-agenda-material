@@ -1,12 +1,11 @@
-<div class="container-fluid h-100 align-items-center justify-content-center">
+<div class="container-fluid h-100">
 
-  <div class="row h-100 gap-3 justify-content-center align-items-center">
-
+  <div class="row gap-3 h-100 justify-content-center align-items-center ">
     <section aria-label="Formulário de Registro" class="d-grid gap-2 col-sm col-lg-4">
-      <mat-card class="p-md-4 col mb-3">
+      <mat-card class="p-md-4">
         <mat-card-content>
           <form class="d-grid gap-2 fs-6 p-3" [formGroup]="form" (ngSubmit)="registrar()">
-            <img src="/assets/logo-main.svg" width="150px" class="my-3">
+            <img src="/assets/logo-main.svg" width="150px" class="my-2">
             <mat-form-field appearance="outline">
               <mat-label>Nome de Usuário</mat-label>
               <input matInput
@@ -85,15 +84,14 @@
       </mat-card>
     </section>
 
-    <figure class="d-none d-lg-block col col-md-4 align-items-center">
-      <img src="/assets/undraw-registro.svg" class="img-fluid mw-100" alt="Imagem ilustrando uma garota interagindo com um formulário online">
+    <figure class="d-none d-lg-block col-auto align-items-center">
+      <img src="/assets/undraw-registro.svg" width="400px" alt="Imagem ilustrando uma garota interagindo com um formulário online">
     </figure>
 
-  </div>
-
-  <div class="row">
-    <mat-toolbar class="justify-content-end px-4">
-      <img src="/assets/logo-titulo.svg" width="150px" alt="Logo da Academia do Programador">
-    </mat-toolbar>
+    <div class="d-flex justify-content-end px-4">
+      <a href="http://www.academiadoprogramador.com">
+        <img src="/assets/logo-titulo.svg" width="180px" alt="Logo da Academia do Programador">
+      </a>
+    </div>
   </div>
 </div>

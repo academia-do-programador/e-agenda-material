@@ -1,12 +1,11 @@
-<div class="container-fluid h-100 justify-content-center">
+<div class="container-fluid h-100">
 
   <div class="row gap-3 h-100 justify-content-center align-items-center">
-
     <section aria-label="Formulário de Login" class="d-grid gap-2 col-sm col-lg-4">
       <mat-card class="p-md-4">
         <mat-card-content>
           <form class="d-grid gap-2 fs-6 p-3" [formGroup]="form" (ngSubmit)="login()">
-            <img src="/assets/logo-main.svg" width="150px" class="my-3">
+            <img src="/assets/logo-main.svg" width="150px" class="my-2">
             <mat-form-field appearance="outline">
               <mat-label>Endereço de email</mat-label>
               <input matInput
@@ -61,11 +60,11 @@
     <figure class="d-none d-lg-block col-auto align-items-center p-2">
         <img src="/assets/undraw-login.svg" class="img-fluid" alt="Imagem ilustrando uma garota interagindo com um formulário online">
     </figure>
-  </div>
 
-  <div class="row">
-    <mat-toolbar class="justify-content-end px-4">
-      <img src="/assets/logo-titulo.svg" width="150px" alt="Logo da Academia do Programador">
-    </mat-toolbar>
+    <div class="d-flex justify-content-end px-4">
+      <a href="http://www.academiadoprogramador.com">
+        <img src="/assets/logo-titulo.svg" width="180px" alt="Logo da Academia do Programador">
+      </a>
+    </div>
   </div>
 </div>
