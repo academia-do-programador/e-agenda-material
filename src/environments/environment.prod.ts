@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://eagendaweb.azurewebsites.net/api/'
+  apiUrl: 'https://e-agenda-web-api.onrender.com/api/',
 };
